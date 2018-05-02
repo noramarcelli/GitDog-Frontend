@@ -3,9 +3,10 @@ import MyStore from './store/index.js'
 import HomePage from './pages/HomePage.js'
 import ChatPage from './pages/ChatPage.js'
 import LoginPage from './pages/LoginPage.js'
-import RegisterPage from './pages/RegisterPage.js'
+// import RegisterPage from './pages/RegisterPage.js'
 import DogAppPage from './pages/DogAppPage.js'
 import AdminPage from './pages/AdminPage.js'
+import DogPreviewPage from './views/DogPreviewPage.js'
 
 const myRoutes = [
     {
@@ -29,9 +30,13 @@ const myRoutes = [
         component: LoginPage
     },
     {
-        path: '/register',
-        component: RegisterPage
+        path: '/dog/:dogId',
+        component: DogPreviewPage
     },
+    // {
+    //     path: '/register',
+    //     component: RegisterPage
+    // },
     {
         path: '/admin',
         component: AdminPage,
