@@ -9,7 +9,7 @@ export default {
         <form @submit.prevent="register">
             <input type="text" placeholder="username" v-model="user.name" />
             <input type="password" placeholder="password" v-model="user.password" />
-            <button type="submit">Register</button>
+            <!-- <button type="submit">Register</button> -->
         </form>
     </section>
     `,
