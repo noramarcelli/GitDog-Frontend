@@ -8,6 +8,13 @@
 
   <div class="tinder--cards">
     <div class="tinder--card">
+      <img src="../../img/dogs/snow_1.jpeg">
+      <h3>Demo card 1</h3>
+      <p>This is a demo for Tinder like swipe cards</p>
+    </div>
+
+
+    <!-- <div class="tinder--card">
       <img src="https://placeimg.com/600/300/people">
       <h3>Demo card 1</h3>
       <p>This is a demo for Tinder like swipe cards</p>
@@ -31,7 +38,7 @@
       <img src="https://placeimg.com/600/300/arch">
       <h3>Demo card 5</h3>
       <p>This is a demo for Tinder like swipe cards</p>
-    </div>
+    </div> -->
   </div>
 
   <div class="tinder--buttons">
@@ -50,5 +57,6 @@ export default {
 //   components: {
 //     HelloWorld
 //   }
+ props: ['dog']
 }
 </script>

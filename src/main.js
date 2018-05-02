@@ -4,8 +4,9 @@ import router from './router'
 import store from './store'
 import './registerServiceWorker'
 
-import app from '../css/app.css';
-import FontAwsome from 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css';
+// import app from '../css/app.css';
+// import FontAwsome from 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css';
+// import FontAwsome from "https://use.fontawesome.com/releases/v5.0.10/css/all.css";
 
 Vue.config.productionTip = false
 
