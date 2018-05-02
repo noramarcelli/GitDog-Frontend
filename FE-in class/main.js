@@ -3,7 +3,8 @@
 import myStore from './store/index.js';
 import myRouter from './routes.js'
 import UserMsg from './cmps/UserMsg.js'
-import NavBar from './cmps/NavBar.js'
+import NavBar from './cmps/NavBar.js';
+
 
 // This is needed for getting the session cookie via CORS
 window.axios = axios.create({
