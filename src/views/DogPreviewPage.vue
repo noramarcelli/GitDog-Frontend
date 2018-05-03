@@ -43,6 +43,7 @@
 
   <div class="tinder--buttons">
     <button id="nope"><i class="fa fa-remove"></i></button>
+    <button id="fav"><i class="fas fa-star"></i></button>
     <button id="love"><i class="fa fa-heart"></i></button>
   </div>
 </div>

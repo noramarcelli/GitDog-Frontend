@@ -194,6 +194,11 @@
 }
 .fa-heart:before {
   content: "\f004";
+  color: red;
+}
+.fa-star:before {
+  content: "\f005";
+  color: purple;
 }
 .fa-star:before {
   content: "\f005";
@@ -223,6 +228,7 @@
 .fa-close:before,
 .fa-times:before {
   content: "\f00d";
+  color: grey;
 }
 .fa-search-plus:before {
   content: "\f00e";
