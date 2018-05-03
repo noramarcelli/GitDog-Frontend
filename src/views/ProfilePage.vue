@@ -27,10 +27,18 @@ export default {
          var user = this.loggedInUser;
          console.log('dogId', dogId);
          var dogId = user.dogId;
-        //  this.$store.dispatch({ type: "loadDogById" });
+         this.$store.dispatch({ type: "loadDog" });
         //  return user.dog;
     }
   },
+
+  getters: {
+      dogForDisplay(state) {
+        console.log('state.selectedDog', state.selectedDog)
+        return state.selectedDog;
+      }
+    }
+
 //   created() {
 //     this.$store.dispatch({ type: "loadNextDogs" });
 //   },
