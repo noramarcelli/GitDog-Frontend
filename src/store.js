@@ -58,5 +58,12 @@ export default new Vuex.Store({
     }
   },
 
+  getters: {
+    loggedInUserForDisplay(state) {
+      console.log('state.loggedInUser', state.loggedinUser)
+      return state.loggedinUser;
+    }
+  }
+
   
 });

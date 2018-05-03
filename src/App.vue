@@ -3,7 +3,7 @@
   <div id="app">
 
     <div id="nav">
-      <router-link to="/" name="profile"><i class="fa fa-user"></i></router-link> |
+      <router-link to="/user" name="profile"><i class="fa fa-user"></i></router-link> |
       <router-link class="logo" to="/swipe"><Logo></Logo></router-link> |
       <router-link to="/about" name="messages"><i class="fa fa-comments"></i></router-link>
      
