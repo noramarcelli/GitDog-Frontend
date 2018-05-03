@@ -4,7 +4,7 @@
     <!-- <div> {{dogsLengthToShow}} </div> -->
     <div v-if="dog" class="tinder--card">
       <img :src="'./' + dog.imgs[0]">
-       <button><i class="fa fa-info"></i></button>
+       <button class="info"><i class="fa fa-info"></i></button>
       <p > {{dog.name}} {{dog.age}}</p>
       <!-- <h3>Demo card 1</h3>
       <p>This is a demo for Tinder like swipe cards</p> -->
@@ -43,7 +43,7 @@
     </div> -->
   </div>
 
-    <div class="">
+    <div class="tinder--buttons">
       <button id="nope" @click="getNextDogs(dog._id)"><i class="fa fa-remove"></i></button>
       <button id="fav"><i class="fa fa-star"></i></button>
       <button id="love" @click="getNextDogs(dog._id)"><i class="fa fa-heart"></i></button>
@@ -239,13 +239,13 @@ body {
   pointer-events: none;
 }
 
-/* .{
+.tinder--buttons {
   flex: 0 0 100px;
   text-align: center;
   padding-top: 20px;
-} */
+}
 
-.button {
+.tinder--buttons button {
   border-radius: 50%;
   line-height: 60px;
   width: 60px;
@@ -255,21 +255,21 @@ body {
   margin: 0 8px;
 }
 
-.button:focus {
+.tinder--buttons button:focus {
   outline: 0;
 }
 
-.i {
+.tinder--buttons i {
   font-size: 32px;
   vertical-align: middle;
 }
 
 .fa-heart {
-  color: #fface4;
+  color: red;
 }
 
 .fa-remove {
-  color: #cdd6dd;
+  color: grey;
 }
 </style>
 

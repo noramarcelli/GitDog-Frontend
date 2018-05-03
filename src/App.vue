@@ -56,7 +56,7 @@ body {
     // color: #2c3e50;
     color: black;
     &.router-link-exact-active {
-      color: #42b983;
+      color: red;
     }
   }
 }
