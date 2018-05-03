@@ -73,16 +73,8 @@ export default {
   // },
   computed: {
     dog() {
-      // console.log(
-      //   "this.$store.state.selectedDog",
-      //   this.$store.state.selectedDog
-      // );
-      // console.log('this', this);
       console.log('this.$store.state.selectedDog', this.$store.state.selectedDog);
-      
       return this.$store.state.selectedDog;
-      //  var idx = this.$store.state.selectedDogIdx;
-      //  return this.$store.state.selectedDogIdx;
     }
   },
 

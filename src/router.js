@@ -10,7 +10,7 @@ import Register from './views/RegisterPage.vue'
 // import Pref from './views/PrefPage.vue'
 // import Msg from './views/MsgPage.vue'
 // import Chat from './views/ChatPage.vue'
-// import Profile from './views/ProfilePage.vue'
+import Profile from './views/ProfilePage.vue'
 // import Match from './views/MatchPage.vue'
 import DogPreview from './views/DogPreviewPage.vue'
 // import DogDetails from './views/DogDetailsPage.vue'
@@ -59,11 +59,11 @@ export default new Router({
     //   name: 'chat',
     //   component: Chat
     // },
-    // {
-    //   path: '/user/:userId',
-    //   name: 'profile',
-    //   component: Profile
-    // },
+    {
+      path: '/user',
+      name: 'profile',
+      component: Profile
+    },
     // {
     //   path: '/user/:userId/:matchId',
     //   name: 'match',
