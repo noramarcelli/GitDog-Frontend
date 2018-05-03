@@ -240,11 +240,11 @@ body {
   pointer-events: none;
 }
 
-. {
+/* .{
   flex: 0 0 100px;
   text-align: center;
   padding-top: 20px;
-}
+} */
 
 .button {
   border-radius: 50%;
