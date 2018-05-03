@@ -99,15 +99,3 @@ button .info {
     padding: 2px;
     letter-spacing: 1px;
 }
-
-.home {
-    font-family: "Digitalt";
-    /* font-weight: bold; */
-    font-size: 25px;
-    padding: 2px;
-    letter-spacing: 1px;
-    color: black;
-}
-.home footer {
-    background-image: url(../public/img/bgrd/dog-treats.png);
-}
