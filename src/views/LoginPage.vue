@@ -22,7 +22,6 @@ export default {
     },
     methods: {
         checkLogin() {
-
             this.$store.dispatch({type: 'login', userCredentials:this.user})
             .then(res => {
                 console.log('You have been logged-in!')

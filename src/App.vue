@@ -4,12 +4,11 @@
 
     <div id="nav">
       <router-link to="/" name="profile"><i class="fa fa-user"></i></router-link> |
-         <!-- <router-link to="/dog/5ae99e78647dea7fcfceab3d">Preview</router-link> -->
       <router-link class="logo" to="/swipe"><Logo></Logo></router-link> |
       <router-link to="/about" name="messages"><i class="fa fa-comments"></i></router-link>
      
-      <router-link to="/login">Log in</router-link>|
-      <router-link to="/register">Resgister</router-link> 
+      <!-- <router-link to="/login">Log in</router-link>|
+      <router-link to="/register">Resgister</router-link>  -->
     </div>
     <router-view/>
 
