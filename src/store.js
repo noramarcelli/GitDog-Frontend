@@ -26,6 +26,8 @@ export default new Vuex.Store({
     },
     setUser(state, {user}) {
       state.loggedinUser = user;
+      console.log('state.loggedinUser', state.loggedinUser);
+      
     }
   },
   actions: {
