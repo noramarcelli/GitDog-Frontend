@@ -1,4 +1,3 @@
-
 <template>
  <div class="tinder">
   <div class="tinder--cards">
@@ -16,8 +15,32 @@
         <i class="fa fa-remove"></i>
         <i class="fa fa-heart"></i>
       </div>  
-    
- 
+     -->
+    <!-- <div class="tinder--card">
+      <img src="https://placeimg.com/600/300/people">
+      <h3>Demo card 1</h3>
+      <p>This is a demo for Tinder like swipe cards</p>
+    </div>
+    <div class="tinder--card">
+      <img src="https://placeimg.com/600/300/animals">
+      <h3>Demo card 2</h3>
+      <p>This is a demo for Tinder like swipe cards</p>
+    </div>
+    <div class="tinder--card">
+      <img src="https://placeimg.com/600/300/nature">
+      <h3>Demo card 3</h3>
+      <p>This is a demo for Tinder like swipe cards</p>
+    </div>
+    <div class="tinder--card">
+      <img src="https://placeimg.com/600/300/tech">
+      <h3>Demo card 4</h3>
+      <p>This is a demo for Tinder like swipe cards</p>
+    </div>
+    <div class="tinder--card">
+      <img src="https://placeimg.com/600/300/arch">
+      <h3>Demo card 5</h3>
+      <p>This is a demo for Tinder like swipe cards</p>
+    </div> -->
   </div>
 
     <div class="">
@@ -41,7 +64,7 @@ export default {
   created() {
     // const dogId = this.$route.params.dogId;
     //this.$store.dispatch({ type: "loadDogs" });
-    this.$store.dispatch({ type: "loadDogsLength" });
+    // this.$store.dispatch({ type: "loadDogsLength" });
     this.$store.dispatch({ type: "loadNextDogs" });
   },
   // destroyed() {
@@ -76,7 +99,7 @@ export default {
       console.log('getNextDogs');
       console.log('prevId', prevId);
       
-      this.$store.dispatch({ type: "loadDogsLength" });
+      // this.$store.dispatch({ type: "loadDogsLength" });
       this.$store.dispatch({ type: "loadNextDogs", prevId });
     }
   },
@@ -216,13 +239,13 @@ body {
   pointer-events: none;
 }
 
-. {
+.{
   flex: 0 0 100px;
   text-align: center;
   padding-top: 20px;
 }
 
-. button {
+.button {
   border-radius: 50%;
   line-height: 60px;
   width: 60px;
@@ -232,7 +255,7 @@ body {
   margin: 0 8px;
 }
 
-. button:focus {
+.button:focus {
   outline: 0;
 }
 
