@@ -4,8 +4,13 @@
     <!-- <div> {{dogsLengthToShow}} </div> -->
     <div v-if="dog" class="tinder--card">
       <img :src="'./' + dog.imgs[0]">
+<<<<<<< HEAD
        <button class="info"><i class="fa fa-info"></i></button>
       <p > {{dog.name}}, {{dog.age}}</p>
+=======
+       <button class="info tinder--buttons tinder--button button"><i class="fa fa-info"></i></button>
+      <p> {{dog.name}}, {{dog.age}} </p>
+>>>>>>> a273932b72ca0c7d3e953eb179e851d6bdee6990
       <!-- <h3>Demo card 1</h3>
       <p>This is a demo for Tinder like swipe cards</p> -->
     </div>
@@ -164,12 +169,12 @@ body {
   margin-left: -50px;
 }
 
-.tinder_love .fa-heart {
+.tinder_love .fa-heart, .info, .fav {
   opacity: 0.7;
   transform: scale(1);
 }
 
-.tinder_nope .fa-remove {
+.tinder_nope .fa-remov, .info, .fav {
   opacity: 0.7;
   transform: scale(1);
 }
@@ -182,6 +187,7 @@ body {
   justify-content: center;
   align-items: flex-end;
   z-index: 1;
+  font-family: "BiggerLove";
 }
 
 .tinder--card {
@@ -191,7 +197,7 @@ body {
   max-width: 400px;
   height: 70vh;
   background: #ffffff;
-  padding-bottom: 40px;
+  padding-bottom: 30px;
   border-radius: 8px;
   overflow: hidden;
   position: absolute;
@@ -262,6 +268,9 @@ body {
 
 .fa-remove {
   color: grey;
+}
+.info {
+  left: 200px;
 }
 </style>
 
