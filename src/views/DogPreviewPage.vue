@@ -44,8 +44,9 @@
   </div>
 
   <div class="tinder--buttons">
-    <button id="nope" @click="getNextDogs(dog._id)">not<i class="fa fa-remove"></i></button>
-    <button id="love" @click="getNextDogs(dog._id)">yes!<i class="fa fa-heart"></i></button>
+    <button id="nope" @click="getNextDogs(dog._id)"><i class="fa fa-remove"></i></button>
+    <button id="fav"><i class="fas fa-star"></i></button>
+    <button id="love" @click="getNextDogs(dog._id)"><i class="fa fa-heart"></i></button>
   </div>
 </div>
 </template>
