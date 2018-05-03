@@ -239,11 +239,15 @@ body {
   pointer-events: none;
 }
 
+<<<<<<< HEAD
 .{
+=======
+/* .{
+>>>>>>> 349abb7dc0a9d707c39572f674327d5410230a4d
   flex: 0 0 100px;
   text-align: center;
   padding-top: 20px;
-}
+} */
 
 .button {
   border-radius: 50%;
@@ -259,7 +263,7 @@ body {
   outline: 0;
 }
 
-. i {
+.i {
   font-size: 32px;
   vertical-align: middle;
 }
