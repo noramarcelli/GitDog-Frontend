@@ -1,10 +1,12 @@
 <template>
   <section class="login-page">
-            <h1>Login:</h1>
+            <h1>Please Login:</h1>
             <form @submit.prevent="checkLogin">
-                <input ref="txtUserName" type="text" placeholder="User name" v-model="user.name" />
-                <input type="password" placeholder="Enter your Password" v-model="user.password"/>
-                <button type="submit" :disabled="!this.user.name || !this.user.password">Login</button>
+                <input class="input is-danger is-small is-rounded" ref="txtUserName" type="text" placeholder="User name" v-model="user.name" />
+                 <br>
+                <input class="input is-danger is-small is-rounded" type="password" placeholder="Password" v-model="user.password"/>
+                 <br>
+                <button class="button is-danger is-rounded" type="submit" :disabled="!this.user.name || !this.user.password">Login</button>
             </form>
         </section>
 </template>

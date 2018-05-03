@@ -1,6 +1,6 @@
 <template>
-<section>
-  <router-link to="/login">Log In</router-link>|
+<section class="home">
+  <router-link to="/login">Log In</router-link> |
   <router-link to="/register">Register</router-link>
   <!-- <div class="home">
     <img src="../assets/logo.png">
@@ -20,3 +20,18 @@ export default {
   // }
 }
 </script>
+
+<style scoped>
+.home {
+    font-family: "Digitalt";
+    /* font-weight: bold; */
+    font-size: 25px;
+    padding: 2px;
+    letter-spacing: 1px;
+    color: black;
+}
+
+.home footer {
+    /* background-image: url(../public/img/bgrd/dog-treats.png); */
+}
+</style>

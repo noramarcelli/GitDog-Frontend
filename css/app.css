@@ -9,7 +9,7 @@
 }
 
 @font-face {
-    font-family: "Cutie Patootie";
+    font-family: "CutiePatootie";
     src: url(../fonts/CutiePatootie.ttf);
 }
 /* FOR LOGO NAME */
@@ -39,7 +39,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     height: 100%;
-
+    
     /* background-image: url(""); */
 }
 footer {
@@ -47,7 +47,7 @@ footer {
     /* background-color: #000000b8; */
     background-color: black;
 }
-router-link, #nav {
+router-link, #nav, #app {
     text-decoration: none;
 }
 /* 
@@ -67,7 +67,7 @@ router-link, #nav {
 } */
 
 button .info {
-     
+    
 }
 
 /* HELPERS */
@@ -82,4 +82,32 @@ button .info {
 
 .logo {
     font-family: "Digitalt";
+}
+
+.register-page, .login-page {
+    font-family: "BiggerLove";
+    font-weight: bold;
+    font-size: 2em;
+    padding: 5px;
+    margin: 5px;
+}
+.register-page input, .login-page input{
+    max-width: 30%;
+    font-family: "CutiePatootie";
+    font-weight: bold;
+    font-size: 18px;
+    padding: 2px;
+    letter-spacing: 1px;
+}
+
+.home {
+    font-family: "Digitalt";
+    /* font-weight: bold; */
+    font-size: 25px;
+    padding: 2px;
+    letter-spacing: 1px;
+    color: black;
+}
+.home footer {
+    background-image: url(../public/img/bgrd/dog-treats.png);
 }
