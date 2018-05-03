@@ -1,25 +1,17 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import DogService from "../services/DogService.js";
+import UserService from "../services/UserService.js";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    // dogs: [],
     selectedDog: null,
     selectedDogIdx: 0,
-    dogsLength : 0
+    loggedinUser: null
   },
   mutations: {
-    // setSelectedDog(state, { dog }) {
-    //   console.log("store mutation");
-
-    //   if (dog === null) state.selectedDog = dog;
-    //   else state.selectedDog = dog;
-    //   console.log("state.selectedDog", state.selectedDog);
-    // }
-
     setSelectedDog(state, { dogs }) {
       if (dogs === null) {
         state.selectedDogIdx = 0;
@@ -28,22 +20,12 @@ export default new Vuex.Store({
         state.selectedDogIdx = state.selectedDogIdx++;
       }
       state.selectedDog = dogs[state.selectedDogIdx];
-
-      //  if (dogs === null){
-      //    state.selectedDogIdx = 0;
-
-      //  } else{
-      //    state.selectedDogIdx = state.selectedDogIdx++;
-      //  } 
-
-      // console.log("store mutation");
-
-      // if (dog === null) state.selectedDog = dog;
-      // else state.selectedDog = dog;
-      // console.log("state.selectedDog", state.selectedDog);
     },
     setDogsLength(state, {length}){
         state.dogsLength = length;
+    },
+    setUser(state, {user}) {
+      state.loggedinUser = user;
     }
   },
   actions: {
@@ -58,51 +40,21 @@ export default new Vuex.Store({
         })
         .catch(err => console.log(err));
     },
-
-    // loadDogs(){
-    //     console.log("Loading Dogs", store.state);
-    //     return DogService.getDogs(store.state.queryObj).then( dogs => {
-    //       // store.commit({ type: "setDogs", dogs });
-    //       store.commit({ type: "setDogsLength", dogs });
-    //     })
-    //   },
-
-    // loadNextDog(store, { prevId }) {
-    //   return DogService.getNextDog(prevId).then(dog => {
-    //     store.commit({ type: "setSelectedDog", dog });
-    //   });
-    // }
-
     loadNextDogs(store, { prevId }){
-      // state.selectedDogIdx = 0;
       console.log('loadNextDogs');
       
       return DogService.getNextDogs(prevId).then(dogs => {
-            //  var prevIdx = dogs.findIndex((dog) => {
-            //    return dog._id === prevId;
-            //  })
-             
              store.commit({ type: "setSelectedDog", dogs });
              console.log(' dogs',  dogs);
           });
     },
-
-    loadDogsLength(store){
-      return DogService.getDogs().then( dogs => {
-              // store.commit({ type: "setDogs", dogs });
-              var length = dogs.length;
-              console.log('length', length);
-              
-              store.commit({ type: "setDogsLength", length});
-            })
+    login(store, {userCredentials}) {
+      return UserService.login(userCredentials)
+      .then(user =>{
+        store.commit({type: 'setUser', user});
+      })
     }
-
   },
 
-  getters: {
-    dogsLength(state) {
-      console.log('state.dogsLength', state.dogsLength)
-      return state.dogsLength;
-    }
-  }
+  
 });
