@@ -93,6 +93,9 @@ export default {
     // }
 
     getNextDogs(prevId){
+      console.log('getNextDogs');
+      console.log('prevId', prevId);
+      
       this.$store.dispatch({ type: "loadNextDogs", prevId });
     }
   }

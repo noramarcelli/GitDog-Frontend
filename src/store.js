@@ -70,7 +70,7 @@ export default new Vuex.Store({
     // }
 
     loadNextDogs(store, { prevId }){
-      state.selectedDogIdx = 0;
+      // state.selectedDogIdx = 0;
       console.log('loadNextDogs');
       
       return DogService.getNextDogs(prevId).then(dogs => {
