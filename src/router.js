@@ -70,7 +70,7 @@ export default new Router({
     //   component: Match
     // },
     {
-      path: '/dog/:dogId',
+      path: '/swipe',
       name: 'dogpreview',
       component: DogPreview
     },
