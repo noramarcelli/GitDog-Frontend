@@ -16,7 +16,6 @@
         <i class="fa fa-remove"></i>
         <i class="fa fa-heart"></i>
       </div>  
-<<<<<<< HEAD
      -->
     <!-- <div class="tinder--card">
       <img src="https://placeimg.com/600/300/people">
@@ -43,10 +42,6 @@
       <h3>Demo card 5</h3>
       <p>This is a demo for Tinder like swipe cards</p>
     </div> -->
-=======
-    
- 
->>>>>>> fe2468f834d5dec075433fdb983f8f3da4e851d0
   </div>
 
     <div class="">
@@ -70,7 +65,7 @@ export default {
   created() {
     // const dogId = this.$route.params.dogId;
     //this.$store.dispatch({ type: "loadDogs" });
-    this.$store.dispatch({ type: "loadDogsLength" });
+    // this.$store.dispatch({ type: "loadDogsLength" });
     this.$store.dispatch({ type: "loadNextDogs" });
   },
   // destroyed() {
@@ -105,7 +100,7 @@ export default {
       console.log('getNextDogs');
       console.log('prevId', prevId);
       
-      this.$store.dispatch({ type: "loadDogsLength" });
+      // this.$store.dispatch({ type: "loadDogsLength" });
       this.$store.dispatch({ type: "loadNextDogs", prevId });
     }
   },
@@ -251,7 +246,7 @@ body {
   padding-top: 20px;
 }
 
-. button {
+.button {
   border-radius: 50%;
   line-height: 60px;
   width: 60px;
@@ -261,11 +256,11 @@ body {
   margin: 0 8px;
 }
 
-. button:focus {
+.button:focus {
   outline: 0;
 }
 
-. i {
+.i {
   font-size: 32px;
   vertical-align: middle;
 }
