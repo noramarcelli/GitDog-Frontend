@@ -11,11 +11,11 @@
     </div>
 
       <!-- <h3>demo card</h3> -->
-      <div class="tinder--status">
+      <!-- <div class="tinder--status">
         <i class="fa fa-remove"></i>
         <i class="fa fa-heart"></i>
       </div>  
-    
+     -->
     <!-- <div class="tinder--card">
       <img src="https://placeimg.com/600/300/people">
       <h3>Demo card 1</h3>
@@ -43,11 +43,11 @@
     </div> -->
   </div>
 
-  <div class="tinder--buttons">
-    <button id="nope"><i class="fa fa-remove"></i></button>
-    <button id="fav"><i class="fa fa-star"></i></button>
-    <button id="love"><i class="fa fa-heart"></i></button>
-  </div>
+    <div class="">
+      <button id="nope" @click="getNextDogs(dog._id)"><i class="fa fa-remove"></i></button>
+      <button id="fav"><i class="fa fa-star"></i></button>
+      <button id="love" @click="getNextDogs(dog._id)"><i class="fa fa-heart"></i></button>
+    </div>
 </div>
 </template>
 
@@ -233,13 +233,13 @@ body {
   pointer-events: none;
 }
 
-.tinder--buttons {
+. {
   flex: 0 0 100px;
   text-align: center;
   padding-top: 20px;
 }
 
-.tinder--buttons button {
+. button {
   border-radius: 50%;
   line-height: 60px;
   width: 60px;
@@ -249,11 +249,11 @@ body {
   margin: 0 8px;
 }
 
-.tinder--buttons button:focus {
+. button:focus {
   outline: 0;
 }
 
-.tinder--buttons i {
+. i {
   font-size: 32px;
   vertical-align: middle;
 }
