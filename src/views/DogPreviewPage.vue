@@ -1,4 +1,3 @@
-
 <template>
  <div class="tinder">
   <div class="tinder--cards">
