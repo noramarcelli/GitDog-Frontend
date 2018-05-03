@@ -2,6 +2,7 @@
 <template>
  <div class="tinder">
   <div class="tinder--cards">
+    <!-- <div> {{dogsLengthToShow}} </div> -->
     <div v-if="dog" class="tinder--card">
       <img :src="'./' + dog.imgs[0]">
        <button><i class="fas fa-info-circle info"></i></button>
@@ -16,31 +17,7 @@
         <i class="fa fa-heart"></i>
       </div>  
     
-    <!-- <div class="tinder--card">
-      <img src="https://placeimg.com/600/300/people">
-      <h3>Demo card 1</h3>
-      <p>This is a demo for Tinder like swipe cards</p>
-    </div>
-    <div class="tinder--card">
-      <img src="https://placeimg.com/600/300/animals">
-      <h3>Demo card 2</h3>
-      <p>This is a demo for Tinder like swipe cards</p>
-    </div>
-    <div class="tinder--card">
-      <img src="https://placeimg.com/600/300/nature">
-      <h3>Demo card 3</h3>
-      <p>This is a demo for Tinder like swipe cards</p>
-    </div>
-    <div class="tinder--card">
-      <img src="https://placeimg.com/600/300/tech">
-      <h3>Demo card 4</h3>
-      <p>This is a demo for Tinder like swipe cards</p>
-    </div>
-    <div class="tinder--card">
-      <img src="https://placeimg.com/600/300/arch">
-      <h3>Demo card 5</h3>
-      <p>This is a demo for Tinder like swipe cards</p>
-    </div> -->
+ 
   </div>
 
   <div class="tinder--buttons">
@@ -64,6 +41,7 @@ export default {
   created() {
     // const dogId = this.$route.params.dogId;
     //this.$store.dispatch({ type: "loadDogs" });
+    this.$store.dispatch({ type: "loadDogsLength" });
     this.$store.dispatch({ type: "loadNextDogs" });
   },
   // destroyed() {
@@ -76,7 +54,7 @@ export default {
       //   "this.$store.state.selectedDog",
       //   this.$store.state.selectedDog
       // );
-      console.log('this', this);
+      // console.log('this', this);
       console.log('this.$store.state.selectedDog', this.$store.state.selectedDog);
       
       return this.$store.state.selectedDog;
@@ -98,14 +76,19 @@ export default {
       console.log('getNextDogs');
       console.log('prevId', prevId);
       
+      this.$store.dispatch({ type: "loadDogsLength" });
       this.$store.dispatch({ type: "loadNextDogs", prevId });
     }
-  }
+  },
+
+  //  computed: {
+  //   dogsLengthToShow() {
+  //     return this.$store.getters.dogsLength;
+  //   }
+  // },
 };
 </script>
-  props: ["dog"]
-};
-</script>
+
 
 <style scoped>
 /* SWIPING */
@@ -257,3 +240,30 @@ body {
   color: #cdd6dd;
 }
 </style>
+
+
+   <!-- <div class="tinder--card">
+      <img src="https://placeimg.com/600/300/people">
+      <h3>Demo card 1</h3>
+      <p>This is a demo for Tinder like swipe cards</p>
+    </div>
+    <div class="tinder--card">
+      <img src="https://placeimg.com/600/300/animals">
+      <h3>Demo card 2</h3>
+      <p>This is a demo for Tinder like swipe cards</p>
+    </div>
+    <div class="tinder--card">
+      <img src="https://placeimg.com/600/300/nature">
+      <h3>Demo card 3</h3>
+      <p>This is a demo for Tinder like swipe cards</p>
+    </div>
+    <div class="tinder--card">
+      <img src="https://placeimg.com/600/300/tech">
+      <h3>Demo card 4</h3>
+      <p>This is a demo for Tinder like swipe cards</p>
+    </div>
+    <div class="tinder--card">
+      <img src="https://placeimg.com/600/300/arch">
+      <h3>Demo card 5</h3>
+      <p>This is a demo for Tinder like swipe cards</p>
+    </div> -->

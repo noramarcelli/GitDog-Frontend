@@ -6,9 +6,10 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    dogs: [],
+    // dogs: [],
     selectedDog: null,
-    selectedDogIdx: 0
+    selectedDogIdx: 0,
+    dogsLength : 0
   },
   mutations: {
     // setSelectedDog(state, { dog }) {
@@ -40,6 +41,9 @@ export default new Vuex.Store({
       // if (dog === null) state.selectedDog = dog;
       // else state.selectedDog = dog;
       // console.log("state.selectedDog", state.selectedDog);
+    },
+    setDogsLength(state, {length}){
+        state.dogsLength = length;
     }
   },
   actions: {
@@ -56,10 +60,10 @@ export default new Vuex.Store({
     },
 
     // loadDogs(){
-
-    //     console.log("Loading Bugs", store.state);
-    //     return BugService.getBugs(store.state.queryObj).then( bugs => {
-    //       store.commit({ type: "setBugs", bugs });
+    //     console.log("Loading Dogs", store.state);
+    //     return DogService.getDogs(store.state.queryObj).then( dogs => {
+    //       // store.commit({ type: "setDogs", dogs });
+    //       store.commit({ type: "setDogsLength", dogs });
     //     })
     //   },
 
@@ -74,10 +78,31 @@ export default new Vuex.Store({
       console.log('loadNextDogs');
       
       return DogService.getNextDogs(prevId).then(dogs => {
-            store.commit({ type: "setSelectedDog", dogs });
-            // console.log(' dogs',  dogs);
-            
+            //  var prevIdx = dogs.findIndex((dog) => {
+            //    return dog._id === prevId;
+            //  })
+             
+             store.commit({ type: "setSelectedDog", dogs });
+             console.log(' dogs',  dogs);
           });
+    },
+
+    loadDogsLength(store){
+      return DogService.getDogs().then( dogs => {
+              // store.commit({ type: "setDogs", dogs });
+              var length = dogs.length;
+              console.log('length', length);
+              
+              store.commit({ type: "setDogsLength", length});
+            })
+    }
+
+  },
+
+  getters: {
+    dogsLength(state) {
+      console.log('state.dogsLength', state.dogsLength)
+      return state.dogsLength;
     }
   }
 });

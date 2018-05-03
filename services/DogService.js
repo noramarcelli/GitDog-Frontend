@@ -47,13 +47,14 @@ function _getDogUrl(dogId) {
 // }
 
 function getNextDogs(prevId) {
-    console.log('getNextDogs');
-    console.log('prevId', prevId);
-    
     prevId = prevId || '';
     return axios
         .get(`${DOG_URL}/next/${prevId}`)
-        .then(res => res.data);
+        .then(res => {
+            return res.data[0] 
+            ? res.data
+            : getNextDogs()
+        });
 }
 
 

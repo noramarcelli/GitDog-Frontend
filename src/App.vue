@@ -4,8 +4,9 @@
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>|
-         <!-- <router-link to="/dog/5ae99e78647dea7fcfceab3d">Preview</router-link> -->
-         <router-link to="/swipe">Find your match</router-link>
+      <router-link to="/swipe">Find your match</router-link>|
+      <router-link to="/login">Log in</router-link>|
+      <router-link to="/register">Resgister</router-link> 
     </div>
     <router-view/>
 
