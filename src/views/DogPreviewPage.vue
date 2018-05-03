@@ -2,10 +2,12 @@
 <template>
  <div class="tinder">
   <div class="tinder--cards">
-    <div class="tinder--card">
-      <img src="../../img/dogs/snow_1.jpeg">
-      <button><i class="fas fa-info-circle info"></i></button>
-      <!-- <p>This is a demo for Tinder like swipe cards</p> -->
+    <div v-if="dog" class="tinder--card">
+      <img :src="'./' + dog.imgs[0]">
+       <button><i class="fas fa-info-circle info"></i></button>
+      <p > {{dog.name}} {{dog.age}}</p>
+      <!-- <h3>Demo card 1</h3>
+      <p>This is a demo for Tinder like swipe cards</p> -->
     </div>
 
       <h3>demo card</h3>
@@ -42,9 +44,14 @@
   </div>
 
   <div class="tinder--buttons">
+<<<<<<< HEAD
     <button id="nope"><i class="fa fa-remove"></i></button>
     <button id="fav"><i class="fas fa-star"></i></button>
     <button id="love"><i class="fa fa-heart"></i></button>
+=======
+    <button id="nope" @click="getNextDogs(dog._id)">not<i class="fa fa-remove"></i></button>
+    <button id="love" @click="getNextDogs(dog._id)">yes!<i class="fa fa-heart"></i></button>
+>>>>>>> 4fdc743992f2d86b415964ab16b5e707cd2ab27c
   </div>
 </div>
 </template>
@@ -58,6 +65,49 @@ export default {
   //   components: {
   //     HelloWorld
   //   }
+  //  props: ['dog']
+  created() {
+    // const dogId = this.$route.params.dogId;
+    //this.$store.dispatch({ type: "loadDogs" });
+    this.$store.dispatch({ type: "loadNextDogs" });
+  },
+  // destroyed() {
+  //   this.$store.commit({ type: "setSelectedDog", dog: null });
+  //   // this.router.push(`/bug/`);
+  // },
+  computed: {
+    dog() {
+      // console.log(
+      //   "this.$store.state.selectedDog",
+      //   this.$store.state.selectedDog
+      // );
+      console.log('this', this);
+      console.log('this.$store.state.selectedDog', this.$store.state.selectedDog);
+      
+      return this.$store.state.selectedDog;
+      //  var idx = this.$store.state.selectedDogIdx;
+      //  return this.$store.state.selectedDogIdx;
+    }
+  },
+
+  methods: {
+    // backToList() {
+    //   this.$router.push(`/bug/`);
+    // }
+
+    // getNextDog(prevId){
+    //   this.$store.dispatch({ type: "loadNextDog", prevId });
+    // }
+
+    getNextDogs(prevId){
+      console.log('getNextDogs');
+      console.log('prevId', prevId);
+      
+      this.$store.dispatch({ type: "loadNextDogs", prevId });
+    }
+  }
+};
+</script>
   props: ["dog"]
 };
 </script>
