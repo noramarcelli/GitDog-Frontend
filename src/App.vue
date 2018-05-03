@@ -7,9 +7,6 @@
          <!-- <router-link to="/dog/5ae99e78647dea7fcfceab3d">Preview</router-link> -->
       <router-link class="logo" to="/swipe"><Logo></Logo></router-link> |
       <router-link to="/about" name="messages"><i class="fa fa-comments"></i></router-link>
-     
-      <router-link to="/login">Log in</router-link>|
-      <router-link to="/register">Resgister</router-link> 
     </div>
     <router-view/>
 
@@ -57,7 +54,7 @@ body {
     // color: #2c3e50;
     color: black;
     &.router-link-exact-active {
-      color: #42b983;
+      color: red;
     }
   }
 }
