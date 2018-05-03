@@ -4,13 +4,13 @@
   <div class="tinder--cards">
     <div v-if="dog" class="tinder--card">
       <img :src="'./' + dog.imgs[0]">
-       <button><i class="fas fa-info-circle info"></i></button>
+       <button><i class="fa fa-info"></i></button>
       <p > {{dog.name}} {{dog.age}}</p>
       <!-- <h3>Demo card 1</h3>
       <p>This is a demo for Tinder like swipe cards</p> -->
     </div>
 
-      <h3>demo card</h3>
+      <!-- <h3>demo card</h3> -->
       <div class="tinder--status">
         <i class="fa fa-remove"></i>
         <i class="fa fa-heart"></i>
@@ -44,14 +44,9 @@
   </div>
 
   <div class="tinder--buttons">
-<<<<<<< HEAD
     <button id="nope"><i class="fa fa-remove"></i></button>
-    <button id="fav"><i class="fas fa-star"></i></button>
+    <button id="fav"><i class="fa fa-star"></i></button>
     <button id="love"><i class="fa fa-heart"></i></button>
-=======
-    <button id="nope" @click="getNextDogs(dog._id)">not<i class="fa fa-remove"></i></button>
-    <button id="love" @click="getNextDogs(dog._id)">yes!<i class="fa fa-heart"></i></button>
->>>>>>> 4fdc743992f2d86b415964ab16b5e707cd2ab27c
   </div>
 </div>
 </template>
@@ -114,6 +109,13 @@ export default {
 
 <style scoped>
 /* SWIPING */
+
+/* FOR LOGO NAME */
+/* @font-face {
+    font-family: "Digitalt";
+    src: url(../../../fonts/Digitalt.ttf);
+} */
+
 *,
 *:before,
 *:after {
@@ -130,7 +132,8 @@ body {
 
 .tinder {
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 100px);
+  top: 100px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -184,6 +187,7 @@ body {
 }
 
 .tinder--card {
+  font-family: "Digitalt";
   display: inline-block;
   width: 90vw;
   max-width: 400px;

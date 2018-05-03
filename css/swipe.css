@@ -8,7 +8,7 @@
 }
 
 body {
-  background: #ccfbfe;
+  /* background: #ccfbfe; */
   overflow: hidden;
   font-family: sans-serif;
 }
@@ -79,7 +79,7 @@ body {
   width: 90vw;
   max-width: 400px;
   height: 70vh;
-  background: #ffffff;
+  /* background: #ffffff; */
   padding-bottom: 40px;
   border-radius: 8px;
   overflow: hidden;
@@ -143,9 +143,11 @@ body {
 }
 
 .fa-heart {
-  color: #fface4;
+  /* color: #fface4; */
+  color: red;
 }
 
 .fa-remove {
-  color: #cdd6dd;
+  /* color: #cdd6dd; */
+  color: grey;
 }

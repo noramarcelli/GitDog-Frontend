@@ -1,4 +1,7 @@
 @import url("./font-awesome-4.7.0/css/font-awesome.css"); 
+/* 
+@import url("./font-awesome-5.0.11/css/font-awesome.css");  */
+
 /* FOR ALL TEXTS AS: PREVIEW AND DETAILS */
 @font-face {
     font-family: "BiggerLove";
@@ -31,21 +34,30 @@ html {
     height: 100%;
 }
 body {
-    background-color: red; 
+    /* background-color: red;  */
+    background-image: url(../public/img/bgrd/bg1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+
+    /* background-image: url(""); */
 }
 footer {
     height: 150px;
     /* background-color: #000000b8; */
     background-color: black;
 }
-
+router-link, #nav {
+    text-decoration: none;
+}
+/* 
 .tinder--cards{
     font-family: "BiggerLove";
     font-size: 5em;
     padding: 0px;
     margin: 0px;
     color: lightslategray;
-}
+} */
 
 /* .tinder--cards img{
     -webkit-box-shadow: 6px 6px 13px 0px rgba(0,0,0,0.75);
@@ -63,3 +75,11 @@ button .info {
 .absolute {
     position: absolute; 
 } */
+
+.tinder--cards {
+    font-family: "BiggerLove";
+}
+
+.logo {
+    font-family: "Digitalt";
+}
