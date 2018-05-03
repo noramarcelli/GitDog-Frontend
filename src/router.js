@@ -4,7 +4,7 @@ import Home from './views/HomePage.vue'
 import About from './views/AboutPage.vue'
 
 import Login from './views/LoginPage.vue'
-// import Register from './views/RegisterPage.vue'
+import Register from './views/RegisterPage.vue'
 // import Edit from './views/EditPage.vue'
 // import Msg from './views/MsgPage.vue'
 // import Pref from './views/PrefPage.vue'
@@ -34,11 +34,11 @@ export default new Router({
       name: 'login',
       component: Login
     },
-    // {
-    //   path: '/register',
-    //   name: 'register',
-    //   component: Register
-    // },
+    {
+      path: '/register',
+      name: 'register',
+      component: Register
+    },
     // {
     //   path: '/edit',
     //   name: 'edit',
