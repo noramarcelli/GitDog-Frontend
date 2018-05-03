@@ -47,7 +47,7 @@ footer {
     /* background-color: #000000b8; */
     background-color: black;
 }
-router-link, #nav {
+router-link, #nav, #app {
     text-decoration: none;
 }
 /* 

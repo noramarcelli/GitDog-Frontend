@@ -26,7 +26,7 @@ export default {
             this.$store.dispatch({type: 'login', userCredentials:this.user})
             .then(res => {
                 console.log('You have been logged-in!')
-                this.$router.push('/chat');
+                this.$router.push('/swipe');
             })
             .catch(err => {
                 console.log('Login Failed!');
