@@ -5,7 +5,7 @@
     <div v-if="dog" class="tinder--card">
       <img :src="'./' + dog.imgs[0]">
        <button class="info"><i class="fa fa-info"></i></button>
-      <p > {{dog.name}} {{dog.age}}</p>
+      <p > {{dog.name}}, {{dog.age}}</p>
       <!-- <h3>Demo card 1</h3>
       <p>This is a demo for Tinder like swipe cards</p> -->
     </div>

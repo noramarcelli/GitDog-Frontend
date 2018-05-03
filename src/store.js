@@ -62,6 +62,11 @@ export default new Vuex.Store({
     loggedInUserForDisplay(state) {
       console.log('state.loggedInUser', state.loggedinUser)
       return state.loggedinUser;
+    },
+    selectedDog(state){
+      return state.selectedDog
+      ? state.selectedDog
+      : {};
     }
   }
 
