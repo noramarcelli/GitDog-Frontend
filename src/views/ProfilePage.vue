@@ -2,7 +2,7 @@
 <section>
     <!-- <div class="tinder"> -->
     <!-- <div class="tinder--cards"> -->
-        <div v-if="loggedInUser" class="tinder--card">
+        <div v-if="loggedInUser && dog" class="tinder--card">
          <img :src="'./' + dog.imgs[0]">
          <p > {{dog.name}} , {{dog.age}}</p>
         </div>
@@ -37,9 +37,9 @@ export default {
         var dogId = this.loggedInUser.dogId;
         console.log('dogId', dogId);
         
-        this.$store.dispatch({ type: "loadDog", dogId })
+        this.$store.dispatch({ type: "loadUserDog", dogId })
         .then(() => {
-             console.log('this.$store.state.selectedDog', this.$store.state.selectedDog);
+             console.log('this.$store.state.userDog', this.$store.state.userDog);
         })
     }
   },
@@ -53,7 +53,7 @@ export default {
     },
 
     dog() {
-         return this.$store.state.selectedDog;
+         return this.$store.state.userDog;
       }
     //   console.log('this.$store.state.selectedDog', this.$store.state.selectedDog);
       

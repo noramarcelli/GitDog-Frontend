@@ -9,7 +9,8 @@ export default new Vuex.Store({
   state: {
     selectedDog: null,
     selectedDogIdx: 0,
-    loggedinUser: null
+    loggedinUser: null,
+    userDog : null
   },
   mutations: {
     setSelectedDog(state, { dogs }) {
@@ -28,7 +29,16 @@ export default new Vuex.Store({
       state.loggedinUser = user;
       console.log('state.loggedinUser', state.loggedinUser);
       
-    }
+    },
+    setUserDog(state, { dog }) {
+      // if (dogs === null) {
+      //   state.selectedDogIdx = 0;
+      // }
+      // else {
+      //   state.userDog = state.selectedDogIdx++;
+      // }
+      state.userDog = dog;
+    },
   },
   actions: {
     loadDog(store, { dogId }) {
@@ -55,7 +65,18 @@ export default new Vuex.Store({
       .then(user =>{
         store.commit({type: 'setUser', user});
       })
-    }
+    },
+    loadUserDog(store, { dogId }) {
+      console.log("store action");
+      return DogService.getDogById(dogId)
+        .then(dog => {
+          store.commit({ type: "setUserDog", dog });
+          console.log("dog in loadDog", dog);
+
+          return dog;
+        })
+        .catch(err => console.log(err));
+    },
   },
 
   getters: {
@@ -63,9 +84,9 @@ export default new Vuex.Store({
       console.log('state.loggedInUser', state.loggedinUser)
       return state.loggedinUser;
     },
-    selectedDog(state){
-      return state.selectedDog
-      ? state.selectedDog
+    userDog(state){
+      return state.userDog
+      ? state.userDog
       : {};
     }
   }

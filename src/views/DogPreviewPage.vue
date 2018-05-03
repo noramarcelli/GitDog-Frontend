@@ -4,13 +4,8 @@
     <!-- <div> {{dogsLengthToShow}} </div> -->
     <div v-if="dog" class="tinder--card">
       <img :src="'./' + dog.imgs[0]">
-<<<<<<< HEAD
-       <button class="info"><i class="fa fa-info"></i></button>
-      <p > {{dog.name}}, {{dog.age}}</p>
-=======
        <button class="info tinder--buttons tinder--button button"><i class="fa fa-info"></i></button>
       <p> {{dog.name}}, {{dog.age}} </p>
->>>>>>> a273932b72ca0c7d3e953eb179e851d6bdee6990
       <!-- <h3>Demo card 1</h3>
       <p>This is a demo for Tinder like swipe cards</p> -->
     </div>
