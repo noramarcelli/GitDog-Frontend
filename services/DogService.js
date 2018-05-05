@@ -9,9 +9,6 @@ function emptyDog() {
 function getDogs() {
 
     var url = DOG_URL;
-    // if (queryObj && queryObj.bySeverity) {
-    //     url += `?bySeverity=${queryObj.bySeverity}`
-    // }
     return axios
             .get(url)
             .then(res => res.data)
@@ -38,24 +35,15 @@ function _getDogUrl(dogId) {
     return `${DOG_URL}/${dogId}`;
 }
 
-
-// function getNextDog(prevId) {
-//     prevId = prevId || '';
-//     return axios
-//         .get(`${DOG_URL}/next/${prevId}`)
-//         .then(res => res.data[0]);
-// }
-
-function getNextDogs(prevId) {
+function getNextDogs(prevId, userDogId) {
     prevId = prevId || '';
     return axios
-        .get(`${DOG_URL}/next/${prevId}`)
+        .get(`${DOG_URL}/next?prevId=${prevId}&userDogId=${userDogId}`)
         .then(res => {
-            return res.data[0] 
-            ? res.data
-            : getNextDogs()
+            return res.data[0] ? res.data : getNextDogs('', userDogId)
         });
 }
+
 
 
 export default {
@@ -65,5 +53,4 @@ export default {
     emptyDog,
     getDogById,
     getNextDogs
-    // getNextDog
 }

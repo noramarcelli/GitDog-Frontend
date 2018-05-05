@@ -2,20 +2,20 @@
 
  <div class="tinder">
   <div class="tinder--cards">
-    <div v-if="dog" class="tinder--card">
-      <img :src="'./' + dog.imgs[0]"/>
+    <div v-if="currDog" class="tinder--card">
+      <img :src="'./' + currDog.imgs[0]"/>
       <button :class= "{'info tinder--buttons tinder--button button' : shouldShow, 'fa fa-arrow-alt-circle-down' : !shouldShow }" @click="showDetails"><i class="fa fa-info"></i></button>
        <!-- <button class="info tinder--buttons tinder--button button" @click="showDetails"><i class="fa fa-info"></i></button> -->
-      <p> {{dog.name}}, {{dog.age}} </p>
+      <p> {{currDog.name}}, {{currDog.age}} </p>
     </div>
   </div>
 
   <DogDetails v-if="shouldShow"> </DogDetails>
 
     <div class="tinder--buttons">
-      <button id="nope" @click="getNextDogs(dog._id)"><i class="fa fa-remove"></i></button>
+      <button id="nope" @click="getNextDogs(currDog._id)"><i class="fa fa-remove"></i></button>
       <button id="fav"><i class="fa fa-star"></i></button>
-      <button id="love" @click="getNextDogs(dog._id)"><i class="fa fa-heart"></i></button>
+      <button id="love" @click="getNextDogs(currDog._id)"><i class="fa fa-heart"></i></button>
     </div>
 </div>
 </template>
@@ -35,50 +35,37 @@ export default {
             shouldShow: false,
         }
     },
-  //  props: ['dog']
+
   created() {
-    // const dogId = this.$route.params.dogId;
-    //this.$store.dispatch({ type: "loadDogs" });
-    // this.$store.dispatch({ type: "loadDogsLength" });
-    this.$store.dispatch({ type: "loadNextDogs" });
-  },
-  // destroyed() {
-  //   this.$store.commit({ type: "setSelectedDog", dog: null });
-  //   // this.router.push(`/bug/`);
-  // },
-  computed: {
-    dog() {
-      console.log('this.$store.state.selectedDog', this.$store.state.selectedDog);
-      return this.$store.state.selectedDog;
+     var user = this.loggedInUser;
+
+     if (this.loggedInUser !== null) {
+        var dogId = this.loggedInUser.dogId;
+        console.log('dogId', dogId);
+        
+        this.$store.dispatch({ type: "loadUserDog", dogId })
+        .then(() => {
+             console.log('this.$store.state.userDog', this.$store.state.userDog);
+        })
+        this.$store.dispatch({ type: "loadNextDogs" ,prevId:'', userDogId: dogId});
     }
   },
 
-  // setInfoClass(){
-  //     return {
-  //       red: this.shouldShow
-  //     }
-      // info tinder--buttons tinder--button button: shouldShow, fa fa-arrow-alt-circle-down: !shouldShow
-      // var infoClass = (this.shouldShow) ? 'info tinder--buttons tinder--button button' : 'fa fa-arrow-alt-circle-down';
-      //  console.log('infoClass', infoClass);
-      // return infoClass;
-    // },
-
+  computed: {
+    loggedInUser() {
+       return this.$store.getters.loggedInUserForDisplay;
+    },
+    currDog() {
+      return this.$store.state.dogStore.selectedDog;
+    },
+     userDog() {
+         return this.$store.state.userStore.userDog;
+      }
+  },
   methods: {
-    // backToList() {
-    //   this.$router.push(`/bug/`);
-    // }
-
-    // getNextDog(prevId){
-    //   this.$store.dispatch({ type: "loadNextDog", prevId });
-    // }
-    
-
     getNextDogs(prevId){
-      console.log('getNextDogs');
-      console.log('prevId', prevId);
-      
-      // this.$store.dispatch({ type: "loadDogsLength" });
-      this.$store.dispatch({ type: "loadNextDogs", prevId });
+      var userDogId = this.userDog._id;
+      this.$store.dispatch({ type: "loadNextDogs", prevId, userDogId });
     },
     showDetails(){
         this.shouldShow = !this.shouldShow;
@@ -88,12 +75,6 @@ export default {
   components: {
      DogDetails
   }
-
-  //  computed: {
-  //   dogsLengthToShow() {
-  //     return this.$store.getters.dogsLength;
-  //   }
-  // },
 };
 </script>
 
