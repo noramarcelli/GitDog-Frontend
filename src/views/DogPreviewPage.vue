@@ -4,7 +4,6 @@
     <!-- <div> {{dogsLengthToShow}} </div> -->
     <div v-if="dog" class="tinder--card">
       <img :src="'./' + dog.imgs[0]">
-       <button class="info tinder--buttons tinder--button button"><i class="fa fa-info"></i></button>
       <p> {{dog.name}}, {{dog.age}} </p>
       <!-- <h3>Demo card 1</h3>
       <p>This is a demo for Tinder like swipe cards</p> -->
@@ -47,6 +46,7 @@
       <button id="nope" @click="getNextDogs(dog._id)"><i class="fa fa-remove"></i></button>
       <button id="fav"><i class="fa fa-star"></i></button>
       <button id="love" @click="getNextDogs(dog._id)"><i class="fa fa-heart"></i></button>
+      <button class="info tinder--buttons tinder--button button"><i class="fa fa-info"></i></button>
     </div>
 </div>
 </template>

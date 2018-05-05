@@ -7,7 +7,7 @@
 <template>
     <span class="logo">
         <span>TinDog</span>
-        <!-- <span class="dot"></span> -->
+        <span class="dot"></span>
     </span>
 </template>
 
@@ -23,18 +23,19 @@
 
 p {
     font-family: "Digitalt";
-    font-size: 0.4em;
-    /* font-weight: bold; */
+    font-size: 10px;
+    z-index: 5;
 }
 
 .dot {
-  height: 25px;
-  width: 25px;
+  height: 65px;
+  width: 65px;
   background-color: #bbb;
   border-radius: 50%;
   display: inline-block;
   border-style: dotted;
   border-color: black;
+  z-index: -3;
 }
 
 </style>
