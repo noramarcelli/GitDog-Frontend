@@ -1,46 +1,20 @@
 <template>
+
  <div class="tinder">
   <div class="tinder--cards">
-    <!-- <div> {{dogsLengthToShow}} </div> -->
     <div v-if="dog" class="tinder--card">
+<<<<<<< HEAD
       <img :src="'./' + dog.imgs[0]">
+=======
+      <img :src="'./' + dog.imgs[0]"/>
+      <button :class= "{'info tinder--buttons tinder--button button' : shouldShow, 'fa fa-arrow-alt-circle-down' : !shouldShow }" @click="showDetails"><i class="fa fa-info"></i></button>
+       <!-- <button class="info tinder--buttons tinder--button button" @click="showDetails"><i class="fa fa-info"></i></button> -->
+>>>>>>> d7703efa38746c5604ad31787847e14a3792ec89
       <p> {{dog.name}}, {{dog.age}} </p>
-      <!-- <h3>Demo card 1</h3>
-      <p>This is a demo for Tinder like swipe cards</p> -->
     </div>
-
-      <!-- <h3>demo card</h3> -->
-      <!-- <div class="tinder--status">
-        <i class="fa fa-remove"></i>
-        <i class="fa fa-heart"></i>
-      </div>  
-     -->
-    <!-- <div class="tinder--card">
-      <img src="https://placeimg.com/600/300/people">
-      <h3>Demo card 1</h3>
-      <p>This is a demo for Tinder like swipe cards</p>
-    </div>
-    <div class="tinder--card">
-      <img src="https://placeimg.com/600/300/animals">
-      <h3>Demo card 2</h3>
-      <p>This is a demo for Tinder like swipe cards</p>
-    </div>
-    <div class="tinder--card">
-      <img src="https://placeimg.com/600/300/nature">
-      <h3>Demo card 3</h3>
-      <p>This is a demo for Tinder like swipe cards</p>
-    </div>
-    <div class="tinder--card">
-      <img src="https://placeimg.com/600/300/tech">
-      <h3>Demo card 4</h3>
-      <p>This is a demo for Tinder like swipe cards</p>
-    </div>
-    <div class="tinder--card">
-      <img src="https://placeimg.com/600/300/arch">
-      <h3>Demo card 5</h3>
-      <p>This is a demo for Tinder like swipe cards</p>
-    </div> -->
   </div>
+
+  <DogDetails v-if="shouldShow"> </DogDetails>
 
     <div class="tinder--buttons">
       <button id="nope" @click="getNextDogs(dog._id)"><i class="fa fa-remove"></i></button>
@@ -54,12 +28,18 @@
 <script>
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
+import DogDetails from '../components/DogDetails.vue'
 
 export default {
-  //   name: 'home',
-  //   components: {
-  //     HelloWorld
-  //   }
+    name: 'dog-preview',
+    components: {
+      DogDetails
+    },
+     data() {
+        return {
+            shouldShow: false,
+        }
+    },
   //  props: ['dog']
   created() {
     // const dogId = this.$route.params.dogId;
@@ -78,6 +58,16 @@ export default {
     }
   },
 
+  // setInfoClass(){
+  //     return {
+  //       red: this.shouldShow
+  //     }
+      // info tinder--buttons tinder--button button: shouldShow, fa fa-arrow-alt-circle-down: !shouldShow
+      // var infoClass = (this.shouldShow) ? 'info tinder--buttons tinder--button button' : 'fa fa-arrow-alt-circle-down';
+      //  console.log('infoClass', infoClass);
+      // return infoClass;
+    // },
+
   methods: {
     // backToList() {
     //   this.$router.push(`/bug/`);
@@ -86,6 +76,7 @@ export default {
     // getNextDog(prevId){
     //   this.$store.dispatch({ type: "loadNextDog", prevId });
     // }
+    
 
     getNextDogs(prevId){
       console.log('getNextDogs');
@@ -93,8 +84,15 @@ export default {
       
       // this.$store.dispatch({ type: "loadDogsLength" });
       this.$store.dispatch({ type: "loadNextDogs", prevId });
+    },
+    showDetails(){
+        this.shouldShow = !this.shouldShow;
     }
   },
+
+  components: {
+     DogDetails
+  }
 
   //  computed: {
   //   dogsLengthToShow() {
@@ -266,6 +264,10 @@ body {
 }
 .info {
   left: 200px;
+}
+
+.red {
+  background-color: red;
 }
 </style>
 
