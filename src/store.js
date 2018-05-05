@@ -31,12 +31,6 @@ export default new Vuex.Store({
       
     },
     setUserDog(state, { dog }) {
-      // if (dogs === null) {
-      //   state.selectedDogIdx = 0;
-      // }
-      // else {
-      //   state.userDog = state.selectedDogIdx++;
-      // }
       state.userDog = dog;
     },
   },

@@ -13,7 +13,6 @@ import Register from './views/RegisterPage.vue'
 import Profile from './views/ProfilePage.vue'
 // import Match from './views/MatchPage.vue'
 import DogPreview from './views/DogPreviewPage.vue'
-// import DogDetails from './views/DogDetailsPage.vue'
 
 Vue.use(Router)
 
@@ -73,11 +72,6 @@ export default new Router({
       path: '/swipe',
       name: 'dogpreview',
       component: DogPreview
-    },
-    // {
-    //   path: '/dog/details/:dogId',
-    //   name: 'dogdetails',
-    //   component: DogDetails
-    // }
+    }
   ]
 })
