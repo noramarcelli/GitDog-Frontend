@@ -9,11 +9,6 @@
       <p> {{dog.name}}, {{dog.age}} </p>
     </div>
   </div>
-  <!-- :class="{red: book.price > 150, green: book.price < 20}" -->
-    <!-- :class="{'is-warning': tag === 'Fun', 'is-success': tag === 'Food', 
-                                'is-danger': tag === 'Romantic', 'is-dark': tag === 'Music', 
-                                'is-link': tag === 'Dance', 'is-black': tag === 'Extrim', 
-                                'is-primary': tag === 'Family'}" -->
 
   <DogDetails v-if="shouldShow"> </DogDetails>
 
