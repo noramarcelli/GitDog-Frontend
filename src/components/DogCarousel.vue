@@ -1,15 +1,21 @@
 <template>
-<div class="carousel carousel-animated carousel-animate-slide">
+<!-- <div class="carousel carousel-animated carousel-animate-slide">
     <div class='carousel-container'>
-        <div class='carousel-item is-active'>
-            <carousel v-if="dog" :perPageCustom="[[480, 1], [768, 1]]">
+        <div class='carousel-item is-active'> -->
+            <carousel v-if="dog" :perPageCustom="[[480, 1], [768, 1]]" :navigationEnabled="true">
                 <slide class='carousel-item' v-for="(img, idx) in dog.imgs" :key="idx">
-                    <img :src="'./' + dog.imgs[idx]"/>
+                    <span >
+                        <!-- <i class="fa fa-caret-left"></i> -->
+                        <img :src="'./' + dog.imgs[idx]"/>
+                        <!-- <i class="fa fa-caret-right"></i>  -->
+                    </span>
                 </slide>
             </carousel>
-        </div>
+            <!-- CLASS ARROW RIGHT: <i class="fas fa-caret-right"></i> -->
+            <!-- CLASS ARROW LEFT: <i class="fas fa-caret-left"></i> -->
+        <!-- </div>
     </div>
-</div>
+</div> -->
 </template>
 
 <script>
@@ -23,10 +29,23 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 carousel, .VueCarousel-pagination {
     padding: 0px;
     margin: 0px;
 }
+.VueCarousel-navigation-next {
+    right: 45px !important;
+    color: lightgray !important;
+    font-size: 40px;
+}
+.VueCarousel-navigation-prev {
+    left: 45px !important;
+    color: lightgray !important;
+    font-size: 40px;
+}
 
+.VueCarousel-dot-button {
+    bottom: 20px !important;
+}
 </style>

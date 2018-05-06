@@ -11,10 +11,10 @@
                 <i class="fa" :class="{'fa-info-circle' : !shouldShow, 'fa-arrow-circle-down' : shouldShow }"></i>
         </span>
         <p class="dog"> {{currDog.name}}, {{currDog.age}} </p>
+        <dog-details :dog="currDog" v-if="shouldShow" />
       </div>
     </div>
 
-    <dog-details :dog="currDog" v-if="shouldShow" />
 
     <div class="tinder--buttons">
       <button id="nope" @click="getNextDogs(currDog._id, false)"><i class="fa fa-remove"></i></button>
@@ -197,6 +197,7 @@ body {
   -webkit-box-shadow: 4px -7px 32px 0px rgba(15, 15, 15, 1);
   -moz-box-shadow: 4px -7px 32px 0px rgba(15, 15, 15, 1);
   box-shadow: 4px -7px 32px 0px rgba(15, 15, 15, 1);
+  line-height: 1.5em;
 }
 
 .moving.tinder--card {
@@ -238,7 +239,7 @@ body {
   border: 0;
   background: #ffffff;
   display: inline-block;
-  margin: 0 2px;
+  margin: 10px 10px;
   cursor: pointer;
 }
 
