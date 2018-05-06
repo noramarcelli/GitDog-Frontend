@@ -79,8 +79,8 @@ export default {
       var userDogId = this.userDog._id;
       this.$store.dispatch({ type: LOAD_NEXT_DOGS, dogId, userDogId });
       if (isLiked) {
-        this.$store.dispatch({ type: SAVE_LIKE, dogId, userDogId });
-        // this.$store.dispatch({ type: "findLikes", userDogId });
+        var userId = this.loggedInUser._id;
+        this.$store.dispatch({ type: SAVE_LIKE, dogId, userDogId, userId });
         // this.$store.dispatch({ type: "findLikes", userDogId });
       }
     },

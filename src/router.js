@@ -11,7 +11,7 @@ import Register from './views/RegisterPage.vue'
 // import Msg from './views/MsgPage.vue'
 // import Chat from './views/ChatPage.vue'
 import Profile from './views/ProfilePage.vue'
-// import Match from './views/MatchPage.vue'
+import Match from './views/MatchPage.vue'
 import DogPreview from './views/DogPreviewPage.vue'
 
 Vue.use(Router)
@@ -62,6 +62,12 @@ export default new Router({
       path: '/user',
       name: 'profile',
       component: Profile
+    },
+
+    {
+      path: '/match',
+      name: 'match',
+      component: Match
     },
     // {
     //   path: '/user/:userId/:matchId',

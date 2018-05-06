@@ -29,8 +29,8 @@ export default{
           });
     },
 
-    [SAVE_LIKE](store, { dogId, userDogId }){
-      return DogService.addLikeToDog(dogId, userDogId ).then(updatedUserDog => {
+    [SAVE_LIKE](store, { dogId, userDogId, userId }){
+      return DogService.addLikeToDog(dogId, userDogId, userId ).then(updatedUserDog => {
      });
     },
 

@@ -22,6 +22,8 @@ export default{
     [LOGIN](store, {userCredentials}) {
       return UserService.login(userCredentials)
       .then(user =>{
+        console.log('user in LOGIN', user);
+        
         store.commit({type: 'setUser', user});
       })
     },

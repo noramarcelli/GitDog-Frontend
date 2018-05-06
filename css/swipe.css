@@ -117,13 +117,13 @@ body {
   pointer-events: none;
 }
 
-. {
+/* .{
   flex: 0 0 100px;
   text-align: center;
   padding-top: 20px;
-}
+} */
 
-. button {
+.button {
   border-radius: 50%;
   line-height: 60px;
   width: 60px;
@@ -134,11 +134,11 @@ body {
   cursor: pointer;
 }
 
-. button:focus {
+.button:focus {
   outline: 0;
 }
 
-. i {
+.i {
   font-size: 32px;
   vertical-align: middle;
 }
