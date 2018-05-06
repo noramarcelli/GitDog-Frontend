@@ -44,6 +44,10 @@ function getNextDogs(prevId, userDogId) {
         });
 }
 
+// function addLikeToDog(prevId){
+
+// }
+
 
 
 export default {

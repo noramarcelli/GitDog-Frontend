@@ -13,9 +13,9 @@
   <DogDetails v-if="shouldShow"> </DogDetails>
 
     <div class="tinder--buttons">
-      <button id="nope" @click="getNextDogs(currDog._id)"><i class="fa fa-remove"></i></button>
+      <button id="nope" @click="getNextDogs(currDog._id, false)"><i class="fa fa-remove"></i></button>
       <button id="fav"><i class="fa fa-star"></i></button>
-      <button id="love" @click="getNextDogs(currDog._id)"><i class="fa fa-heart"></i></button>
+      <button id="love" @click="getNextDogs(currDog._id, true)"><i class="fa fa-heart"></i></button>
     </div>
 </div>
 </template>
@@ -63,9 +63,10 @@ export default {
       }
   },
   methods: {
-    getNextDogs(prevId){
+    getNextDogs(prevId, isLiked){
       var userDogId = this.userDog._id;
       this.$store.dispatch({ type: "loadNextDogs", prevId, userDogId });
+      // if(isLiked) this.$store.dispatch({ type: "saveLike", prevId });
     },
     showDetails(){
         this.shouldShow = !this.shouldShow;
