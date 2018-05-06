@@ -26,6 +26,8 @@
 // import HelloWorld from '@/components/HelloWorld.vue'
 import DogDetails from '../components/DogDetails.vue';
 import {SAVE_LIKE} from '../store/dogStore.js'
+import {LOAD_NEXT_DOGS} from '../store/dogStore.js'
+import {LOAD_USER_DOG} from '../store/userStore.js'
 
 export default {
   name: 'dog-preview',
@@ -45,11 +47,11 @@ export default {
       var dogId = this.loggedInUser.dogId;
       console.log('dogId', dogId);
 
-      this.$store.dispatch({ type: 'loadUserDog', dogId }).then(() => {
+      this.$store.dispatch({ type: LOAD_USER_DOG, dogId }).then(() => {
         console.log('this.$store.state.userDog', this.$store.state.userDog);
       });
       this.$store.dispatch({
-        type: 'loadNextDogs',
+        type: LOAD_NEXT_DOGS,
         prevId: '',
         userDogId: dogId
       });
@@ -70,7 +72,7 @@ export default {
   methods: {
     getNextDogs(dogId, isLiked) {
       var userDogId = this.userDog._id;
-      this.$store.dispatch({ type: 'loadNextDogs', dogId, userDogId });
+      this.$store.dispatch({ type: LOAD_NEXT_DOGS, dogId, userDogId });
       if (isLiked) {
         this.$store.dispatch({ type: SAVE_LIKE, dogId, userDogId });
         // this.$store.dispatch({ type: "findLikes", userDogId });

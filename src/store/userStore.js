@@ -1,9 +1,8 @@
-// import Vue from "vue";
-// import Vuex from "vuex";
 import UserService from "../../services/UserService.js";
 import DogService from "../../services/DogService.js";
 
-// Vue.use(Vuex);
+export const LOGIN = 'login'
+export const LOAD_USER_DOG = 'loadUserDog'
 
 export default{
   state: {
@@ -20,13 +19,13 @@ export default{
       },
   },
   actions: {
-    login(store, {userCredentials}) {
+    [LOGIN](store, {userCredentials}) {
       return UserService.login(userCredentials)
       .then(user =>{
         store.commit({type: 'setUser', user});
       })
     },
-     loadUserDog(store, { dogId }) {
+    [LOAD_USER_DOG](store, { dogId }) {
       console.log('store action');
       return DogService.getDogById(dogId)
         .then(dog => {

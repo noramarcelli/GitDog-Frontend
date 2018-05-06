@@ -12,6 +12,8 @@
 </template>
 
 <script>
+import {LOGIN} from '../store/userStore.js'
+
 export default {
   name: 'login-page',
     data() {
@@ -24,7 +26,7 @@ export default {
     },
     methods: {
         checkLogin() {
-            this.$store.dispatch({type: 'login', userCredentials:this.user})
+            this.$store.dispatch({type: LOGIN, userCredentials:this.user})
             .then(res => {
                 console.log('You have been logged-in!')
                 this.$router.push('/swipe');
