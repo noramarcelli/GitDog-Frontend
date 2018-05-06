@@ -192,9 +192,9 @@ body {
   position: absolute;
   will-change: transform;
   transition: all 0.3s ease-in-out;
-  cursor: -webkit-grab;
-  cursor: -moz-grab;
-  cursor: grab;
+  /* cursor: -webkit-grab;
+  cursor: -moz-grab; */
+  cursor: pointer;
   -webkit-box-shadow: 4px -7px 32px 0px rgba(15, 15, 15, 1);
   -moz-box-shadow: 4px -7px 32px 0px rgba(15, 15, 15, 1);
   box-shadow: 4px -7px 32px 0px rgba(15, 15, 15, 1);
