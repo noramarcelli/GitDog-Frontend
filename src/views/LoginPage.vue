@@ -2,7 +2,7 @@
   <section class="login-page">
             <h1>Please Login:</h1>
             <form @submit.prevent="checkLogin">
-                <input class="input is-danger is-small is-rounded" ref="txtUserName" type="text" placeholder="User name" v-model="user.name" />
+                <input class="input is-danger is-small is-rounded" ref="txtUserName" type="text" placeholder="User name" v-model="user.name" autofocus/>
                  <br>
                 <input class="input is-danger is-small is-rounded" type="password" placeholder="Password" v-model="user.password"/>
                  <br>

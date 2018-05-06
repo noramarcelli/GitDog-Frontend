@@ -31,8 +31,6 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-}
-#app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -45,14 +43,14 @@
   font-size: 3em;
   cursor: pointer;
   padding: 20px;
-  // a {
-  //   font-weight: bold;
-  //   // color: #2c3e50;
-  //   color: black;
-  //   &.router-link-exact-active {
-  //     color: red;
-  //   }
-  // }
+  a {
+    font-weight: bold;
+    // color: #2c3e50;
+    color: black;
+    &.router-link-exact-active {
+      color: red;
+    }
+  }
   
 }
 

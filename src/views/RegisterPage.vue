@@ -2,7 +2,7 @@
      <section class="register-page">
         <h1>Please Register:</h1>
         <form @submit.prevent="register">
-            <input class="input is-danger is-small is-rounded" type="text" placeholder="username" v-model="user.name" />
+            <input class="input is-danger is-small is-rounded" type="text" placeholder="username" v-model="user.name" autofocus/>
             <br>
             <input class="input is-danger is-small is-rounded" type="password" placeholder="password" v-model="user.password" />
              <br>

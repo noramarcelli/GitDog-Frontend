@@ -1,12 +1,22 @@
-<template>
-<section class="details"> 
-    <h1>Details</h1>
-  </section>
-</template>
+
+  <template>
+      <section class="details"> 
+        <h1>Details</h1>
+        <p>{{dog.description}}</p>
+        <!-- <p>{{dog.weight}}</p> -->
+        <!-- <p>{{dog.city}}</p> -->
+      </section>
+    </template>
+
 
 <script>
-
 export default {
-  // name: 'home',
+   props: ["dog"],
+   computed: {
+     userDescription() {
+       return this.$store.getters.userDescription;
+     }
+   }
 }
 </script>
+      
