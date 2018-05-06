@@ -3,13 +3,10 @@
  <div class="tinder">
   <div class="tinder--cards">
     <div v-if="dog" class="tinder--card">
-<<<<<<< HEAD
       <img :src="'./' + dog.imgs[0]">
-=======
-      <img :src="'./' + dog.imgs[0]"/>
-      <button :class= "{'info tinder--buttons tinder--button button' : shouldShow, 'fa fa-arrow-alt-circle-down' : !shouldShow }" @click="showDetails"><i class="fa fa-info"></i></button>
-       <!-- <button class="info tinder--buttons tinder--button button" @click="showDetails"><i class="fa fa-info"></i></button> -->
->>>>>>> d7703efa38746c5604ad31787847e14a3792ec89
+       <span @click="showDetails">
+               <i class="fa" :class="{'fa-info-circle' : !shouldShow, 'fa-arrow-circle-down' : shouldShow }"></i>
+      </span>
       <p> {{dog.name}}, {{dog.age}} </p>
     </div>
   </div>
@@ -20,7 +17,6 @@
       <button id="nope" @click="getNextDogs(dog._id)"><i class="fa fa-remove"></i></button>
       <button id="fav"><i class="fa fa-star"></i></button>
       <button id="love" @click="getNextDogs(dog._id)"><i class="fa fa-heart"></i></button>
-      <button class="info tinder--buttons tinder--button button"><i class="fa fa-info"></i></button>
     </div>
 </div>
 </template>
@@ -167,10 +163,10 @@ body {
   transform: scale(1);
 }
 
-.tinder_nope .fa-remov, .info, .fav {
+/* .tinder_nope .fa-remov, .info, .fav {
   opacity: 0.7;
   transform: scale(1);
-}
+} */
 
 .tinder--cards {
   flex-grow: 1;

@@ -3,9 +3,9 @@
   <div id="app">
 
     <div id="nav">
-      <router-link to="/user" name="profile"><i class="fa fa-user"></i></router-link> |
-      <router-link class="logo" to="/swipe"><Logo></Logo></router-link> |
-      <router-link to="/about" name="messages"><i class="fa fa-comments"></i></router-link>
+      <router-link class="profile" to="/user" name="profile"><i class="fa fa-user"></i></router-link> |
+      <router-link to="/swipe"><span ><img class="logo" src="../public/img/logo/logo.png" /></span></router-link> |
+      <router-link class="msgs" to="/about" name="messages"><i class="fa fa-comments"></i></router-link>
      
       <!-- <router-link to="/login">Log in</router-link>|
       <router-link to="/register">Resgister</router-link>  -->
@@ -18,21 +18,14 @@
 
 
 <script>
-  import Logo from './components/Logo.vue'
-
   export default {
-    components: {
-      Logo
-    }
+
   }
 </script>
 
 
 <style lang="scss">
-body {
-    // background-color: red;  
-    // background-image: url("../../public/img/bgrd/shattered-island.gif");
-}
+
 #app {
   height: 100%;
   display: flex;
@@ -46,18 +39,28 @@ body {
   text-align: center;
   color: #2c3e50;
 }
-#nav {
-  font-family: "BiggerLove";
-  font-size: 2em;
+.profile, .msgs{
+  // font-family: "BiggerLove";
+  color: black;
+  font-size: 3em;
   cursor: pointer;
-  padding: 30px;
-  a {
-    font-weight: bold;
-    // color: #2c3e50;
-    color: black;
-    &.router-link-exact-active {
-      color: red;
-    }
-  }
+  padding: 20px;
+  // a {
+  //   font-weight: bold;
+  //   // color: #2c3e50;
+  //   color: black;
+  //   &.router-link-exact-active {
+  //     color: red;
+  //   }
+  // }
+  
 }
+
+.logo {
+  height: 60px;
+  width: auto;
+  cursor: pointer;
+  padding-top: 5px; 
+}
+
 </style>

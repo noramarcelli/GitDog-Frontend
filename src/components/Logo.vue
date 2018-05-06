@@ -1,24 +1,32 @@
+<template>
+    <span>
+        <img src="../../public/img/logo/logo.png" />
+        <!-- <span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span> -->
+        <!-- <span class="dot"></span> -->
+    </span>
+</template>
+
+
 <script>
     export default{
 
     }
 </script>
 
-<template>
-    <span class="logo">
-        <span>TinDog</span>
-        <span class="dot"></span>
-    </span>
-</template>
+
 
 <style scoped>
 .logo {
-    background-image: url("../../public/img/logo/bone.png");
+    /* background-image: url("../../public/img/logo/bone.png"); */
+    /* background-image: url("../../public/img/logo/logo.png");
     background-repeat: no-repeat;
     text-decoration: none;
-    background-size: 160px;
-    width: 160px;
-    height: 80px;
+    /* background-size: 160px; */
+    /*background-size: 60px; */
+    /* width: 160px; */
+    width: 30px;
+    height: 30px;
+    /* height: 80px; */
 }
 
 p {
