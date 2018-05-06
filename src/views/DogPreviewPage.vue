@@ -4,8 +4,9 @@
   <div class="tinder--cards">
     <div v-if="currDog" class="tinder--card">
       <img :src="'./' + currDog.imgs[0]"/>
-      <button :class= "{'info tinder--buttons tinder--button button' : shouldShow, 'fa fa-arrow-alt-circle-down' : !shouldShow }" @click="showDetails"><i class="fa fa-info"></i></button>
-       <!-- <button class="info tinder--buttons tinder--button button" @click="showDetails"><i class="fa fa-info"></i></button> -->
+       <span @click="showDetails">
+               <i class="fa" :class="{'fa-info-circle' : !shouldShow, 'fa-arrow-circle-down' : shouldShow }"></i>
+      </span>
       <p> {{currDog.name}}, {{currDog.age}} </p>
     </div>
   </div>
@@ -144,10 +145,10 @@ body {
   transform: scale(1);
 }
 
-.tinder_nope .fa-remov, .info, .fav {
+/* .tinder_nope .fa-remov, .info, .fav {
   opacity: 0.7;
   transform: scale(1);
-}
+} */
 
 .tinder--cards {
   flex-grow: 1;
