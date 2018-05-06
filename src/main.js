@@ -6,7 +6,7 @@ import store from './store/store.js'
 import Bulma from 'bulma' 
 import './registerServiceWorker'
 
-import swipe from '../css/swipe.css';
+// import swipe from '../css/swipe.css';
 import app from '../css/app.css';
 import 'bulma/css/bulma.css'
 // import FontAwsome from 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css';

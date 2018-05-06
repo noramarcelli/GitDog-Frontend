@@ -75,7 +75,7 @@ export default {
       this.$store.dispatch({ type: LOAD_NEXT_DOGS, dogId, userDogId });
       if (isLiked) {
         this.$store.dispatch({ type: SAVE_LIKE, dogId, userDogId });
-        this.$store.dispatch({ type: "findLikes", userDogId });
+        // this.$store.dispatch({ type: "findLikes", userDogId });
       }
     },
     showDetails() {
