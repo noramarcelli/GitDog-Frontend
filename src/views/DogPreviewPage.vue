@@ -27,55 +27,64 @@
 <script>
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
-import DogDetails from '../components/DogDetails.vue'
+import DogDetails from '../components/DogDetails.vue';
 import DogCarousel from '../components/DogCarousel.vue'
+import {SAVE_LIKE} from '../store/dogStore.js'
+import {LOAD_NEXT_DOGS} from '../store/dogStore.js'
+import {LOAD_USER_DOG} from '../store/userStore.js'
 
 export default {
-    name: 'dog-preview',
-    components: {
-      DogDetails,
-      DogCarousel
-    },
-     data() {
-        return {
-            shouldShow: false,
-        }
-    },
+  name: 'dog-preview',
+  components: {
+    DogDetails,
+    DogCarousel
+  },
+  data() {
+    return {
+      shouldShow: false
+    };
+  },
 
   created() {
-     var user = this.loggedInUser;
+    var user = this.loggedInUser;
 
-     if (this.loggedInUser !== null) {
-        var dogId = this.loggedInUser.dogId;
-        console.log('dogId', dogId);
-        
-        this.$store.dispatch({ type: "loadUserDog", dogId })
-        .then(() => {
-             console.log('this.$store.state.userDog', this.$store.state.userDog);
-        })
-        this.$store.dispatch({ type: "loadNextDogs" ,prevId:'', userDogId: dogId});
+    if (this.loggedInUser !== null) {
+      var dogId = this.loggedInUser.dogId;
+      console.log('dogId', dogId);
+
+      this.$store.dispatch({ type: LOAD_USER_DOG, dogId }).then(() => {
+        console.log('this.$store.state.userDog', this.$store.state.userDog);
+      });
+      this.$store.dispatch({
+        type: LOAD_NEXT_DOGS,
+        prevId: '',
+        userDogId: dogId
+      });
     }
   },
 
   computed: {
     loggedInUser() {
-       return this.$store.getters.loggedInUserForDisplay;
+      return this.$store.getters.loggedInUserForDisplay;
     },
     currDog() {
       return this.$store.state.dogStore.selectedDog;
     },
-     userDog() {
-         return this.$store.state.userStore.userDog;
-      }
+    userDog() {
+      return this.$store.state.userStore.userDog;
+    }
   },
   methods: {
-    getNextDogs(prevId, isLiked){
+    getNextDogs(dogId, isLiked) {
       var userDogId = this.userDog._id;
-      this.$store.dispatch({ type: "loadNextDogs", prevId, userDogId });
-      // if(isLiked) this.$store.dispatch({ type: "saveLike", prevId });
+      this.$store.dispatch({ type: LOAD_NEXT_DOGS, dogId, userDogId });
+      if (isLiked) {
+        this.$store.dispatch({ type: SAVE_LIKE, dogId, userDogId });
+        // this.$store.dispatch({ type: "findLikes", userDogId });
+      }
     },
-    showDetails(){
-        this.shouldShow = !this.shouldShow;
+    showDetails() {
+      this.shouldShow = !this.shouldShow;
     }
   },
 
@@ -146,7 +155,9 @@ body {
   margin-left: -50px;
 }
 
-.tinder_love .fa-heart, .info, .fav {
+.tinder_love .fa-heart,
+.info,
+.fav {
   opacity: 0.7;
   transform: scale(1);
 }

@@ -12,11 +12,13 @@
 </template>
 
 <script>
+import {LOGIN} from '../store/userStore.js'
+
 export default {
   name: 'login-page',
     data() {
         return {
-            user: {name: 'Nora', password: '1234'}
+            user: {name: 'Ilana', password: '12345'}
         }
     },
     created() {
@@ -24,7 +26,8 @@ export default {
     },
     methods: {
         checkLogin() {
-            this.$store.dispatch({type: 'login', userCredentials:this.user})
+            // this.$router.push('/');
+            this.$store.dispatch({type: LOGIN, userCredentials:this.user})
             .then(res => {
                 console.log('You have been logged-in!')
                 this.$router.push('/swipe');
@@ -32,6 +35,7 @@ export default {
             .catch(err => {
                 console.log('Login Failed!');
                 this.$refs.txtUserName.focus();
+                this.$router.push('/');
             })
         }
     },
