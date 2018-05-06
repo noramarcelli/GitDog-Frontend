@@ -3,7 +3,6 @@
     <h1>Details</h1>
     <p>{{dog.desc}}</p>
     <p>{{dog.distance}}</p>
-
   </section>
 </template>
 
