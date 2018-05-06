@@ -1,6 +1,6 @@
 import DogService from "../services/DogService.js";
 
-
+export const SAVE_LIKE = 'saveLike'
 export default{
   state: {
     selectedDog: null,
@@ -21,23 +21,28 @@ export default{
   },
   actions: {
     loadNextDogs(store, { prevId, userDogId }){
-      // console.log('loadNextDogs');
-      // console.log('prevId', prevId);
-      // console.log('userDogId', userDogId);
-      
-      
       return DogService.getNextDogs(prevId, userDogId).then(dogs => {
              store.commit({ type: "setSelectedDog", dogs });
              console.log(' dogs',  dogs);
           });
     },
 
-    // saveLike(store){
-    //   return DogService.addLikeToDog().then(likedDogId => {
-    //     // store.commit({ type: "setSelectedDog", dogs });
-    //     // console.log(' dogs',  dogs);
-    //  });
-    // }
+    [SAVE_LIKE](store, { prevId, userDogId }){
+      return DogService.addLikeToDog(prevId, userDogId ).then(updatedUserDog => {
+
+
+        // return DogService.().then(updatedUserDog => {
+
+        // });
+
+        // store.commit({ type: "setSelectedDog", dogs });
+        // console.log(' dogs',  dogs);
+     });
+    },
+
+    findLikes(store, { userDogId }){
+        
+    }
   },
 
   getters: {

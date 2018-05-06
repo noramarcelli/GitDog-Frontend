@@ -44,9 +44,11 @@ function getNextDogs(prevId, userDogId) {
         });
 }
 
-// function addLikeToDog(prevId){
-
-// }
+function addLikeToDog(likedId, userDogId ){
+    return axios
+        .post(`${DOG_URL}/like`, {likedId, userDogId} )
+        .then(res => res.data);
+}
 
 
 
@@ -56,5 +58,6 @@ export default {
     deleteDog,
     emptyDog,
     getDogById,
-    getNextDogs
+    getNextDogs,
+    addLikeToDog
 }
