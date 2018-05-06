@@ -6,15 +6,15 @@
         <!-- COMPONENT OF IMAGES COURUSELE  -->
         <dog-carousel :dog="currDog"></dog-carousel>
         <!-- <img :src="'./' + currDog.imgs[0]"/> -->
-
         <span @click="showDetails">
                 <i class="fa" :class="{'fa-info-circle' : !shouldShow, 'fa-arrow-circle-down' : shouldShow }"></i>
         </span>
         <p class="dog"> {{currDog.name}}, {{currDog.age}} </p>
+        <dog-details :dog="currDog" v-if="shouldShow" />
       </div>
     </div>
 
-    <dog-details :dog="currDog" v-if="shouldShow" />
+    <!-- <dog-details :dog="currDog" v-if="shouldShow" /> -->
 
     <div class="tinder--buttons">
       <button id="nope" @click="getNextDogs(currDog._id, false)"><i class="fa fa-remove"></i></button>
