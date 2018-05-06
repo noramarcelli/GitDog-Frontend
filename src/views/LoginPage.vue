@@ -16,7 +16,7 @@ export default {
   name: 'login-page',
     data() {
         return {
-            user: {name: '', password: ''}
+            user: {name: 'Nora', password: '1234'}
         }
     },
     created() {

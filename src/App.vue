@@ -43,14 +43,14 @@
   font-size: 3em;
   cursor: pointer;
   padding: 20px;
-  // a {
-  //   font-weight: bold;
-  //   // color: #2c3e50;
-  //   color: black;
-  //   &.router-link-exact-active {
-  //     color: red;
-  //   }
-  // }
+  a {
+    font-weight: bold;
+    // color: #2c3e50;
+    color: black;
+    &.router-link-exact-active {
+      color: red;
+    }
+  }
   
 }
 
