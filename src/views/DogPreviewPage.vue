@@ -81,6 +81,7 @@ export default {
       if (isLiked) {
         this.$store.dispatch({ type: SAVE_LIKE, dogId, userDogId });
         // this.$store.dispatch({ type: "findLikes", userDogId });
+        // this.$store.dispatch({ type: "findLikes", userDogId });
       }
     },
     showDetails() {
