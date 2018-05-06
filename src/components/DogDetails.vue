@@ -1,8 +1,8 @@
 <template>
 <section class="details"> 
     <h1>Details</h1>
-    <p>{{dog.desc}}</p>
-    <p>{{dog.distance}}</p>
+    <p>{{dog.describtion}}</p>
+    <!-- <p>{{dog.distance}}</p> -->
   </section>
 </template>
 
