@@ -1,7 +1,7 @@
 // import Vue from "vue";
 // import Vuex from "vuex";
-import UserService from "../services/UserService.js";
-import DogService from "../services/DogService.js";
+import UserService from "../../services/UserService.js";
+import DogService from "../../services/DogService.js";
 
 // Vue.use(Vuex);
 
@@ -27,11 +27,11 @@ export default{
       })
     },
      loadUserDog(store, { dogId }) {
-      console.log("store action");
+      console.log('store action');
       return DogService.getDogById(dogId)
         .then(dog => {
-          store.commit({ type: "setUserDog", dog });
-          console.log("dog in loadDog", dog);
+          store.commit({ type: 'setUserDog', dog });
+          console.log('dog in loadDog', dog);
 
           return dog;
         })

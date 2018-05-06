@@ -1,4 +1,4 @@
-import DogService from "../services/DogService.js";
+import DogService from "../../services/DogService.js";
 
 export const SAVE_LIKE = 'saveLike'
 export default{
@@ -20,15 +20,15 @@ export default{
     }
   },
   actions: {
-    loadNextDogs(store, { prevId, userDogId }){
-      return DogService.getNextDogs(prevId, userDogId).then(dogs => {
-             store.commit({ type: "setSelectedDog", dogs });
+    loadNextDogs(store, { dogId, userDogId }){
+      return DogService.getNextDogs(dogId, userDogId).then(dogs => {
+             store.commit({ type: 'setSelectedDog', dogs });
              console.log(' dogs',  dogs);
           });
     },
 
-    [SAVE_LIKE](store, { prevId, userDogId }){
-      return DogService.addLikeToDog(prevId, userDogId ).then(updatedUserDog => {
+    [SAVE_LIKE](store, { dogId, userDogId }){
+      return DogService.addLikeToDog(dogId, userDogId ).then(updatedUserDog => {
 
 
         // return DogService.().then(updatedUserDog => {

@@ -24,11 +24,11 @@
 <script>
 // @ is an alias to /src
 // import HelloWorld from '@/components/HelloWorld.vue'
-import DogDetails from "../components/DogDetails.vue";
-import {SAVE_LIKE} from "../dogStore.js"
+import DogDetails from '../components/DogDetails.vue';
+import {SAVE_LIKE} from '../store/dogStore.js'
 
 export default {
-  name: "dog-preview",
+  name: 'dog-preview',
   components: {
     DogDetails
   },
@@ -43,14 +43,14 @@ export default {
 
     if (this.loggedInUser !== null) {
       var dogId = this.loggedInUser.dogId;
-      console.log("dogId", dogId);
+      console.log('dogId', dogId);
 
-      this.$store.dispatch({ type: "loadUserDog", dogId }).then(() => {
-        console.log("this.$store.state.userDog", this.$store.state.userDog);
+      this.$store.dispatch({ type: 'loadUserDog', dogId }).then(() => {
+        console.log('this.$store.state.userDog', this.$store.state.userDog);
       });
       this.$store.dispatch({
-        type: "loadNextDogs",
-        prevId: "",
+        type: 'loadNextDogs',
+        prevId: '',
         userDogId: dogId
       });
     }
@@ -68,11 +68,11 @@ export default {
     }
   },
   methods: {
-    getNextDogs(prevId, isLiked) {
+    getNextDogs(dogId, isLiked) {
       var userDogId = this.userDog._id;
-      this.$store.dispatch({ type: "loadNextDogs", prevId, userDogId });
+      this.$store.dispatch({ type: 'loadNextDogs', dogId, userDogId });
       if (isLiked) {
-        this.$store.dispatch({ type: SAVE_LIKE, prevId, userDogId });
+        this.$store.dispatch({ type: SAVE_LIKE, dogId, userDogId });
         // this.$store.dispatch({ type: "findLikes", userDogId });
       }
     },
