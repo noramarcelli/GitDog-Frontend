@@ -198,6 +198,7 @@ body {
   -webkit-box-shadow: 4px -7px 32px 0px rgba(15, 15, 15, 1);
   -moz-box-shadow: 4px -7px 32px 0px rgba(15, 15, 15, 1);
   box-shadow: 4px -7px 32px 0px rgba(15, 15, 15, 1);
+  line-height: 1.5em;
 }
 
 .moving.tinder--card {
@@ -239,7 +240,7 @@ body {
   border: 0;
   background: #ffffff;
   display: inline-block;
-  margin: 0 2px;
+  margin: 10px 10px;
   cursor: pointer;
 }
 

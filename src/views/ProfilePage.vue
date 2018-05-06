@@ -4,7 +4,7 @@
     <div class="tinder--cards">
         <div v-if="loggedInUser && dog" class="tinder--card">
          <img :src="'./' + dog.imgs[0]">
-         <p > {{dog.name}} , {{dog.age}}</p>
+         <p> {{dog.name}} , {{dog.age}}</p>
         </div>
     </div>
     </div>
@@ -20,6 +20,7 @@
     <!-- </div> -->
 </section>
 </template>
+
 
 
 <style scoped>
@@ -81,19 +82,21 @@ body {
   margin-left: -50px;
 }
 
-.tinder_love .fa-heart, .info, .fav {
+.tinder_love .fa-heart,
+.info,
+.fav {
   opacity: 0.7;
   transform: scale(1);
 }
 
-.tinder_nope .fa-remov, .info, .fav {
+/* .tinder_nope .fa-remov, .info, .fav {
   opacity: 0.7;
   transform: scale(1);
-}
+} */
 
 .tinder--cards {
   flex-grow: 1;
-  padding-top: 40px;
+  padding-top: 5px;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -109,15 +112,15 @@ body {
   max-width: 400px;
   height: 70vh;
   background: #ffffff;
-  padding-bottom: 30px;
+  padding-bottom: 5px;
   border-radius: 8px;
   overflow: hidden;
   position: absolute;
   will-change: transform;
   transition: all 0.3s ease-in-out;
-  cursor: -webkit-grab;
-  cursor: -moz-grab;
-  cursor: grab;
+  /* cursor: -webkit-grab;
+  cursor: -moz-grab; */
+  cursor: pointer;
   -webkit-box-shadow: 4px -7px 32px 0px rgba(15, 15, 15, 1);
   -moz-box-shadow: 4px -7px 32px 0px rgba(15, 15, 15, 1);
   box-shadow: 4px -7px 32px 0px rgba(15, 15, 15, 1);
@@ -136,23 +139,23 @@ body {
 }
 
 .tinder--card h3 {
-  margin-top: 32px;
+  /* margin-top: 32px; */
   font-size: 32px;
-  padding: 0 16px;
+  padding: 0 5px;
   pointer-events: none;
 }
 
 .tinder--card p {
-  margin-top: 24px;
-  font-size: 20px;
-  padding: 0 16px;
+  margin-top: 2px;
+  /* font-size: 20px; */
+  padding: 0 2px;
   pointer-events: none;
 }
 
 .tinder--buttons {
   flex: 0 0 100px;
   text-align: center;
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
 .tinder--buttons button {
@@ -162,7 +165,8 @@ body {
   border: 0;
   background: #ffffff;
   display: inline-block;
-  margin: 0 8px;
+  margin: 10px 10px;
+  cursor: pointer;
 }
 
 .tinder--buttons button:focus {
@@ -172,6 +176,7 @@ body {
 .tinder--buttons i {
   font-size: 32px;
   vertical-align: middle;
+  cursor: pointer;
 }
 
 .fa-heart {
@@ -184,7 +189,22 @@ body {
 .info {
   left: 200px;
 }
+
+/* .red {
+  background-color: red;
+} */
+i {
+  font-size: 3em;
+  color: red;
+}
+.dog {
+   font-family: "CutiePatootie";
+   font-weight: bold;
+   font-size: 2.5em;
+}
 </style>
+
+
 
 <script>
 export default {

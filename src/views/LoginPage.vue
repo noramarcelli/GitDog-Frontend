@@ -7,6 +7,7 @@
                 <input class="input is-danger is-small is-rounded" type="password" placeholder="Password" v-model="user.password"/>
                  <br>
                 <button class="button is-danger is-rounded" type="submit" :disabled="!this.user.name || !this.user.password">Login</button>
+                <!-- <p>Hello, {{this.user.namer}}</p> -->
             </form>
         </section>
 </template>
@@ -18,7 +19,7 @@ export default {
   name: 'login-page',
     data() {
         return {
-            user: {name: 'Ilana', password: '12345'}
+            user: {name: 'Nora', password: '1234'}
         }
     },
     created() {
