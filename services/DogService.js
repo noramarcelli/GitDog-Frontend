@@ -50,6 +50,15 @@ function addLikeToDog(likedId, userDogId ){
         .then(res => res.data);
 }
 
+function findLikes(userDogId){
+    return axios
+    .get(`${DOG_URL}/like/${userDogId}`)
+    .then(res => {
+        res.data
+        console.log('all dogs who liked mine: ', res.data);
+    })
+}
+
 
 
 export default {
@@ -59,5 +68,6 @@ export default {
     emptyDog,
     getDogById,
     getNextDogs,
-    addLikeToDog
+    addLikeToDog,
+    findLikes
 }

@@ -35,7 +35,8 @@ export default{
     },
 
     findLikes(store, { userDogId }){
-        
+      return DogService.findLikes( userDogId ).then(dogs => {
+      });
     }
   },
 

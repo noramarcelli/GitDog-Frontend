@@ -26,6 +26,7 @@ export default {
     },
     methods: {
         checkLogin() {
+            // this.$router.push('/');
             this.$store.dispatch({type: LOGIN, userCredentials:this.user})
             .then(res => {
                 console.log('You have been logged-in!')
@@ -34,6 +35,7 @@ export default {
             .catch(err => {
                 console.log('Login Failed!');
                 this.$refs.txtUserName.focus();
+                this.$router.push('/');
             })
         }
     },
