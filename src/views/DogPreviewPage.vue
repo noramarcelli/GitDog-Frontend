@@ -80,6 +80,8 @@ export default {
       this.$store.dispatch({ type: LOAD_NEXT_DOGS, dogId, userDogId });
       if (isLiked) {
         var userId = this.loggedInUser._id;
+        console.log('userId inside getNextDogs', userId);
+        
         this.$store.dispatch({ type: SAVE_LIKE, dogId, userDogId, userId });
         // this.$store.dispatch({ type: "findLikes", userDogId });
       }

@@ -45,9 +45,9 @@ function getNextDogs(prevId, userDogId) {
         });
 }
 
-function addLikeToDog(likedId, userDogId ){
+function addLikeToDog(likedId, userDogId, userId ){
     return axios
-        .post(`${DOG_URL}/like`, {likedId, userDogId} )
+        .post(`${DOG_URL}/like`, {likedId, userDogId, userId} )
         .then(res => res.data);
 }
 
