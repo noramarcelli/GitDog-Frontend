@@ -20,23 +20,28 @@ export default {
   // components: {
   //   HelloWorld
   // }
-}
+};
 </script>
 
 <style scoped>
 .home {
-    font-family: "Digitalt";
-    /* font-weight: bold; */
-    font-size: 25px;
-    padding: 2px;
-    letter-spacing: 1px;
-    /* color: black; */
+  /* background-image: url("../../public/img/bgrd/dog-background.jpg");
+  background-size: 500px;
+  width: 500px;
+  height: auto;
+  right: 500;
+  background-repeat: no-repeat; */
+  font-family: "Digitalt";
+  /* font-weight: bold; */
+  font-size: 25px;
+  padding: 2px;
+  letter-spacing: 1px;
+  /* color: black; */
 }
 p {
-  font-size: 4em; 
+  font-size: 4em;
   font-family: "SweetHipster";
   font-weight: bold;
-  
 }
 .home footer {
   background-image: url("../../public/img/bgrd/dog-treats.png");
