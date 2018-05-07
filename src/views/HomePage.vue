@@ -46,7 +46,7 @@ p {
   width: 860px;
   height: 320px;
 }
-.login, .register {
+/* .login, .register {
   color: red;
-}
+} */
 </style>

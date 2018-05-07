@@ -112,7 +112,7 @@ export default {
 *:before,
 *:after {
   box-sizing: border-box;
-  padding: 0;
+  padding: 2px;
   margin: 0;
 }
 

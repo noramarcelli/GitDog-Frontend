@@ -44,8 +44,15 @@ carousel, .VueCarousel-pagination {
     color: lightgray !important;
     font-size: 40px;
 }
-
-.VueCarousel-dot-button {
+.VueCarousel-pagination {
+    position: absolute;
+    bottom: 10px;
+}
+/* .VueCarousel-dot-button {
     bottom: 20px !important;
+} */
+
+.VueCarousel-navigation--disabled {
+    opacity: 0 !important; 
 }
 </style>

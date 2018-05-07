@@ -9,9 +9,9 @@
   
   <p>You and MATCH-NAME have liked each other</p>
 
-  <button @click="this.$router.push('/msgs')" class="button is-danger is-rounded">Send a Massage</button>
+  <button @click="$router.push('/msgs')" class="button is-danger is-rounded">Send a Massage</button>
   <br>
-  <button @click="this.$router.push('./swipe')" class="button is-danger is-rounded">Keep Playing</button>
+  <button @click="$router.push('./swipe')" class="button is-danger is-rounded">Keep Playing</button>
 </section>    
 </template>
 

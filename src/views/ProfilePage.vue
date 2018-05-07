@@ -6,13 +6,18 @@
         <p> {{dog.name}} , {{dog.age}}</p>
       </div>
   </div>
+
   <div class="control">  
-    <router-link to="/prefs" name="PrefsPage" class="profile-btns"><i class="fa fa-cogs"></i></router-link>
-    <br>
-    <label>Settings</label>
-    <router-link to="/edit" name="EditPage" class="profile-btns"><i class="fa fa-pencil"></i></router-link>
-    <br>
-    <label>Edit</label>
+    <span>
+      <router-link to="/prefs" name="PrefsPage" title="Setting" class="profile-btns"><i class="fa fa-cogs"></i></router-link>  |
+      <br>
+      <label> Settings</label>
+    </span>
+    <span>
+      <router-link to="/edit" name="EditPage" title="Edit" class="profile-btns"><i class="fa fa-pencil"></i></router-link>
+      <br>
+      <label> Edit</label>
+    </span>
   </div>
  <!-- <div class="tinder"> -->
   <!-- <div class="tinder--cards"> -->
@@ -29,16 +34,16 @@
 <style scoped>
 .tinder {
   width: 100vw;
-  height: calc(100vh - 100px);
+  /* height: calc(100vh - 100px); */
   top: 100px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  position: absolute;
+  /* position: absolute; */
   opacity: 1;
   transition: opacity 0.1s ease-in-out;
 }
-p, label {
+p{
   font-family: "CutiePatootie";
   font-weight: bold;
   font-size: 1.5em;
@@ -48,50 +53,57 @@ p, label {
 label {
   font-family: "CutiePatootie";
   font-weight: bold;
-  font-size: 2.5em;
+  font-size: 1.5em;
   letter-spacing: 2px;
   color: gray;
+  margin: 0;
+  padding: 0;
 }
 .profile-btns {
   font-size: 4em;
   color: gray;
-  padding: 30px;
-  margin: 30px;
+  padding: 0 20px;
+  margin: 0;
   cursor: pointer;
-  /* position: absolute; */
 }
 .control {
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+span {
+  margin:0;
+  padding: o;
+  color: gray;
 }
 </style>
 
 
 
 <script>
-  import PrefsPage from './PrefsPage.vue';
-  import EditPage from './EditPage.vue';
+import PrefsPage from "./PrefsPage.vue";
+import EditPage from "./EditPage.vue";
 
-  export default {
-    name: "profile",
-    created() {
-      var user = this.loggedInUser;
-      if (this.loggedInUser !== null) {
-          var dogId = this.loggedInUser.dogId;
-          
-          this.$store.dispatch({ type: "loadUserDog", dogId })
-          .then(() => {
-              console.log('this.$store.state.userDog', this.$store.state.userDog);
-          })
-      }
+export default {
+  name: "profile",
+  created() {
+    var user = this.loggedInUser;
+    if (this.loggedInUser !== null) {
+      var dogId = this.loggedInUser.dogId;
+
+      this.$store.dispatch({ type: "loadUserDog", dogId }).then(() => {
+        console.log("this.$store.state.userDog", this.$store.state.userDog);
+      });
+    }
+  },
+  computed: {
+    loggedInUser() {
+      return this.$store.getters.loggedInUserForDisplay;
     },
-    computed: {
-      loggedInUser() {
-        return this.$store.getters.loggedInUserForDisplay;
-      },
 
-      dog() {
-          return this.$store.state.userStore.userDog;
-        }
-      }
+    dog() {
+      return this.$store.state.userStore.userDog;
+    }
   }
+};
 </script>
