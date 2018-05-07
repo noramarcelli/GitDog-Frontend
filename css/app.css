@@ -66,9 +66,6 @@ router-link, #nav, #app {
     margin-bottom: 0px;
 } */
 
-button .info {
-    
-}
 
 /* HELPERS */
 /* 
@@ -84,7 +81,7 @@ button .info {
     font-family: "Digitalt";
 }
 
-.register-page, .login-page {
+.register-page, .login-page, .match-page {
     font-family: "BiggerLove";
     font-weight: bold;
     font-size: 2em;
@@ -98,4 +95,11 @@ button .info {
     font-size: 18px;
     padding: 2px;
     letter-spacing: 1px;
+}
+
+.register-page button, .login-page button, .match-page button{
+    font-family: CutiePatootie;
+    font-weight: bold;
+    letter-spacing: 2px;
+    line-height: 150%;
 }
