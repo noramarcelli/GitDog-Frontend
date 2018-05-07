@@ -91,10 +91,9 @@ export default {
     }
   },
   sockets: {
-    // matched(matchId) {
-    //   console.log('We have a match!')
-    //   console.log({matchId})
-    // }
+    matched() {
+      this.$router.push('/match')
+    }
   },
 
   components: {

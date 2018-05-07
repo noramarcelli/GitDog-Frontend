@@ -4,8 +4,10 @@
 
   <!-- <img :src="'./' + dog.imgs[0]">
   <img :src="'./' + dog.imgs[1]"> -->
-  <img class="profile-pics" src="../../public/img/dogs/donna_1.jpeg" >
-  <img class="profile-pics" src="../../public/img/dogs/charly_1.jpeg" >
+  <img class="profile-pics" :src="userDog.imgs[0]" >
+  <img class="profile-pics" :src="matchedDog.imgs[0]" >
+  <!-- <img class="profile-pics" src="../../public/img/dogs/donna_1.jpeg" >
+  <img class="profile-pics" src="../../public/img/dogs/charly_1.jpeg" > -->
   
   <p>You and MATCH-NAME have liked each other</p>
 
@@ -18,6 +20,15 @@
 <script>
 
 export default {
+  computed: {
+    userDog() {
+      return this.$store.getters.userDog;
+    },
+
+    matchedDog(){
+      return this.$store.state.matchStore.matchedDog;
+    }
+  },
   created(){
     console.log('matchPage created');
   }
