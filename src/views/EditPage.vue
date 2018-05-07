@@ -9,26 +9,26 @@
 
                     <div class="column is-8">
                         <!-- PROFILE PICTURE - THE FIRST -->
-                        <img src="../../public/img/dogs/stella_1.jpeg">
+                        <img :src="'./' + dog.imgs[0]">
                         <!-- <a><i class="fa fa-minus-circle"></i></a> -->
                     </div>
                     <div class="column is-4">
-                        <img src="../../public/img/dogs/stella_1.jpeg">
+                        <img v-if="dog.imgs[1]" :src="'./' + dog.imgs[1]">
                         <!-- <a><i class="fa fa-plus-circle"></i></a> -->
-                        <img src="../../public/img/dogs/stella_1.jpeg">
+                        <img v-if="dog.imgs[2]" :src="'./' + dog.imgs[2]">
                         <!-- <a><i class="fa fa-plus-circle"></i></a> -->
                     </div>
                     
                 </div>
             <div class="columns">
                 <div class="column is-4">
-                        <img src="../../public/img/dogs/stella_1.jpeg">
+                        <img v-if="dog.imgs[3]" :src="'./' + dog.imgs[3]">
                     </div>
                     <div class="column is-4">
-                        <img src="../../public/img/dogs/stella_1.jpeg">
+                        <img v-if="dog.imgs[4]" :src="'./' + dog.imgs[4]">
                     </div>
                     <div class="column is-4">
-                        <img src="../../public/img/dogs/stella_1.jpeg">
+                        <img v-if="dog.imgs[5]" :src="'./' + dog.imgs[5]">
                     </div>
             </div>
             </div>
@@ -39,5 +39,27 @@
 
 
 <script>
-export default {};
+export default {
+   created() {
+    var user = this.loggedInUser;
+    if (this.loggedInUser !== null) {
+      var dogId = this.loggedInUser.dogId;
+
+      this.$store.dispatch({ type: "loadUserDog", dogId }).then(() => {
+        // console.log("this.$store.state.userDog", this.$store.state.userDog);
+      });
+    }
+  },
+  computed: {
+    loggedInUser() {
+      return this.$store.getters.loggedInUserForDisplay;
+    },
+
+    dog() {
+      console.log('dog in edit page', this.$store.state.userStore.userDog);
+      
+      return this.$store.state.userStore.userDog;
+    }
+  }
+};
 </script>

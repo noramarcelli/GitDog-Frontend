@@ -81,8 +81,8 @@ span {
 
 
 <script>
-import PrefsPage from "./PrefsPage.vue";
-import EditPage from "./EditPage.vue";
+// import PrefsPage from "./PrefsPage.vue";
+// import EditPage from "./EditPage.vue";
 
 export default {
   name: "profile",
