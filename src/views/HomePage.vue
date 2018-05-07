@@ -30,12 +30,13 @@ export default {
     font-size: 25px;
     padding: 2px;
     letter-spacing: 1px;
-    color: black;
+    /* color: black; */
 }
 p {
   font-size: 4em; 
   font-family: "SweetHipster";
   font-weight: bold;
+  
 }
 .home footer {
   background-image: url("../../public/img/bgrd/dog-treats.png");
@@ -45,5 +46,7 @@ p {
   width: 860px;
   height: 320px;
 }
-
+.login, .register {
+  color: red;
+}
 </style>
