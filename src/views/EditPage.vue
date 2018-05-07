@@ -4,10 +4,13 @@
         <!-- <p>This is a Temp Edit Page</p> -->
         
         <section class="profile-imgs">
+            <span class="empty-pic square"></span>
+
             <div class="block">
                 <div class="columns">
                     <div class="column is-8">
                         <!-- PROFILE PICTURE - THE FIRST -->
+                        <!-- :class="{'square' : showEmpty} -->
                         <img v-if="dog.imgs[0]" :src="'./' + dog.imgs[0]">
                         <a v-if="dog.imgs[0]" @click="toggleInput(0)"><i class="fa fa-minus-circle"></i></a>
                         <a v-if="!dog.imgs[0]" @click="toggleInput(0)"><i class="fa fa-plus-circle"></i></a>
@@ -15,6 +18,7 @@
                     </div>
                     <div class="column is-4">
                         <img v-if="dog.imgs[1]" :src="'./' + dog.imgs[1]">
+                         <!-- <img v-if="!dog.imgs[1]" :class="square"> -->
                         <a v-if="dog.imgs[1]" @click="toggleInput(1)"><i class="fa fa-minus-circle"></i></a>
                         <a v-if="!dog.imgs[1]" @click="toggleInput(1)"><i class="fa fa-plus-circle"></i></a>
                         <input  v-model="imgUrl" @keyup="addImg(1)"/>
@@ -46,8 +50,9 @@
                         <input v-model="imgUrl" @keyup="addImg(5)"/>
                     </div>
             </div>
+            </div>
         </section>
-
+    
     <section class="edit-details">
         <!-- <input class="message-header" type="text" v-model="setPlaceToEdit.name"/> -->
         <!-- RENDER NAME OF THE DOG -->
@@ -151,6 +156,11 @@ export default {
       console.log("dog in edit page", this.$store.state.userStore.userDog);
 
       return this.$store.state.userStore.userDog;
+    },
+
+    showEmpty() {
+        // return this.$route.name !== 'edit';
+
     }
   },
   methods: {
@@ -199,6 +209,16 @@ label {
 .done{
     font-size: 50px;
     color: black;
+}
+.square {
+  border-color: 2px solid red; 
+  height: 250px;
+  width: 250px;
+  display: block;
+  background-image: url('../../public/img/bgrd/paw.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;  
+  /* background-color: #555; */
 }
 </style>
 

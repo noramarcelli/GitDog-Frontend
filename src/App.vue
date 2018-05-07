@@ -2,7 +2,7 @@
 <template>
   <div id="app">
 
-    <div id="nav">
+    <div v-if="showNav" id="nav">
       <router-link class="profile" to="/profile" name="profile"><i class="fa fa-user"></i></router-link> |
       <router-link to="/swipe"><span ><img class="logo" src="../public/img/logo/logo.png" /></span></router-link> |
       <router-link class="msgs" to="/msgs" name="messages"><i class="fa fa-comments"></i></router-link>
@@ -17,7 +17,11 @@
 
 <script>
   export default {
-
+    computed: {
+      showNav() {
+        return this.$route.name !== 'edit';
+      }
+    } 
   }
 </script>
 
