@@ -1,12 +1,18 @@
 <template>
   <section class="login-page">
-            <h1>Please Login:</h1>
-            <form @submit.prevent="checkLogin">
-                <input class="input is-danger is-small is-rounded" ref="txtUserName" type="text" placeholder="User name" v-model="user.name" autofocus/>
-                 <br>
-                <input class="input is-danger is-small is-rounded" type="password" placeholder="Password" v-model="user.password"/>
-                 <br>
-                <button class="button is-danger is-rounded" type="submit" :disabled="!this.user.name || !this.user.password">Login</button>
+            
+            <form class="field" @submit.prevent="checkLogin">
+                <h1>Please Login:</h1>
+                <span class="control has-icons-left">
+                    <input class="input is-danger is-small is-rounded" ref="txtUserName" type="text" placeholder="User name" v-model="user.name" autofocus/>
+                    <!-- <span class="icon is-small is-left">
+                        <i class="fa fa-user"></i>
+                    </span> -->
+                    <br>
+                    <input class="input is-danger is-small is-rounded" type="password" placeholder="Password" v-model="user.password"/>
+                    <br>
+                    <button class="button is-danger is-rounded" type="submit" :disabled="!this.user.name || !this.user.password">Login</button>
+                </span>
                 <!-- <p>Hello, {{this.user.namer}}</p> -->
             </form>
         </section>
@@ -48,3 +54,4 @@ export default {
     
 }
 </script>
+
