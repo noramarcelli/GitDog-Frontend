@@ -8,6 +8,7 @@
                 <div class="columns">
 
                     <div class="column is-8">
+                        <!-- PROFILE PICTURE - THE FIRST -->
                         <img src="../../public/img/dogs/stella_1.jpeg">
                         <!-- <a><i class="fa fa-minus-circle"></i></a> -->
                     </div>
