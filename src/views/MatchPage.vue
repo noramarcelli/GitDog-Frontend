@@ -16,23 +16,10 @@
 </template>
 
 <script>
-import Vue from 'vue';
-// import socketio from 'socket.io-client';
-// import VueSocketio from 'vue-socket.io';
-// Vue.use(VueSocketio, 'http://localhost:3000');
 
 export default {
   created(){
     console.log('matchPage created');
-    
-      this.$socket.on('newMatch', matchedDog => {
-        console.log('newMatch in frontend matchPage', matchedDog);
-    })
-  },
-   sockets: {
-    connect() {
-      console.log('connected to socket')
-    }
   }
 };
 </script>
