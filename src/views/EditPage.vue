@@ -1,5 +1,6 @@
 <template>
     <section class="edit-page">
+        <a @click="$router.push('/profile')" title="Done"><i class="fa fa-check-circle"></i></a>
         <!-- <p>This is a Temp Edit Page</p> -->
         <!-- <form @submit.prevent="checkLogin"> -->
         <form>
@@ -56,5 +57,9 @@ label {
   }
   .edit-page input {
       max-width: 60% !important;
+  }
+  a {
+      color: black;
+      font-size: 3em;
   }
 </style>
