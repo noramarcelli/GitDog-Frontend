@@ -46,6 +46,7 @@
                         <input v-model="imgUrl" @keyup="addImg(5)"/>
                     </div>
             </div>
+        </div>
         </section>
 
     <section class="edit-details">
