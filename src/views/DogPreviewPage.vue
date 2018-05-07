@@ -91,10 +91,10 @@ export default {
     }
   },
   sockets: {
-    matched(matchId) {
-      console.log('We have a match!')
-      console.log({matchId})
-    }
+    // matched(matchId) {
+    //   console.log('We have a match!')
+    //   console.log({matchId})
+    // }
   },
 
   components: {

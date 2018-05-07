@@ -13,7 +13,7 @@ export default new Vuex.Store({
     SOCKET_CONNECT() {
       console.log('connected to socket (from mutation)')
     },
-    SOCKET_CHEN_AVIV() {
+    SOCKET_CHENAVIV() {
       console.log('chen in mutations')
     }
   },
