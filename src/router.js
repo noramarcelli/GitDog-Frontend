@@ -5,12 +5,11 @@ import About from './views/AboutPage.vue'
 
 import Login from './views/LoginPage.vue'
 import Register from './views/RegisterPage.vue'
-// import Edit from './views/EditPage.vue'
-// import Msg from './views/MsgPage.vue'
-// import Pref from './views/PrefPage.vue'
-// import Msg from './views/MsgPage.vue'
+import Msgs from './views/MsgsPage.vue'
 // import Chat from './views/ChatPage.vue'
 import Profile from './views/ProfilePage.vue'
+import Edit from './views/EditPage.vue'
+import Prefs from './views/PrefsPage.vue'
 import Match from './views/MatchPage.vue'
 import DogPreview from './views/DogPreviewPage.vue'
 
@@ -38,28 +37,28 @@ export default new Router({
       name: 'register',
       component: Register
     },
-    // {
-    //   path: '/edit',
-    //   name: 'edit',
-    //   component: Edit
-    // },
-    // {
-    //   path: '/msg',
-    //   name: 'msg',
-    //   component: Msg
-    // },
-    // {
-    //   path: '/pref',
-    //   name: 'pref',
-    //   component: Pref
-    // },
+    {
+      path: '/edit',
+      name: 'edit',
+      component: Edit
+    },
+    {
+      path: '/prefs',
+      name: 'prefs',
+      component: Prefs
+    },
+    {
+      path: '/msgs',
+      name: 'msgs',
+      component: Msgs
+    },
     // {
     //   path: '/chat/:dogId',
     //   name: 'chat',
     //   component: Chat
     // },
     {
-      path: '/user',
+      path: '/profile',
       name: 'profile',
       component: Profile
     },

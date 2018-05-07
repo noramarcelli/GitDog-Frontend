@@ -3,12 +3,10 @@
   <div id="app">
 
     <div id="nav">
-      <router-link class="profile" to="/user" name="profile"><i class="fa fa-user"></i></router-link> |
+      <router-link class="profile" to="/profile" name="profile"><i class="fa fa-user"></i></router-link> |
       <router-link to="/swipe"><span ><img class="logo" src="../public/img/logo/logo.png" /></span></router-link> |
-      <router-link class="msgs" to="/about" name="messages"><i class="fa fa-comments"></i></router-link>
+      <router-link class="msgs" to="/msgs" name="messages"><i class="fa fa-comments"></i></router-link>
      
-      <!-- <router-link to="/login">Log in</router-link>|
-      <router-link to="/register">Resgister</router-link>  -->
     </div>
     <router-view/>
 

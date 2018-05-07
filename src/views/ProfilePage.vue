@@ -1,14 +1,19 @@
 <template>
 <section>
-    <div class="tinder">
-    <div class="tinder--cards">
-        <div v-if="loggedInUser && dog" class="tinder--card">
-         <img :src="'./' + dog.imgs[0]">
-         <p> {{dog.name}} , {{dog.age}}</p>
-        </div>
-    </div>
-    </div>
-
+  <div class="tinder">
+      <div v-if="loggedInUser && dog">
+        <img class="profile-pics" :src="'./' + dog.imgs[0]">
+        <p> {{dog.name}} , {{dog.age}}</p>
+      </div>
+  </div>
+  <div class="control">  
+    <router-link to="/prefs" name="PrefsPage" class="profile-btns"><i class="fa fa-cogs"></i></router-link>
+    <br>
+    <label>Settings</label>
+    <router-link to="/edit" name="EditPage" class="profile-btns"><i class="fa fa-pencil"></i></router-link>
+    <br>
+    <label>Edit</label>
+  </div>
  <!-- <div class="tinder"> -->
   <!-- <div class="tinder--cards"> -->
     <!-- <div v-if="dog" class="tinder--card">-->
@@ -21,31 +26,7 @@
 </section>
 </template>
 
-
-
 <style scoped>
-/* SWIPING */
-
-/* FOR LOGO NAME */
-/* @font-face {
-    font-family: "Digitalt";
-    src: url(../../../fonts/Digitalt.ttf);
-} */
-
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-body {
-  background: #ccfbfe;
-  /* overflow: hidden; */
-  font-family: sans-serif;
-}
-
 .tinder {
   width: 100vw;
   height: calc(100vh - 100px);
@@ -57,177 +38,60 @@ body {
   opacity: 1;
   transition: opacity 0.1s ease-in-out;
 }
-
-.loaded.tinder {
-  opacity: 1;
+p, label {
+  font-family: "CutiePatootie";
+  font-weight: bold;
+  font-size: 1.5em;
+  letter-spacing: 2px;
+  color: black;
 }
-
-.tinder--status {
-  position: absolute;
-  top: 50%;
-  margin-top: -30px;
-  z-index: 2;
-  width: 100%;
-  text-align: center;
-  pointer-events: none;
+label {
+  font-family: "CutiePatootie";
+  font-weight: bold;
+  font-size: 2.5em;
+  letter-spacing: 2px;
+  color: gray;
 }
-
-.tinder--status i {
-  font-size: 100px;
-  opacity: 0;
-  transform: scale(0.3);
-  transition: all 0.2s ease-in-out;
-  position: absolute;
-  width: 100px;
-  margin-left: -50px;
-}
-
-.tinder_love .fa-heart,
-.info,
-.fav {
-  opacity: 0.7;
-  transform: scale(1);
-}
-
-/* .tinder_nope .fa-remov, .info, .fav {
-  opacity: 0.7;
-  transform: scale(1);
-} */
-
-.tinder--cards {
-  flex-grow: 1;
-  padding-top: 5px;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  z-index: 1;
-  font-family: "BiggerLove";
-}
-
-.tinder--card {
-  font-family: "Digitalt";
-  display: inline-block;
-  width: 90vw;
-  max-width: 400px;
-  height: 70vh;
-  background: #ffffff;
-  padding-bottom: 5px;
-  border-radius: 8px;
-  overflow: hidden;
-  position: absolute;
-  will-change: transform;
-  transition: all 0.3s ease-in-out;
-  /* cursor: -webkit-grab;
-  cursor: -moz-grab; */
+.profile-btns {
+  font-size: 4em;
+  color: gray;
+  padding: 30px;
+  margin: 30px;
   cursor: pointer;
-  -webkit-box-shadow: 4px -7px 32px 0px rgba(15, 15, 15, 1);
-  -moz-box-shadow: 4px -7px 32px 0px rgba(15, 15, 15, 1);
-  box-shadow: 4px -7px 32px 0px rgba(15, 15, 15, 1);
+  /* position: absolute; */
 }
-
-.moving.tinder--card {
-  transition: none;
-  cursor: -webkit-grabbing;
-  cursor: -moz-grabbing;
-  cursor: grabbing;
-}
-
-.tinder--card img {
-  max-width: 100%;
-  pointer-events: none;
-}
-
-.tinder--card h3 {
-  /* margin-top: 32px; */
-  font-size: 32px;
-  padding: 0 5px;
-  pointer-events: none;
-}
-
-.tinder--card p {
-  margin-top: 2px;
-  /* font-size: 20px; */
-  padding: 0 2px;
-  pointer-events: none;
-}
-
-.tinder--buttons {
-  flex: 0 0 100px;
-  text-align: center;
-  padding-top: 10px;
-}
-
-.tinder--buttons button {
-  border-radius: 50%;
-  line-height: 60px;
-  width: 60px;
-  border: 0;
-  background: #ffffff;
-  display: inline-block;
-  margin: 10px 10px;
-  cursor: pointer;
-}
-
-.tinder--buttons button:focus {
-  outline: 0;
-}
-
-.tinder--buttons i {
-  font-size: 32px;
-  vertical-align: middle;
-  cursor: pointer;
-}
-
-.fa-heart {
-  color: red;
-}
-
-.fa-remove {
-  color: grey;
-}
-.info {
-  left: 200px;
-}
-
-/* .red {
-  background-color: red;
-} */
-i {
-  font-size: 3em;
-  color: red;
-}
-.dog {
-   font-family: "CutiePatootie";
-   font-weight: bold;
-   font-size: 2.5em;
+.control {
+  
 }
 </style>
 
 
 
 <script>
-export default {
-  name: "profile",
-  created() {
-    var user = this.loggedInUser;
-    if (this.loggedInUser !== null) {
-        var dogId = this.loggedInUser.dogId;
-        
-        this.$store.dispatch({ type: "loadUserDog", dogId })
-        .then(() => {
-             console.log('this.$store.state.userDog', this.$store.state.userDog);
-        })
-    }
-  },
-  computed: {
-    loggedInUser() {
-       return this.$store.getters.loggedInUserForDisplay;
-    },
+  import PrefsPage from './PrefsPage.vue';
+  import EditPage from './EditPage.vue';
 
-    dog() {
-         return this.$store.state.userStore.userDog;
+  export default {
+    name: "profile",
+    created() {
+      var user = this.loggedInUser;
+      if (this.loggedInUser !== null) {
+          var dogId = this.loggedInUser.dogId;
+          
+          this.$store.dispatch({ type: "loadUserDog", dogId })
+          .then(() => {
+              console.log('this.$store.state.userDog', this.$store.state.userDog);
+          })
       }
-    }
+    },
+    computed: {
+      loggedInUser() {
+        return this.$store.getters.loggedInUserForDisplay;
+      },
+
+      dog() {
+          return this.$store.state.userStore.userDog;
+        }
+      }
   }
 </script>

@@ -96,10 +96,18 @@ router-link, #nav, #app {
     padding: 2px;
     letter-spacing: 1px;
 }
-
 .register-page button, .login-page button, .match-page button{
     font-family: CutiePatootie;
     font-weight: bold;
     letter-spacing: 2px;
     line-height: 150%;
+    width: 150px;
 }
+.profile-pics {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 3px solid red;
+    margin: 0px 20px;
+    box-shadow: 0 4px 8px 0 rgba(31, 7, 7, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
