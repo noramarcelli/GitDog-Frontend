@@ -17,9 +17,9 @@
     <!-- <dog-details :dog="currDog" v-if="shouldShow" /> -->
 
     <div class="tinder--buttons">
-      <button id="nope" @click="getNextDogs(currDog._id, false)"><i class="fa fa-remove"></i></button>
+      <button id="nope" @click="getNextDogs(currDog._id)"><i class="fa fa-remove"></i></button>
       <button id="fav"><i class="fa fa-star"></i></button>
-      <button id="love" @click="getNextDogs(currDog._id, true)"><i class="fa fa-heart"></i></button>
+      <button id="love" @click="getNextDogs(currDog._id, currDog.userId)"><i class="fa fa-heart"></i></button>
     </div>
   </div>
 </template>
@@ -75,19 +75,25 @@ export default {
     }
   },
   methods: {
-    getNextDogs(dogId, isLiked) {
+    getNextDogs(dogId, dogUserId) {
       var userDogId = this.userDog._id;
       this.$store.dispatch({ type: LOAD_NEXT_DOGS, dogId, userDogId });
-      if (isLiked) {
+      if (dogUserId) {
         var userId = this.loggedInUser._id;
         console.log('userId inside getNextDogs', userId);
         
-        this.$store.dispatch({ type: SAVE_LIKE, dogId, userDogId, userId });
-        // this.$store.dispatch({ type: "findLikes", userDogId });
+        this.$socket.emit('likedDog', { dogId, dogUserId, userDogId, userId })
+        // this.$store.dispatch({ type: SAVE_LIKE, dogId, userDogId, userId });
       }
     },
     showDetails() {
       this.shouldShow = !this.shouldShow;
+    }
+  },
+  sockets: {
+    matched(matchId) {
+      console.log('We have a match!')
+      console.log({matchId})
     }
   },
 

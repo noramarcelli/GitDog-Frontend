@@ -37,7 +37,17 @@ export default{
     findLikes(store, { userDogId }){
       return DogService.findLikes( userDogId ).then(dogs => {
       });
+    },
+
+    uploadImg(store, {imgUrl}){
+      return DogService.uploadImg( imgUrl).then(dog => {
+      });
     }
+
+    // uploadImg(store, {imgUrl, imgIdx}){
+    //   return DogService.uploadImg( imgUrl, imgIdx ).then(dog => {
+    //   });
+    // }
   },
 
   getters: {

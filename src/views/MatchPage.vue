@@ -16,8 +16,11 @@
 </template>
 
 <script>
+
 export default {
-  
+  created(){
+    console.log('matchPage created');
+  }
 };
 </script>
 

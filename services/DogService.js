@@ -60,6 +60,24 @@ function findLikes(userDogId){
     })
 }
 
+// function uploadImg( imgUrl, imgIdx ){
+//     return axios
+//     .get(`${DOG_URL}/uploadImg`)
+//     .then(res => {
+//         res.data
+//         console.log('updated dog after img upload: ', res.data);
+//     })
+// }
+
+function uploadImg( imgUrl ){
+    return axios
+    .get(`${DOG_URL}/uploadImg`)
+    .then(res => {
+        res.data
+        console.log('updated dog after img upload: ', res.data);
+    })
+}
+
 
 
 export default {
@@ -70,5 +88,6 @@ export default {
     getDogById,
     getNextDogs,
     addLikeToDog,
-    findLikes
+    findLikes,
+    uploadImg
 }
