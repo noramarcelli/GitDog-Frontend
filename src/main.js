@@ -6,6 +6,10 @@ import store from './store/store.js'
 import Bulma from 'bulma' 
 import './registerServiceWorker'
 import VueCarousel from 'vue-carousel';
+import socketio from 'socket.io-client'
+import VueSocketio from 'vue-socket.io';
+
+Vue.use(VueSocketio, socketio('http://localhost:3000'), store);
 
 
 // import swipe from '../css/swipe.css';
@@ -19,5 +23,10 @@ Vue.config.productionTip = false
 new Vue({
   router,
   store,
+  sockets: {
+    connect() {
+      console.log('connected to socket')
+    }
+  },
   render: h => h(App)
 }).$mount('#app')
