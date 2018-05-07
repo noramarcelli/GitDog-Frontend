@@ -1,6 +1,6 @@
 <template>
     <section class="edit-page">
-        <a @click="$router.push('/profile')" title="Done"><i class="fa fa-check-circle"></i></a>
+        <a class="done" @click="$router.push('/profile')" title="Done"><i class="fa fa-check-circle"></i></a>
         <!-- <p>This is a Temp Edit Page</p> -->
         
         <section class="profile-imgs">
@@ -119,15 +119,19 @@ export default {};
     font-family: "CutiePatootie";
     padding: 5px;
     margin: 10px;
-    font-size: 12px;
+    font-size: 16px;
 }
 label {
-    font-weight: 1em;
+    font-size: 16px;
     font-weight: bold;
     display: block;
 }
 .name, .age, .about {
     left: 5px;
+}
+.done{
+    font-size: 50px;
+    color: black;
 }
 </style>
 
