@@ -88,7 +88,7 @@ router-link, #nav, #app {
     padding: 5px;
     margin: 5px;
 }
-.register-page input, .login-page input{
+.register-page input, .login-page input, .edit-page input{
     max-width: 30%;
     font-family: "CutiePatootie";
     font-weight: bold;
