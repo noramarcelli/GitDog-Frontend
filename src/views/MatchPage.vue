@@ -17,7 +17,16 @@
 
 <script>
 export default {
-  
+  created(){
+    //   socket.on('newMatch', matchedDog => {
+    //     console.log('newMatch in frontend profilePage', matchedDog);
+    // })
+  },
+  //  sockets: {
+  //   connect() {
+  //     console.log('connected to socket')
+  //   }
+  // }
 };
 </script>
 
