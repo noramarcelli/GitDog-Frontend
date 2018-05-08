@@ -19,8 +19,8 @@ export default {
     setMatchedDog(state, { dog }) {
       state.matchedDog = dog;
     },
-    setDogMatches(state, { matches }) {
-      state.matches = matches;
+    setDogMatches(state, { joinedMatches }) {
+      state.matches = joinedMatches;
       console.log("state.matches", state.matches);
     }
   },
@@ -38,10 +38,10 @@ export default {
       console.log("userDogId in getDogMatches", dogId);
       // let matchedDogs = [];
 
-      return MatchService.getDogMatches(dogId).then(matches => {
+      MatchService.getDogMatches(dogId).then(matches => {
         console.log("matches", matches);
 
-       matches.map(function(match) {
+      let joinedMatchesPrms = matches.map(function(match) {
           let otherDogId =
             match.firstDogId === dogId ? match.secondDogId : match.firstDogId;
           console.log('otherDogId', otherDogId);
@@ -51,12 +51,17 @@ export default {
           return DogService.getDogById(otherDogId).then(dog => {
             console.log('dog', dog);
              match.dog = dog;
+             return match;
           });
 
              console.log('match.dog', match.dog);
         });
 
-        store.commit({ type: 'setDogMatches', matches });
+        return Promise.all(joinedMatchesPrms)
+                .then(joinedMatches => {
+                  store.commit({ type: 'setDogMatches', joinedMatches });
+                })
+
       });
     }
   },

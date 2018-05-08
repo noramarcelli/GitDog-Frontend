@@ -14,19 +14,19 @@
                         <img v-if="dog.imgs[0]" :src="'./' + dog.imgs[0]">
                         <a v-if="dog.imgs[0]" @click="toggleInput(0)"><i class="fa fa-minus-circle"></i></a>
                         <a v-if="!dog.imgs[0]" @click="toggleInput(0)"><i class="fa fa-plus-circle"></i></a>
-                        <input v-model="imgUrl" @keyup="addImg(0)"/>
+                        <input @keyup="addImg(0)"/>
                     </div>
                     <div class="column is-4">
                         <img v-if="dog.imgs[1]" :src="'./' + dog.imgs[1]">
                          <!-- <img v-if="!dog.imgs[1]" :class="square"> -->
                         <a v-if="dog.imgs[1]" @click="toggleInput(1)"><i class="fa fa-minus-circle"></i></a>
                         <a v-if="!dog.imgs[1]" @click="toggleInput(1)"><i class="fa fa-plus-circle"></i></a>
-                        <input  v-model="imgUrl" @keyup="addImg(1)"/>
+                        <input @keyup="addImg(1)"/>
                         <!-- <a><i class="fa fa-plus-circle"></i></a> -->
                         <img v-if="dog.imgs[2]" :src="'./' + dog.imgs[2]">
                         <a v-if="dog.imgs[2]" @click="toggleInput(2)"><i class="fa fa-minus-circle"></i></a>
                         <a v-if="!dog.imgs[2]" @click="toggleInput(2)"><i class="fa fa-plus-circle"></i></a>
-                        <input v-model="imgUrl" @keyup="addImg(2)"/>
+                        <input @keyup="addImg(2)"/>
                         <!-- <a><i class="fa fa-plus-circle"></i></a> -->
                     </div>
                 </div>
@@ -35,33 +35,29 @@
                         <img v-if="dog.imgs[3]" :src="'./' + dog.imgs[3]">
                         <a v-if="dog.imgs[3]" @click="toggleInput(3)"><i class="fa fa-minus-circle"></i></a>
                         <a v-if="!dog.imgs[3]" @click="toggleInput(3)"><i class="fa fa-plus-circle"></i></a>
-                        <input v-model="imgUrl" @keyup="addImg(3)"/>
+                        <input @keyup="addImg(3)"/>
                     </div>
                     <div class="column is-4">
                         <img v-if="dog.imgs[4]" :src="'./' + dog.imgs[4]">
                         <a v-if="dog.imgs[4]" @click="toggleInput(4)"><i class="fa fa-minus-circle"></i></a>
                         <a v-if="!dog.imgs[4]" @click="toggleInput(4)"><i class="fa fa-plus-circle"></i></a>
-                        <input v-model="imgUrl" @keyup="addImg(4)"/>
+                        <input @keyup="addImg(4)"/>
                     </div>
                     <div class="column is-4">
                         <img v-if="dog.imgs[5]" :src="'./' + dog.imgs[5]">
                         <a v-if="dog.imgs[5]" @click="toggleInput(5)"><i class="fa fa-minus-circle"></i></a>
                         <a v-if="!dog.imgs[5]" @click="toggleInput(5)"><i class="fa fa-plus-circle"></i></a>
-                        <input v-model="imgUrl" @keyup="addImg(5)"/>
+                        <input @keyup="addImg(5)"/>
                     </div>
             </div>
-<<<<<<< HEAD
-            </div>
-=======
         </div>
->>>>>>> c29e044fe23220bd9c7b1d52b62b02255ad9e8ec
         </section>
     
     <section class="edit-details">
         <!-- <input class="message-header" type="text" v-model="setPlaceToEdit.name"/> -->
         <!-- RENDER NAME OF THE DOG -->
         <label class="name">Name:</label>
-        <input class="input is-small is-danger" type="text" placeholder="NAME OF THE DOG"/>
+        <input class="input is-small is-danger" type="text" placeholder="NAME OF THE DOG" v-model="dog.name"/>
         <label class="age">Age:</label>
         <input class="input is-small is-danger" type="text" placeholder="AGE"/>
         <label class="breed">Breed:</label>
@@ -140,18 +136,22 @@
 export default {
   data() {
     return {
-        imgUrl: ''
+        // imgUrl: ''
+        // dogToEdit: {name: '', age: '', breed: '', city: '', weight: 0,  breed: '', description: '', gender: '', imgs: []}
     };
   },
   created() {
-    var user = this.loggedInUser;
-    if (this.loggedInUser !== null) {
-      var dogId = this.loggedInUser.dogId;
+    // var user = this.loggedInUser;
+    // if (this.loggedInUser !== null) {
+    //   var dogId = this.loggedInUser.dogId;
 
-      this.$store.dispatch({ type: "loadUserDog", dogId }).then(() => {
-        // console.log("this.$store.state.userDog", this.$store.state.userDog);
-      });
-    }
+    // //   this.$store.dispatch({ type: "loadUserDog", dogId }).then(() => {
+    // //     // console.log("this.$store.state.userDog", this.$store.state.userDog);
+    // //   });
+    // }
+
+    console.log('this.dog', this.dog);
+    
   },
   computed: {
     loggedInUser() {
@@ -160,7 +160,7 @@ export default {
 
     dog() {
       console.log("dog in edit page", this.$store.state.userStore.userDog);
-
+    //   if(this.$store.state.userStore.userDog) this.dogToEdit = this.$store.state.userStore.userDog;
       return this.$store.state.userStore.userDog;
     },
 
