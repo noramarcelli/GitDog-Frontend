@@ -96,7 +96,7 @@
 
         <div class="select is-danger is-small">
            <label>City/Region &nbsp;&nbsp;</label>
-            <select>
+            <select multiple>
                 <option class="optionGroup">HaMerkaz</option>
                 <option class="optionChild">Tel Aviv</option>
                 <option class="optionChild">Ramat Gan</option>
