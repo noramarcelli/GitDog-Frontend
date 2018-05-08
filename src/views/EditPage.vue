@@ -97,30 +97,26 @@
         <div class="select is-danger is-small">
            <label>City/Region &nbsp;&nbsp;</label>
             <select>
-                <optgroup label="HaMerkaz">
-                    <option>Tel Aviv</option>
-                    <option>Ramat Gan</option>
-                    <option>Rishon Letzion</option>
-                    <option>Bat Yam</option>
-                </optgroup>
-                <optgroup label="HaSharon">
-                    <option>Natanya</option>
-                    <option>Hertzeliya</option>
-                    <option>Raanana</option>
-                    <option>Kfar Saba</option>
-                </optgroup>
-                <optgroup label="HaDarom">
-                    <option>Ashdod</option>
-                    <option>Ashkelon</option>
-                    <option>Beer Sheva</option>
-                </optgroup>
-                <optgroup label="HaTzafon"> 
-                    <option>Haifa</option>
-                    <option>Ako</option>
-                    <option>Hadera</option>
-                    <option>Nahariya</option>
-                    <option>Krayot</option>
-                </optgroup>
+                <option class="optionGroup">HaMerkaz</option>
+                <option class="optionChild">Tel Aviv</option>
+                <option class="optionChild">Ramat Gan</option>
+                <option class="optionChild">Rishon Letzion</option>
+                <option class="optionChild">Bat Yam</option>
+                <option class="optionGroup">HaSharon</option>
+                <option class="optionChild">Natanya</option>
+                <option class="optionChild">Hertzeliya</option>
+                <option class="optionChild">Raanana</option>
+                <option class="optionChild">Kfar Saba</option>
+                <option class="optionGroup">HaDarom</option>
+                <option class="optionChild">Ashdod</option>
+                <option class="optionChild">Ashkelon</option>
+                <option class="optionChild">Beer Sheva</option>
+                <option class="optionGroup">HaTzafon</option>
+                <option class="optionChild">Haifa</option>
+                <option class="optionChild">Ako</option>
+                <option class="optionChild">Hadera</option>
+                <option class="optionChild">Nahariya</option>
+                <option class="optionChild">Krayot</option>
             </select>
             <br>
         </div>
@@ -221,6 +217,14 @@ label {
   background-repeat: no-repeat;
   background-size: cover;  
   /* background-color: #555; */
+}
+.optionGroup {
+    font-weight: bold !important;
+    font-style: italic;
+}
+    
+.optionChild {
+    padding-left: 15px;
 }
 </style>
 
