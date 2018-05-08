@@ -1,10 +1,12 @@
 
   <template>
       <section class="details"> 
-        <!-- <h1>Details</h1> -->
         <p>{{dog.description}}</p>
-        <!-- <p>{{dog.weight}}</p> -->
-        <!-- <p>{{dog.city}}</p> -->
+        <p>Breed: {{dog.breed}}</p>
+        <p>Age: {{dog.age}}</p>
+        <p>Weight: {{dog.weight}}</p>
+        <p>City: {{dog.city}}</p>
+        
       </section>
     </template>
 
@@ -21,10 +23,11 @@ export default {
 </script>
 
 <style scoped>
-  .details {
+  .details, p {
     font-family: "CutiePatootie";
     /* font-weight: bold; */
-    font-size: 1.5em;
+    font-size: 1.2em;
+    margin: 4px !important;
   }
 </style>
       

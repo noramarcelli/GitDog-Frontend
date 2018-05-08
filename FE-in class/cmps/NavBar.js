@@ -8,7 +8,7 @@ export default {
         <router-link v-if="!loggedinUser" to="login">Login</router-link>
         <router-link v-if="loggedinUser" to="admin">Admin</router-link>
         <router-link v-if="loggedinUser" to="dog">Dogs App</router-link>
-        <button v-if="loggedinUser" @click="logout">{{loggedinUser.name}} Logout</button>
+        
     </section>
     
     `,

@@ -54,7 +54,8 @@ export default new Router({
       component: Msgs
     },
     {
-      path: '/chat/:dogId',
+      // path: '/chat/:dogId',
+      path: '/chat/:userId?',
       name: 'chat',
       component: Chat
     },
