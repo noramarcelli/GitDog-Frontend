@@ -12,15 +12,16 @@
             <br>
             <label>New Matches:</label>
             <br>
-            <span class="matches-imgs">
-                <img class="matches-pics" src="../../public/img/dogs/stella_1.jpeg">
-                <img class="matches-pics" src="../../public/img/dogs/luna_1.jpeg">
+            <span v-if="matches" class="matches-imgs" v-for="match in matches" :key="match._id">
+                <img  class="matches-pics" :src="'./' + match.dog.imgs[0]"/>
+                <!-- <img class="matches-pics" src="../../public/img/dogs/stella_1.jpeg"> -->
+                <!-- <img class="matches-pics" src="../../public/img/dogs/luna_1.jpeg">
                 <img class="matches-pics" src="../../public/img/dogs/snow_3.jpeg">
                 <img class="matches-pics" src="../../public/img/dogs/stella_1.jpeg">
                 <img class="matches-pics" src="../../public/img/dogs/luna_1.jpeg">
                 <img class="matches-pics" src="../../public/img/dogs/snow_3.jpeg">
                 <img class="matches-pics" src="../../public/img/dogs/luna_1.jpeg">
-                <img class="matches-pics" src="../../public/img/dogs/snow_3.jpeg">
+                <img class="matches-pics" src="../../public/img/dogs/snow_3.jpeg"> -->
             </span>
             <br>
         </span>
@@ -35,7 +36,24 @@
 
 <script>
 export default {
-  
+ created() {
+         var dogId = this.dog._id;
+         console.log('dogId in msgsPage', dogId);
+         
+         this.$store.dispatch({type: 'getDogMatches', dogId})
+    },
+computed: {
+    dog() {
+      return this.$store.state.userStore.userDog;
+    },
+
+    matches(){
+        console.log('this.$store.state.matchStore.matches', this.$store.state.matchStore.matches);
+        return this.$store.state.matchStore.matches;
+    }
+  },
+
+
 }
 </script>
 

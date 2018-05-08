@@ -78,8 +78,6 @@ function uploadImg( imgUrl ){
     })
 }
 
-
-
 export default {
     getDogs,
     saveDog,

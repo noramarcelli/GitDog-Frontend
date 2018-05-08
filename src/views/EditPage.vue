@@ -50,7 +50,11 @@
                         <input v-model="imgUrl" @keyup="addImg(5)"/>
                     </div>
             </div>
+<<<<<<< HEAD
             </div>
+=======
+        </div>
+>>>>>>> c29e044fe23220bd9c7b1d52b62b02255ad9e8ec
         </section>
     
     <section class="edit-details">
