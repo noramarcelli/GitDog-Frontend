@@ -6,7 +6,7 @@ import About from './views/AboutPage.vue'
 import Login from './views/LoginPage.vue'
 import Register from './views/RegisterPage.vue'
 import Msgs from './views/MsgsPage.vue'
-// import Chat from './views/ChatPage.vue'
+import Chat from './views/ChatPage.vue'
 import Profile from './views/ProfilePage.vue'
 import Edit from './views/EditPage.vue'
 import Prefs from './views/PrefsPage.vue'
@@ -52,11 +52,11 @@ export default new Router({
       name: 'msgs',
       component: Msgs
     },
-    // {
-    //   path: '/chat/:dogId',
-    //   name: 'chat',
-    //   component: Chat
-    // },
+    {
+      path: '/chat/:dogId',
+      name: 'chat',
+      component: Chat
+    },
     {
       path: '/profile',
       name: 'profile',

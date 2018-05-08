@@ -1,13 +1,16 @@
 <template>
     <section class="edit-page">
-        <a @click="$router.push('/profile')" title="Done"><i class="fa fa-check-circle"></i></a>
+        <a class="done" @click="$router.push('/profile')" title="Done"><i class="fa fa-check-circle"></i></a>
         <!-- <p>This is a Temp Edit Page</p> -->
         
         <section class="profile-imgs">
+            <!-- <span class="empty-pic square"></span> -->
+
             <div class="block">
                 <div class="columns">
                     <div class="column is-8">
                         <!-- PROFILE PICTURE - THE FIRST -->
+                        <!-- :class="{'square' : showEmpty} -->
                         <img v-if="dog.imgs[0]" :src="'./' + dog.imgs[0]">
                         <a v-if="dog.imgs[0]" @click="toggleInput(0)"><i class="fa fa-minus-circle"></i></a>
                         <a v-if="!dog.imgs[0]" @click="toggleInput(0)"><i class="fa fa-plus-circle"></i></a>
@@ -15,6 +18,7 @@
                     </div>
                     <div class="column is-4">
                         <img v-if="dog.imgs[1]" :src="'./' + dog.imgs[1]">
+                         <!-- <img v-if="!dog.imgs[1]" :class="square"> -->
                         <a v-if="dog.imgs[1]" @click="toggleInput(1)"><i class="fa fa-minus-circle"></i></a>
                         <a v-if="!dog.imgs[1]" @click="toggleInput(1)"><i class="fa fa-plus-circle"></i></a>
                         <input  v-model="imgUrl" @keyup="addImg(1)"/>
@@ -46,9 +50,13 @@
                         <input v-model="imgUrl" @keyup="addImg(5)"/>
                     </div>
             </div>
+<<<<<<< HEAD
+            </div>
+=======
         </div>
+>>>>>>> c29e044fe23220bd9c7b1d52b62b02255ad9e8ec
         </section>
-
+    
     <section class="edit-details">
         <!-- <input class="message-header" type="text" v-model="setPlaceToEdit.name"/> -->
         <!-- RENDER NAME OF THE DOG -->
@@ -56,6 +64,8 @@
         <input class="input is-small is-danger" type="text" placeholder="NAME OF THE DOG"/>
         <label class="age">Age:</label>
         <input class="input is-small is-danger" type="text" placeholder="AGE"/>
+        <label class="breed">Breed:</label>
+        <input class="input is-small is-danger" type="text" placeholder="BREED"/>
 
         <br>
        <div class="specs"> 
@@ -152,6 +162,11 @@ export default {
       console.log("dog in edit page", this.$store.state.userStore.userDog);
 
       return this.$store.state.userStore.userDog;
+    },
+
+    showEmpty() {
+        // return this.$route.name !== 'edit';
+
     }
   },
   methods: {
@@ -187,15 +202,29 @@ export default {
     font-family: "CutiePatootie";
     padding: 5px;
     margin: 10px;
-    font-size: 12px;
+    font-size: 16px;
 }
 label {
-    font-weight: 1em;
+    font-size: 16px;
     font-weight: bold;
     display: block;
 }
-.name, .age, .about {
+.name, .age, .about, .breed {
     left: 5px;
+}
+.done{
+    font-size: 50px;
+    color: black;
+}
+.square {
+  border-color: 2px solid red; 
+  height: 250px;
+  width: 250px;
+  display: block;
+  background-image: url('../../public/img/bgrd/paw.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;  
+  /* background-color: #555; */
 }
 </style>
 

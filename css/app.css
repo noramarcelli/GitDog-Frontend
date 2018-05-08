@@ -39,12 +39,9 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     height: 100%;
-    
-    /* background-image: url(""); */
 }
 footer {
     height: 150px;
-    /* background-color: #000000b8; */
     background-color: black;
 }
 router-link, #nav, #app {
