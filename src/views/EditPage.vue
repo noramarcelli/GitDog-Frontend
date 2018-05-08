@@ -11,7 +11,7 @@
                     <div class="column is-8">
                         <!-- PROFILE PICTURE - THE FIRST -->
                         <!-- :class="{'square' : showEmpty} -->
-                        <img v-if="dog.imgs[0]" :src="'./' + dog.imgs[0]">
+                        <img v-if="dog.imgs[0]"  ref="img" :src="'./' + dog.imgs[0] ">
                         <a v-if="dog.imgs[0]" @click="toggleInput(0)"><i class="fa fa-minus-circle"></i></a>
                         <a v-if="!dog.imgs[0]" @click="toggleInput(0)"><i class="fa fa-plus-circle"></i></a>
                         <input @keyup="addImg(0)"/>
@@ -180,6 +180,17 @@ export default {
     toggleInput(inputId) {
 
     },
+       addImg(idx){
+
+
+    //     this.$store.dispatch({ type: "uploadImg", imgUrl, imgIdx}).then(() => {
+    //     // console.log("this.$store.state.userDog", this.$store.state.userDog);
+    //   });
+    //     console.log('imgUrl', this.imgUrl);
+    //     var imgUrl = this.imgUrl;
+    //     this.$store.dispatch({ type: "uploadImg", imgUrl}).then(() => {
+    //   });
+    },
     // addImg(imgIdx){
     // //     this.$store.dispatch({ type: "uploadImg", imgUrl, imgIdx}).then(() => {
     // //     // console.log("this.$store.state.userDog", this.$store.state.userDog);
@@ -190,15 +201,15 @@ export default {
     // //   });
     // }
 
-     addImg(){
-    //     this.$store.dispatch({ type: "uploadImg", imgUrl, imgIdx}).then(() => {
-    //     // console.log("this.$store.state.userDog", this.$store.state.userDog);
+    //  addImg(){
+    // //     this.$store.dispatch({ type: "uploadImg", imgUrl, imgIdx}).then(() => {
+    // //     // console.log("this.$store.state.userDog", this.$store.state.userDog);
+    // //   });
+    //     console.log('imgUrl', this.imgUrl);
+    //     var imgUrl = this.imgUrl;
+    //     this.$store.dispatch({ type: "uploadImg", imgUrl}).then(() => {
     //   });
-        console.log('imgUrl', this.imgUrl);
-        var imgUrl = this.imgUrl;
-        this.$store.dispatch({ type: "uploadImg", imgUrl}).then(() => {
-      });
-    },
+    // },
 
     saveDog() {
         // console.log('dog inside save dog', this.dog);
