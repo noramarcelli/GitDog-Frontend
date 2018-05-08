@@ -55,7 +55,8 @@ export default {
 
              console.log('match.dog', match.dog);
         });
-            store.commit({ type: 'setDogMatches', matches });
+
+        store.commit({ type: 'setDogMatches', matches });
       });
     }
   },

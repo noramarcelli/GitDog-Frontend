@@ -12,15 +12,16 @@
             <br>
             <label>New Matches:</label>
             <br>
-            <span class="matches-imgs">
-                <img class="matches-pics" src="../../public/img/dogs/stella_1.jpeg">
-                <img class="matches-pics" src="../../public/img/dogs/luna_1.jpeg">
+            <span v-if="matches" class="matches-imgs" v-for="match in matches" :key="match._id">
+                <img v-if="match.dog" class="matches-pics" :src="'./' + match.dog.imgs[0]"/>
+                <!-- <img class="matches-pics" src="../../public/img/dogs/stella_1.jpeg"> -->
+                <!-- <img class="matches-pics" src="../../public/img/dogs/luna_1.jpeg">
                 <img class="matches-pics" src="../../public/img/dogs/snow_3.jpeg">
                 <img class="matches-pics" src="../../public/img/dogs/stella_1.jpeg">
                 <img class="matches-pics" src="../../public/img/dogs/luna_1.jpeg">
                 <img class="matches-pics" src="../../public/img/dogs/snow_3.jpeg">
                 <img class="matches-pics" src="../../public/img/dogs/luna_1.jpeg">
-                <img class="matches-pics" src="../../public/img/dogs/snow_3.jpeg">
+                <img class="matches-pics" src="../../public/img/dogs/snow_3.jpeg"> -->
             </span>
             <br>
         </span>
@@ -48,7 +49,6 @@ computed: {
 
     matches(){
         console.log('this.$store.state.matchStore.matches', this.$store.state.matchStore.matches);
-        
         return this.$store.state.matchStore.matches;
     }
   },
