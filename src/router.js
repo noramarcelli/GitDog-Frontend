@@ -39,6 +39,7 @@ export default new Router({
     },
     {
       path: '/edit',
+      // path: '/edit/:dogId',
       name: 'edit',
       component: Edit
     },

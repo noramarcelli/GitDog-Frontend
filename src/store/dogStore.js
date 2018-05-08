@@ -19,7 +19,16 @@ export default{
       }
       state.selectedDog = dogs[state.selectedDogIdx];
       console.log('state.selectedDog', state.selectedDog);
-    }
+    },
+
+    // addDog(state, { dog }) {
+    //   state.dogs = [dog, ...state.dogs];
+    // },
+    // updateDog(state, { dog }) {
+    //   const dogIdx = state.dogs.findIndex(currDog => currDog.id === dog.id)
+    //   state.dogs.splice(bugIdx, 1, dog)
+    // },
+
   },
   actions: {
     [LOAD_NEXT_DOGS](store, { dogId, userDogId }){
@@ -42,6 +51,15 @@ export default{
     uploadImg(store, {imgUrl}){
       return DogService.uploadImg( imgUrl).then(dog => {
       });
+    },
+
+    saveDog(store, {dogToEdit}){
+      console.log('dog inside dogStore', dogToEdit);
+      
+      return DogService.saveDog(dogToEdit)
+      .then(dogToEdit => {
+        return dogToEdit;
+      })
     }
 
     // uploadImg(store, {imgUrl, imgIdx}){

@@ -58,7 +58,7 @@ export default {
         });
 
         return Promise.all(joinedMatchesPrms)
-                .then(joinedMatches => {
+                .then(joindMatches => {
                   store.commit({ type: 'setDogMatches', joinedMatches });
                 })
 
