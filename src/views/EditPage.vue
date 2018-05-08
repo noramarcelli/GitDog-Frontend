@@ -11,7 +11,7 @@
                     <div class="column is-8">
                         <!-- PROFILE PICTURE - THE FIRST -->
                         <!-- :class="{'square' : showEmpty} -->
-                        <img v-if="dog.imgs[0]" :src="'./' + dog.imgs[0]">
+                        <img v-if="dog.imgs[0]"  ref="img" :src="'./' + dog.imgs[0] ">
                         <a v-if="dog.imgs[0]" @click="toggleInput(0)"><i class="fa fa-minus-circle"></i></a>
                         <a v-if="!dog.imgs[0]" @click="toggleInput(0)"><i class="fa fa-plus-circle"></i></a>
                         <input @keyup="addImg(0)"/>
@@ -59,9 +59,9 @@
         <label class="name">Name:</label>
         <input class="input is-small is-danger" type="text" placeholder="NAME OF THE DOG" v-model="dog.name"/>
         <label class="age">Age:</label>
-        <input class="input is-small is-danger" type="text" placeholder="AGE"/>
+        <input class="input is-small is-danger" type="text" placeholder="AGE" v-model="dog.age"/>
         <label class="breed">Breed:</label>
-        <input class="input is-small is-danger" type="text" placeholder="BREED"/>
+        <input class="input is-small is-danger" type="text" placeholder="BREED" v-model="dog.breed"/>
 
         <br>
        <div class="specs"> 
@@ -91,7 +91,7 @@
         <!-- RENDER DESC OF THE DOG -->
         <div class="desc">
             <label class="desc about">About:</label>
-            <textarea class="textarea is-small is-danger" maxlength="40" size="60" type="text" placeholder="DEC DOG"></textarea>
+            <textarea class="textarea is-small is-danger" maxlength="40" size="60" type="text" placeholder="DEC DOG" v-model="dog.description"></textarea>
         </div>    
 
         <div class="select is-danger is-small">
@@ -121,6 +121,8 @@
             <br>
         </div>
         <br>
+
+        <button type="button" class="button is-small is-danger is-rounded block" @click="saveDog">Save Dog</button>
         
     </section>
 
@@ -155,9 +157,14 @@ export default {
     },
 
     dog() {
-      console.log("dog in edit page", this.$store.state.userStore.userDog);
+    //   console.log("dog in edit page", this.$store.getters.userDog);
     //   if(this.$store.state.userStore.userDog) this.dogToEdit = this.$store.state.userStore.userDog;
-      return this.$store.state.userStore.userDog;
+    //   return this.$store.state.userStore.userDog;
+      let dog = this.$store.getters.userDog;
+      let dogToEdit = { ...dog }
+      delete dogToEdit.pendingLikesIds;
+      delete dogToEdit.matches;
+      return dogToEdit;
     },
 
     showEmpty() {
@@ -169,6 +176,17 @@ export default {
     toggleInput(inputId) {
 
     },
+       addImg(idx){
+
+
+    //     this.$store.dispatch({ type: "uploadImg", imgUrl, imgIdx}).then(() => {
+    //     // console.log("this.$store.state.userDog", this.$store.state.userDog);
+    //   });
+    //     console.log('imgUrl', this.imgUrl);
+    //     var imgUrl = this.imgUrl;
+    //     this.$store.dispatch({ type: "uploadImg", imgUrl}).then(() => {
+    //   });
+    },
     // addImg(imgIdx){
     // //     this.$store.dispatch({ type: "uploadImg", imgUrl, imgIdx}).then(() => {
     // //     // console.log("this.$store.state.userDog", this.$store.state.userDog);
@@ -179,14 +197,26 @@ export default {
     // //   });
     // }
 
-     addImg(){
-    //     this.$store.dispatch({ type: "uploadImg", imgUrl, imgIdx}).then(() => {
-    //     // console.log("this.$store.state.userDog", this.$store.state.userDog);
+    //  addImg(){
+    // //     this.$store.dispatch({ type: "uploadImg", imgUrl, imgIdx}).then(() => {
+    // //     // console.log("this.$store.state.userDog", this.$store.state.userDog);
+    // //   });
+    //     console.log('imgUrl', this.imgUrl);
+    //     var imgUrl = this.imgUrl;
+    //     this.$store.dispatch({ type: "uploadImg", imgUrl}).then(() => {
     //   });
-        console.log('imgUrl', this.imgUrl);
-        var imgUrl = this.imgUrl;
-        this.$store.dispatch({ type: "uploadImg", imgUrl}).then(() => {
-      });
+    // },
+
+    saveDog() {
+        // console.log('dog inside save dog', this.dog);
+         let dogToEdit = this.dog;
+         console.log('dog inside save dog', dogToEdit);
+        
+      this.$store
+        .dispatch({ type: "saveDog", dogToEdit })
+        .then(() => {
+        
+        });
     }
     
   }
