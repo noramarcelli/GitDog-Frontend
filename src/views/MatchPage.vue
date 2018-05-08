@@ -9,7 +9,7 @@
   <!-- <img class="profile-pics" src="../../public/img/dogs/donna_1.jpeg" >
   <img class="profile-pics" src="../../public/img/dogs/charly_1.jpeg" > -->
   
-  <p>You and MATCH-NAME have liked each other</p>
+  <p>You and {{ matchedDog.name }} have liked each other</p>
 
   <button @click="$router.push('/msgs')" class="button is-danger is-rounded">Send a Massage</button>
   <br>

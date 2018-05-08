@@ -13,7 +13,7 @@
             <label>New Matches:</label>
             <br>
             <span v-if="matches" class="matches-imgs" v-for="match in matches" :key="match._id">
-                <img v-if="match.dog" class="matches-pics" :src="'./' + match.dog.imgs[0]"/>
+                <img  class="matches-pics" :src="'./' + match.dog.imgs[0]"/>
                 <!-- <img class="matches-pics" src="../../public/img/dogs/stella_1.jpeg"> -->
                 <!-- <img class="matches-pics" src="../../public/img/dogs/luna_1.jpeg">
                 <img class="matches-pics" src="../../public/img/dogs/snow_3.jpeg">
