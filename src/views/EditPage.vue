@@ -11,19 +11,19 @@
                     <div class="column is-8">
                         <!-- PROFILE PICTURE - THE FIRST -->
                         <!-- :class="{'square' : showEmpty} -->
-                        <img v-if="dog.imgs[0]"  ref="img" :src="'./' + dog.imgs[0] ">
+                        <img v-if="dog.imgs[0]" :src="'./' + dog.imgs[0] ">
                         <a v-if="dog.imgs[0]" @click="toggleInput(0)"><i class="fa fa-minus-circle"></i></a>
                         <a v-if="!dog.imgs[0]" @click="toggleInput(0)"><i class="fa fa-plus-circle"></i></a>
-                        <input @keyup="addImg(0)"/>
+                        <input @keyup="addImg(0)"  ref="img0"/>
                     </div>
                     <div class="column is-4">
                         <img v-if="dog.imgs[1]" :src="'./' + dog.imgs[1]">
                          <!-- <img v-if="!dog.imgs[1]" :class="square"> -->
                         <a v-if="dog.imgs[1]" @click="toggleInput(1)"><i class="fa fa-minus-circle"></i></a>
                         <a v-if="!dog.imgs[1]" @click="toggleInput(1)"><i class="fa fa-plus-circle"></i></a>
-                        <input @keyup="addImg(1)"/>
+                        <input @keyup="addImg(1)" ref="img1"/>
                         <!-- <a><i class="fa fa-plus-circle"></i></a> -->
-                        <img v-if="dog.imgs[2]" :src="'./' + dog.imgs[2]">
+                        <img v-if="dog.imgs[2]" ref="img2" :src="'./' + dog.imgs[2]">
                         <a v-if="dog.imgs[2]" @click="toggleInput(2)"><i class="fa fa-minus-circle"></i></a>
                         <a v-if="!dog.imgs[2]" @click="toggleInput(2)"><i class="fa fa-plus-circle"></i></a>
                         <input @keyup="addImg(2)"/>
@@ -35,19 +35,19 @@
                         <img v-if="dog.imgs[3]" :src="'./' + dog.imgs[3]">
                         <a v-if="dog.imgs[3]" @click="toggleInput(3)"><i class="fa fa-minus-circle"></i></a>
                         <a v-if="!dog.imgs[3]" @click="toggleInput(3)"><i class="fa fa-plus-circle"></i></a>
-                        <input @keyup="addImg(3)"/>
+                        <input @keyup="addImg(3)" ref="img3" />
                     </div>
                     <div class="column is-4">
                         <img v-if="dog.imgs[4]" :src="'./' + dog.imgs[4]">
                         <a v-if="dog.imgs[4]" @click="toggleInput(4)"><i class="fa fa-minus-circle"></i></a>
                         <a v-if="!dog.imgs[4]" @click="toggleInput(4)"><i class="fa fa-plus-circle"></i></a>
-                        <input @keyup="addImg(4)"/>
+                        <input @keyup="addImg(4)" ref="img4"/>
                     </div>
                     <div class="column is-4">
                         <img v-if="dog.imgs[5]" :src="'./' + dog.imgs[5]">
                         <a v-if="dog.imgs[5]" @click="toggleInput(5)"><i class="fa fa-minus-circle"></i></a>
                         <a v-if="!dog.imgs[5]" @click="toggleInput(5)"><i class="fa fa-plus-circle"></i></a>
-                        <input @keyup="addImg(5)"/>
+                        <input @keyup="addImg(5)" ref="img5"/>
                     </div>
             </div>
         </div>
@@ -180,8 +180,8 @@ export default {
     toggleInput(inputId) {
 
     },
-       addImg(idx){
-
+    addImg(idx){
+        // this.$refs.myTestField.value
 
     //     this.$store.dispatch({ type: "uploadImg", imgUrl, imgIdx}).then(() => {
     //     // console.log("this.$store.state.userDog", this.$store.state.userDog);
