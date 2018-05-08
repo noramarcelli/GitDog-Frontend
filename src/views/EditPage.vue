@@ -4,7 +4,7 @@
         <!-- <p>This is a Temp Edit Page</p> -->
         
         <section class="profile-imgs">
-            <span class="empty-pic square"></span>
+            <!-- <span class="empty-pic square"></span> -->
 
             <div class="block">
                 <div class="columns">
@@ -60,6 +60,8 @@
         <input class="input is-small is-danger" type="text" placeholder="NAME OF THE DOG"/>
         <label class="age">Age:</label>
         <input class="input is-small is-danger" type="text" placeholder="AGE"/>
+        <label class="breed">Breed:</label>
+        <input class="input is-small is-danger" type="text" placeholder="BREED"/>
 
         <br>
        <div class="specs"> 
@@ -203,7 +205,7 @@ label {
     font-weight: bold;
     display: block;
 }
-.name, .age, .about {
+.name, .age, .about, .breed {
     left: 5px;
 }
 .done{
