@@ -4,8 +4,8 @@
 
   <!-- <img :src="'./' + dog.imgs[0]">
   <img :src="'./' + dog.imgs[1]"> -->
-  <img v-if="userDog.imgs[0]" class="profile-pics" :src="userDog.imgs[0]" >
-  <img v-if="matchedDog.imgs[0]" class="profile-pics" :src="matchedDog.imgs[0]" >
+  <img v-if="userDog" class="profile-pics" :src="userDog.imgs[0]" >
+  <img v-if="matchedDog" class="profile-pics" :src="matchedDog.imgs[0]" >
   <!-- <img class="profile-pics" src="../../public/img/dogs/donna_1.jpeg" >
   <img class="profile-pics" src="../../public/img/dogs/charly_1.jpeg" > -->
   

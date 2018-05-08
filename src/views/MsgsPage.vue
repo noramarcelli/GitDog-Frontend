@@ -35,7 +35,25 @@
 
 <script>
 export default {
-  
+ created() {
+         var dogId = this.dog._id;
+         console.log('dogId in msgsPage', dogId);
+         
+         this.$store.dispatch({type: 'getDogMatches', dogId})
+    },
+computed: {
+    dog() {
+      return this.$store.state.userStore.userDog;
+    },
+
+    matches(){
+        console.log('this.$store.state.matchStore.matches', this.$store.state.matchStore.matches);
+        
+        return this.$store.state.matchStore.matches;
+    }
+  },
+
+
 }
 </script>
 
