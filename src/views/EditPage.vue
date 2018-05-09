@@ -184,9 +184,16 @@ label {
 .dogs-container .dog {
     background-size: cover;
     background-position: center center;
-
+    position: relative;
 }
 
+.dog a {
+    color: #ff3860;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
 .dogs-container .dog:first-child {
     grid-column: span 2;
     grid-row: span 2;

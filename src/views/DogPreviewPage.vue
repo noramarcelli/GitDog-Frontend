@@ -6,7 +6,7 @@
         <dog-carousel :dog="currDog"></dog-carousel>
         <!-- <img :src="'./' + currDog.imgs[0]"/> -->
         <span @click="showDetails">
-                <i class="fa" :class="{'fa-info-circle' : !shouldShow, 'fa-arrow-circle-down' : shouldShow }"></i>
+                <i class="fa card-control" :class="{'fa fa-info' : !shouldShow, 'fa fa-arrow-down' : shouldShow }"></i>
         </span>
         <p class="dog"> {{currDog.name}}, {{currDog.age}} </p>
         
@@ -252,5 +252,23 @@ i {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+.card-control {
+    box-sizing: border-box;
+    padding: 2px;
+    margin: 0;
+    color: white;
+    background:red;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.2rem;
+    z-index: 10;
+    position: absolute;
+    bottom: 50px;
+    right: 20px;
 }
 </style>
