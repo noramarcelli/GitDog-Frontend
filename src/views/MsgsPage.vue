@@ -4,7 +4,8 @@
         <!-- <form @submit.prevent="checkLogin"> -->
         <form>
             <!-- <input type="search" class="input is-danger is-small is-rounded" ref="txtUserName" placeholder="User name" v-model="user.name" autofocus/> -->
-            <input type="search" class="input is-danger is-small is-rounded" placeholder="Seach + MATCHES_COUNT" autofocus/>
+            <input type="search" class="input is-danger is-small is-rounded" :placeholder="matchesCount" autofocus/>
+            <!-- placeholder="Seach + MATCHES_COUNT" -->
              <br>
         </form>
 
@@ -48,6 +49,10 @@ export default {
     },
     loggedInUser() {
       return this.$store.getters.loggedInUserForDisplay;
+    },
+
+    matchesCount(){
+        return "Seach " + this.matches.length;
     }
   }
 };

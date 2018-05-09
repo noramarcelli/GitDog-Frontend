@@ -66,5 +66,7 @@ export default {
     }
   },
 
-  getters: {}
+  getters: {
+    
+  }
 };
