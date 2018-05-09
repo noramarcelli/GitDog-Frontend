@@ -4,7 +4,7 @@
         <!-- <form @submit.prevent="checkLogin"> -->
         <form @submit.prevent>
             <!-- <input type="search" class="input is-danger is-small is-rounded" ref="txtUserName" placeholder="User name" v-model="user.name" autofocus/> -->
-            <input type="search" v-model="filterBy.name" @keyup.enter="setFilter" class="input is-danger is-small is-rounded" :placeholder="matchesCount" autofocus/>
+            <input type="search" v-model="filterBy.name" @keyup.enter="setFilterAndSetMatches" class="input is-danger is-small is-rounded" :placeholder="matchesCount" autofocus/>
             <!-- placeholder="Seach + MATCHES_COUNT" -->
              <br>
         </form>
@@ -61,9 +61,10 @@ export default {
     }
   },
   methods: {
-      setFilter(){
+      setFilterAndSetMatches(){
         //   console.log('inside setFilter');
-         this.$store.dispatch({ type: "setFilter", filterBy: this.filterBy});
+         this.$store.dispatch({ type: "setFilter", filterBy: {...this.filterBy}});
+         this.$store.dispatch({ type: "getDogMatches", dogId: this.dog._id});
       }
   }
 };
