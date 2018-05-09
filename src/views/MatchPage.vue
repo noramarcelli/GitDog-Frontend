@@ -1,5 +1,5 @@
 <template>
-<section class="match-page">
+<section v-if="loggedInUser" class="match-page">
   <h1>It's a match!!!</h1>
 
   <!-- <img :src="'./' + dog.imgs[0]">
@@ -19,19 +19,21 @@
 </template>
 
 <script>
-
 export default {
   computed: {
     userDog() {
       return this.$store.getters.userDog;
     },
 
-    matchedDog(){
+    matchedDog() {
       return this.$store.state.matchStore.matchedDog;
+    },
+    loggedInUser() {
+      return this.$store.getters.loggedInUserForDisplay;
     }
   },
-  created(){
-    console.log('matchPage created');
+  created() {
+    console.log("matchPage created");
   }
 };
 </script>
