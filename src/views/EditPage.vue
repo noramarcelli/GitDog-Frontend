@@ -5,76 +5,35 @@
         
         <section class="profile-imgs">
             <!-- <span class="empty-pic square"></span> -->
-
-            <div class="block">
-                <div class="columns">
-                    <div class="column is-8">
-                        <!-- PROFILE PICTURE - THE FIRST -->
-                        <!-- :class="{'square' : showEmpty} -->
-                        <img v-if="dogToEdit.imgs[0]" :src="dogToEdit.imgs[0]">
-                        <a v-if="dogToEdit.imgs[0]" @click="toggleInput(0)"><i class="fa fa-minus-circle"></i></a>
-                        <a v-if="!dogToEdit.imgs[0]" @click="toggleInput(0)"><i class="fa fa-plus-circle"></i></a>
-                        <input @keyup.enter="saveImg(0)"  ref="img0" v-model="dogToEdit.imgs[0]"/>
-                    </div>
-                    <div class="column is-4">
-                        <img v-if="dogToEdit.imgs[1]" :src="dogToEdit.imgs[1]">
-                         <!-- <img v-if="!dog.imgs[1]" :class="square"> -->
-                        <a v-if="dogToEdit.imgs[1]" @click="toggleInput(1)"><i class="fa fa-minus-circle"></i></a>
-                        <a v-if="!dogToEdit.imgs[1]" @click="toggleInput(1)"><i class="fa fa-plus-circle"></i></a>
-                        <input @keyup.enter="saveImg(1)" ref="img1" v-model="dogToEdit.imgs[1]"/>
-                        <!-- <a><i class="fa fa-plus-circle"></i></a> -->
-                        <img v-if="dogToEdit.imgs[2]" ref="img2" :src="'./' + dogToEdit.imgs[2]">
-                        <a v-if="dogToEdit.imgs[2]" @click="toggleInput(2)"><i class="fa fa-minus-circle"></i></a>
-                        <a v-if="!dogToEdit.imgs[2]" @click="toggleInput(2)"><i class="fa fa-plus-circle"></i></a>
-                        <input @keyup.enter="saveImg(2)" ref="img2" v-model="dogToEdit.imgs[2]"/>
-                        <!-- <a><i class="fa fa-plus-circle"></i></a> -->
+                <div class="dogs-container">
+                    <div v-for="idx in 6" class="dog" :style="{ backgroundImage: (dogToEdit.imgs[idx-1])? `url(${dogToEdit.imgs[idx-1]})` : 'url(./img/bgrd/paw.jpg)' }">
+                        <a v-if="dogToEdit.imgs[idx]" @click="toggleInput(idx)"><i class="fa fa-minus-circle"></i></a>
+                        <a v-if="!dogToEdit.imgs[idx]" @click="toggleInput(idx)"><i class="fa fa-plus-circle"></i></a>
+                        <input v-if="!dogToEdit.imgs[idx]" @keyup="saveImg(idx)"  v-model="dogToEdit.imgs[idx]"/>
                     </div>
                 </div>
-            <div class="columns">
-                <div class="column is-4">
-                        <img v-if="dogToEdit.imgs[3]" :src="dogToEdit.imgs[3]">
-                        <a v-if="dogToEdit.imgs[3]" @click="toggleInput(3)"><i class="fa fa-minus-circle"></i></a>
-                        <a v-if="!dogToEdit.imgs[3]" @click="toggleInput(3)"><i class="fa fa-plus-circle"></i></a>
-                        <input @keyup.enter="saveImg(3)" ref="img3" v-model="dogToEdit.imgs[3]" />
-                    </div>
-                    <div class="column is-4">
-                        <img v-if="dogToEdit.imgs[4]" :src="dogToEdit.imgs[4]">
-                        <a v-if="dogToEdit.imgs[4]" @click="toggleInput(4)"><i class="fa fa-minus-circle"></i></a>
-                        <a v-if="!dogToEdit.imgs[4]" @click="toggleInput(4)"><i class="fa fa-plus-circle"></i></a>
-                        <input @keyup.enter="saveImg(4)" ref="img4" v-model="dogToEdit.imgs[4]"/>
-                    </div>
-                    <div class="column is-4">
-                        <img v-if="dogToEdit.imgs[5]" :src="dogToEdit.imgs[5]">
-                        <a v-if="dogToEdit.imgs[5]" @click="toggleInput(5)"><i class="fa fa-minus-circle"></i></a>
-                        <a v-if="!dogToEdit.imgs[5]" @click="toggleInput(5)"><i class="fa fa-plus-circle"></i></a>
-                        <input @keyup.enter="saveImg(5)" ref="img5" v-model="dogToEdit.imgs[5]"/>
-                    </div>
-            </div>
-            </div>
         </section>
     
     <section class="edit-details">
-        <!-- <input class="message-header" type="text" v-model="setPlaceToEdit.name"/> -->
-        <!-- RENDER NAME OF THE DOG -->
-        <label class="name">Name:</label>
-        <input class="input is-small is-danger" type="text" placeholder="NAME OF THE DOG" v-model="dogToEdit.name"/>
-        <label class="age">Age:</label>
-        <input class="input is-small is-danger" type="text" placeholder="AGE" v-model="dogToEdit.age"/>
-        <label class="breed">Breed:</label>
-        <input class="input is-small is-danger" type="text" placeholder="BREED" v-model="dogToEdit.breed"/>
+        <form>
+            <label class="name">Name:</label>
+            <input class="input is-small is-danger" type="text" placeholder="NAME OF THE DOG" v-model="dogToEdit.name"/>
+            <label class="age">Age:</label>
+            <input class="input is-small is-danger" type="text" placeholder="AGE" v-model="dogToEdit.age"/>
+            <label class="breed">Breed:</label>
+            <input class="input is-small is-danger" type="text" placeholder="BREED" v-model="dogToEdit.breed"/>
+        </form>
 
-        <br>
-       <div class="specs"> 
-        <div class="select is-danger is-small">
-            <label>Gender:</label>
+        <form>
+            <section class="specs select is-danger is-small"> 
+                <label>Gender:</label>
                 <select v-model="dogToEdit.gender">
-                    <!-- <option disabled>Gender</option> -->
                     <option>Female</option>
                     <option>Male</option>
                 </select>
-                <br>
-            </div>
-            <div class="select is-danger is-small">
+            </section>
+
+            <section class="select is-danger is-small">
                 <label>weight &nbsp;&nbsp;</label>
                 <select v-model="dogToEdit.weight">
                     <option>0-5KG</option>
@@ -83,48 +42,43 @@
                     <option>31-45KG</option>
                     <option>46KG &amp; up</option>
                 </select>
-            </div>
-       </div>
+            </section>
         
+            <section class="select is-danger is-small">
+                <label>City/Region &nbsp;&nbsp;</label>
+                <select v-model="dogToEdit.city">
+                    <option class="optionGroup">HaMerkaz</option>
+                    <option class="optionChild">Tel Aviv</option>
+                    <option class="optionChild">Ramat Gan</option>
+                    <option class="optionChild">Rishon Letzion</option>
+                    <option class="optionChild">Bat Yam</option>
+                    <option class="optionGroup">HaSharon</option>
+                    <option class="optionChild">Natanya</option>
+                    <option class="optionChild">Hertzeliya</option>
+                    <option class="optionChild">Raanana</option>
+                    <option class="optionChild">Kfar Saba</option>
+                    <option class="optionGroup">HaDarom</option>
+                    <option class="optionChild">Ashdod</option>
+                    <option class="optionChild">Ashkelon</option>
+                    <option class="optionChild">Beer Sheva</option>
+                    <option class="optionGroup">HaTzafon</option>
+                    <option class="optionChild">Haifa</option>
+                    <option class="optionChild">Ako</option>
+                    <option class="optionChild">Hadera</option>
+                    <option class="optionChild">Nahariya</option>
+                    <option class="optionChild">Krayot</option>
+                </select>
+            </section>
+    </form>
 
-        <!-- <textarea class="textarea" maxlength="40" size="60" type="text" v-model="setPlaceToEdit.desc"></textarea> -->
-        <!-- RENDER DESC OF THE DOG -->
-        <div class="desc">
-            <label class="desc about">About:</label>
+    <span>
+        <form class="desc">
+            <label class="desc about block">About:</label>
             <textarea class="textarea is-small is-danger" maxlength="40" size="60" type="text" placeholder="DEC DOG" v-model="dogToEdit.description"></textarea>
-        </div>    
-
-        <div class="select is-danger is-small">
-           <label>City/Region &nbsp;&nbsp;</label>
-            <select v-model="dogToEdit.city">
-                <option class="optionGroup">HaMerkaz</option>
-                <option class="optionChild">Tel Aviv</option>
-                <option class="optionChild">Ramat Gan</option>
-                <option class="optionChild">Rishon Letzion</option>
-                <option class="optionChild">Bat Yam</option>
-                <option class="optionGroup">HaSharon</option>
-                <option class="optionChild">Natanya</option>
-                <option class="optionChild">Hertzeliya</option>
-                <option class="optionChild">Raanana</option>
-                <option class="optionChild">Kfar Saba</option>
-                <option class="optionGroup">HaDarom</option>
-                <option class="optionChild">Ashdod</option>
-                <option class="optionChild">Ashkelon</option>
-                <option class="optionChild">Beer Sheva</option>
-                <option class="optionGroup">HaTzafon</option>
-                <option class="optionChild">Haifa</option>
-                <option class="optionChild">Ako</option>
-                <option class="optionChild">Hadera</option>
-                <option class="optionChild">Nahariya</option>
-                <option class="optionChild">Krayot</option>
-            </select>
-            <br>
-        </div>
-        <br>
-
-        <button type="button" class="button is-small is-danger is-rounded block" @click="saveDog">Save Dog</button>
-        
-    </section>
+        </form>  
+    </span> 
+    <button type="button" class="button is-small is-danger is-rounded block" @click="saveDog">Save Dog</button>        
+</section>
 
     </section>
 </template>
@@ -179,10 +133,14 @@ textarea,
   margin: 10px;
   font-size: 16px;
 }
+form {
+    display: flex;
+    align-items: center;
+}
 label {
-  font-size: 16px;
-  font-weight: bold;
-  display: block;
+    font-size: 16px;
+    font-weight: bold;
+    /* display: block; */
 }
 .name,
 .age,
@@ -212,5 +170,27 @@ label {
 .optionChild {
   padding-left: 15px;
 }
+
+.dogs-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, calc( (100vw - 70px) / 3));
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    background: #d3d3d3b5;
+    padding: 5px;
+}
+/* USE THIS FOR CIRCLE + BG STYLE LIKE IN .dogs-container */
+.dogs-container .dog {
+    background-size: cover;
+    background-position: center center;
+
+}
+
+.dogs-container .dog:first-child {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
 </style>
 
