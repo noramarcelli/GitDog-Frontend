@@ -56,7 +56,7 @@
             <label class="block">Contact Us:</label>
 
             <button class="button block is-danger is-small is-rounded">Help &amp; support</button>
-            <button class="button block is-danger is-small is-rounded">Logout</button>
+            <button class="button block is-danger is-small is-rounded" @click="$router.push('/logout')">Logout</button>
             <!-- <button class="button block is-danger is-small is-rounded" v-if="loggedinUser" @click="logout">{{loggedinUser.name}} Logout</button> -->
         </div>
     </section>

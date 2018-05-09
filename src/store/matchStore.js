@@ -9,7 +9,8 @@ export default {
   state: {
     realTimeMatch: null,
     matchedDog: null,
-    matches: []
+    matches: [],
+    filterBy: {}
   },
   mutations: {
     SOCKET_MATCHED(state, match)  {
@@ -24,9 +25,13 @@ export default {
     setMatchedDog(state, { dog }) {
       state.matchedDog = dog;
     },
-    setDogMatches(state, { joinedMatches }) {
-      state.matches = joinedMatches;
+    setDogMatches(state, { filteredMatches }) {
+      state.matches = filteredMatches;
       console.log("state.matches", state.matches);
+    },
+    setFilterBy(state, { filterBy }){
+        state.filterBy = filterBy;
+        console.log('filterBy inside matchState mutation', filterBy);
     }
   },
   actions: {
@@ -46,28 +51,44 @@ export default {
       MatchService.getDogMatches(dogId).then(matches => {
         console.log("matches", matches);
 
-      let joinedMatchesPrms = matches.map(function(match) {
+        let joinedMatchesPrms = matches.map(function(match) {
           let otherDogId =
             match.firstDogId === dogId ? match.secondDogId : match.firstDogId;
-          console.log('otherDogId', otherDogId);
+          console.log("otherDogId", otherDogId);
 
-          
-          
           return DogService.getDogById(otherDogId).then(dog => {
-            console.log('dog', dog);
-             match.dog = dog;
-             return match;
+            console.log("dog", dog);
+            match.dog = dog;
+            return match;
           });
 
-             console.log('match.dog', match.dog);
+          console.log("match.dog", match.dog);
         });
 
-        return Promise.all(joinedMatchesPrms)
-                .then(joinedMatches => {
-                  store.commit({ type: 'setDogMatches', joinedMatches });
-                })
+        return Promise.all(joinedMatchesPrms).then(joinedMatches => {
+          var filteredMatches = [];
+          console.log('store.state.filterBy inside getDogMatches', store.state.filterBy);
+          
 
+          if (store.state.filterBy && store.state.filterBy.name) {
+            joinedMatches.forEach(joinedMatch => {
+              if (joinedMatch.dog.name.toLowerCase().includes(store.state.filterBy.name.toLowerCase())) {
+                filteredMatches.push(joinedMatch);
+              }
+              // return joinedMatch;
+            });
+          } else {
+            filteredMatches = [...joinedMatches];
+          }
+          console.log('filteredMatches', filteredMatches);
+          
+          store.commit({ type: "setDogMatches", filteredMatches });
+        });
       });
+    },
+
+    setFilter(store, { filterBy }){
+      store.commit({ type: "setFilterBy", filterBy });
     }
   },
 
@@ -78,7 +99,7 @@ export default {
         console.log({currMatch, matchId})
         if (!currMatch) return [];
         return currMatch.messages;
-      }
+      };
     }
   }
 };

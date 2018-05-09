@@ -1,5 +1,5 @@
 <template>
-    <section class="edit-page">
+    <section v-if="loggedInUser" class="edit-page">
         <a class="done" @click="$router.push('/profile')" title="Done"><i class="fa fa-check-circle"></i></a>
         <!-- <p>This is a Temp Edit Page</p> -->
         
@@ -7,9 +7,9 @@
             <!-- <span class="empty-pic square"></span> -->
                 <div class="dogs-container">
                     <div v-for="idx in 6" class="dog" :style="{ backgroundImage: (dogToEdit.imgs[idx-1])? `url(${dogToEdit.imgs[idx-1]})` : 'url(./img/bgrd/paw.jpg)' }">
-                        <a v-if="dogToEdit.imgs[idx]" @click="toggleInput(idx)"><i class="fa fa-minus-circle"></i></a>
-                        <a v-if="!dogToEdit.imgs[idx]" @click="toggleInput(idx)"><i class="fa fa-plus-circle"></i></a>
-                        <input v-if="!dogToEdit.imgs[idx]" @keyup="saveImg(idx)"  v-model="dogToEdit.imgs[idx]"/>
+                        <a v-if="dogToEdit.imgs[idx-1]" @click="emptyImg(idx - 1)"><i class="fa fa-minus-circle"></i></a>
+                        <a v-else><i @click="saveImg(idx - 1)" class="fa fa-plus-circle"></i></a>
+                        <input v-if="!dogToEdit.imgs[idx - 1]" v-model="dogToEdit.imgs[idx - 1]"/>
                     </div>
                 </div>
         </section>
@@ -100,8 +100,6 @@ export default {
     }
   },
   methods: {
-    toggleInput(inputId) {},
-    
     saveImg(idx) {
       var imgName = "img" + idx;
       var imgUrl = this.dogToEdit.imgs[idx];
@@ -111,6 +109,12 @@ export default {
              this.dogToEdit.imgs.splice(idx, 1, url.url);
         });
     },
+
+    emptyImg(idx){
+         var imgUrl = "";
+         this.dogToEdit.imgs.splice(idx, 1, "");
+    },
+
     saveDog() {
       let dogToEdit = this.dogToEdit;
       console.log("dog inside save dog", dogToEdit);

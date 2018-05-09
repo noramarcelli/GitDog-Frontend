@@ -2,15 +2,17 @@
     <section class="msgs-page">
         <!-- <p>This is a Temp Edit Page</p> -->
         <!-- <form @submit.prevent="checkLogin"> -->
-        <form>
+        <form @submit.prevent>
             <!-- <input type="search" class="input is-danger is-small is-rounded" ref="txtUserName" placeholder="User name" v-model="user.name" autofocus/> -->
-            <input type="search" class="input is-danger is-small is-rounded" placeholder="Seach + MATCHES_COUNT" autofocus/>
+            <input type="search" v-model="filterBy.name" @keyup.enter="setFilterAndSetMatches" class="input is-danger is-small is-rounded" :placeholder="matchesCount" autofocus/>
+            <!-- placeholder="Seach + MATCHES_COUNT" -->
+             <br>
         </form>
 
         <span class="matches title">
             <label>New Matches:</label>
-            <span v-if="matches" class="matches-imgs" v-for="match in matches" :key="match._id">
-                <div class="matches-pics profile-pics" v-if="match.dog" :style="{ backgroundImage: `url(${match.dog.imgs[0]})`}"
+            <span v-if="matches" class="matches-imgs" v-for="(match, idx) in matches" :key="match._id">
+                <div class="matches-pics profile-pics" v-if="match.dog" :style="{ backgroundImage: `url(${match.dog.imgs[idx]})`}"
                     @click="$router.push('msgs/' + match._id)"></div>
                 <!-- <img class="matches-pics" src="../../public/img/dogs/stella_1.jpeg"> -->
                 <!-- <img class="matches-pics" src="../../public/img/dogs/luna_1.jpeg">
@@ -32,31 +34,53 @@
 
 <script>
 export default {
- created() {
-         var dogId = this.dog._id;
-         console.log('dogId in msgsPage', dogId);
-         
-         this.$store.dispatch({type: 'getDogMatches', dogId})
+  created() {
+    var dogId = this.dog._id;
+    console.log("dogId in msgsPage", dogId);
+
+    this.$store.dispatch({ type: "getDogMatches", dogId });
+  },
+  data() {
+        return {
+           filterBy:{ name: '' }
+        }
     },
-computed: {
+  computed: {
     dog() {
       return this.$store.state.userStore.userDog;
     },
 
-    matches(){
-        console.log('this.$store.state.matchStore.matches', this.$store.state.matchStore.matches);
-        return this.$store.state.matchStore.matches;
+    matches() {
+      console.log(
+        "this.$store.state.matchStore.matches",
+        this.$store.state.matchStore.matches
+      );
+      return this.$store.state.matchStore.matches;
+    },
+    loggedInUser() {
+      return this.$store.getters.loggedInUserForDisplay;
+    },
+
+    matchesCount(){
+        return "Search " + this.matches.length;
     }
   },
-}
+  methods: {
+      setFilterAndSetMatches(){
+        //   console.log('inside setFilter');
+         this.$store.dispatch({ type: "setFilter", filterBy: {...this.filterBy}});
+         this.$store.dispatch({ type: "getDogMatches", dogId: this.dog._id});
+      }
+  }
+};
 </script>
 
 <style>
 label {
-    font-family: CutiePatootie;
-    font-weight: bold;
-    font-size: 1em;
-    color: gray;
+  font-family: CutiePatootie;
+  font-weight: bold;
+  font-size: 1em;
+  color: gray;
 }
 .matches-pics {
     width: 80px;
