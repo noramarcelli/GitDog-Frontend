@@ -2,7 +2,8 @@
 <section>
   <div class="tinder">
       <div v-if="loggedInUser && dog">
-        <img class="profile-pics" :src="'./' + dog.imgs[0]">
+        <!-- <img class="profile-pics" :src="'./' + dog.imgs[0]"> -->
+        <div class="profile-pics" :style="{ backgroundImage: `url(${dog.imgs[0]})`}"></div>
         <p> {{dog.name}} , {{dog.age}}</p>
       </div>
   </div>
@@ -19,15 +20,7 @@
       <label> Edit</label>
     </span>
   </div>
- <!-- <div class="tinder"> -->
-  <!-- <div class="tinder--cards"> -->
-    <!-- <div v-if="dog" class="tinder--card">-->
-    <!-- <div v-if="dog">
-      <img :src="'./' + dog.imgs[0]">
-       <button class="info"><i class="fa fa-info"></i></button>
-      <p > {{dog.name}} {{dog.age}}</p>
-    </div>  -->
-    <!-- </div> -->
+ 
 </section>
 </template>
 
@@ -81,9 +74,6 @@ span {
 
 
 <script>
-// import PrefsPage from "./PrefsPage.vue";
-// import EditPage from "./EditPage.vue";
-
 export default {
   name: "profile",
   created() {

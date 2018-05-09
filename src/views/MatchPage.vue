@@ -2,17 +2,19 @@
 <section class="match-page">
   <h1>It's a match!!!</h1>
 
-  <!-- <img :src="'./' + dog.imgs[0]">
-  <img :src="'./' + dog.imgs[1]"> -->
-  <!-- <img v-if="userDog" class="profile-pics" :src="userDog.imgs[0]" >
-  <img v-if="matchedDog" class="profile-pics" :src="matchedDog.imgs[0]" > -->
-  <img class="profile-pics" src="../../public/img/dogs/donna_1.jpeg" >
-  <img class="profile-pics" src="../../public/img/dogs/charly_1.jpeg" >
+  <!--  <div :src="'./' + dog.imgs[0]"></div>
+  <div :src="'./' + dog.imgs[1]"></div> -->
+  <!-- <div v-if="userDog" class="profile-pics" :style="{ backgroundImage: `url(userDog.imgs[0])`}"></div>
+  <!<div class="profile-pics" :style="{ backgroundImage: `url(./img/dogs/donna_1.jpeg)`}" ></div> -->
+  <div class="match-container">
+    <div class="profile-pics" :style="{ backgroundImage: `url(./img/dogs/donna_1.jpeg)`}"></div>
+    <div class="profile-pics" :style="{ backgroundImage: `url(./img/dogs/charly_1.jpeg)`}"></div>
+  </div>
   
   <p>You and Lola have liked each other</p>
   <!-- <p>You and {{ matchedDog.name }} have liked each other</p> -->
 
-  <button @click="$router.push('/chat')" class="button is-danger is-rounded">Send a Massage</button>
+  <button @click="$router.push('/msgs/5af2a131fcb76a35603a2c63')" class="button is-danger is-rounded">Send a Massage</button>
   <br>
   <button @click="$router.push('./swipe')" class="button is-danger is-rounded">Keep Playing</button>
 </section>    
@@ -52,5 +54,8 @@ h1 {
 p {
   font-family: "BiggerLove";
   font-size: 0.8em;
+}
+.match-container {
+  display: inline-flex;
 }
 </style>

@@ -29,18 +29,27 @@
 export default {
   data() {
       return {
+          matchId: null,
           newMessage: '',
-          msgs: [
-              {txt: 'Yo yo yo'},
-              {txt: 'Whaddup?'},
-              {txt: 'lublub'},
-              {txt: 'HAHA'},
-          ]
+        //   msgs: [
+        //       {txt: 'Yo yo yo'},
+        //       {txt: 'Whaddup?'},
+        //       {txt: 'lublub'},
+        //       {txt: 'HAHA'},
+        //   ]
       }
   },
   created() {
     //   OUR-ROOM IS THE NAME OF THE ROOM FOR THE CHAT WHIT OURSELF
-      this.$socket.emit('chatRequest',{username: 'puki', roomName: 'popo'})
+      let matchId = this.$route.params.matchId;
+      console.log({matchId});
+      this.$socket.emit('chatRequest',{username: 'puki', roomName: matchId});
+  },
+  computed: {
+      msgs() {
+          if (!this.matchId) return [];
+          return 
+      }
   },
   sockets: {
       newChatMember(memberName) {

@@ -3,18 +3,16 @@
     <div class="tinder--cards">
       <div v-if="currDog" class="tinder--card">
         
-        <!-- COMPONENT OF IMAGES COURUSELE  -->
         <dog-carousel :dog="currDog"></dog-carousel>
         <!-- <img :src="'./' + currDog.imgs[0]"/> -->
         <span @click="showDetails">
                 <i class="fa" :class="{'fa-info-circle' : !shouldShow, 'fa-arrow-circle-down' : shouldShow }"></i>
         </span>
         <p class="dog"> {{currDog.name}}, {{currDog.age}} </p>
-        <dog-details :dog="currDog" v-if="shouldShow" />
+        
+        <dog-details class="dog-info" :dog="currDog" v-if="shouldShow" />
       </div>
     </div>
-
-    <!-- <dog-details :dog="currDog" v-if="shouldShow" /> -->
 
     <div class="tinder--buttons">
       <button id="nope" @click="getNextDogs(currDog._id)"><i class="fa fa-remove"></i></button>
@@ -25,8 +23,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue'
 import DogDetails from '../components/DogDetails.vue';
 import DogCarousel from '../components/DogCarousel.vue'
 import {SAVE_LIKE} from '../store/dogStore.js'
@@ -103,16 +99,7 @@ export default {
 };
 </script>
 
-
 <style scoped>
-/* SWIPING */
-
-/* FOR LOGO NAME */
-/* @font-face {
-    font-family: "Digitalt";
-    src: url(../../../fonts/Digitalt.ttf);
-} */
-
 *,
 *:before,
 *:after {
@@ -120,13 +107,11 @@ export default {
   padding: 2px;
   margin: 0;
 }
-
 body {
   background: #ccfbfe;
   /* overflow: hidden; */
   font-family: sans-serif;
 }
-
 .tinder {
   width: 100vw;
   height: calc(100vh - 100px);
@@ -138,11 +123,9 @@ body {
   opacity: 1;
   transition: opacity 0.1s ease-in-out;
 }
-
 .loaded.tinder {
   opacity: 1;
 }
-
 .tinder--status {
   position: absolute;
   top: 50%;
@@ -152,7 +135,6 @@ body {
   text-align: center;
   pointer-events: none;
 }
-
 .tinder--status i {
   font-size: 100px;
   opacity: 0;
@@ -162,42 +144,29 @@ body {
   width: 100px;
   margin-left: -50px;
 }
-
 .tinder_love .fa-heart,
 .info,
 .fav {
   opacity: 0.7;
   transform: scale(1);
 }
-
 /* .tinder_nope .fa-remov, .info, .fav {
   opacity: 0.7;
   transform: scale(1);
 } */
-
 .tinder--cards {
-  flex-grow: 1;
-  padding-top: 5px;
   text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  z-index: 1;
   font-family: "BiggerLove";
 }
-
 .tinder--card {
   font-family: "Digitalt";
   display: inline-block;
-  width: 90vw;
+  width: 100%;
   max-width: 400px;
-  height: 70vh;
   background: #ffffff;
   padding-bottom: 5px;
   border-radius: 8px;
   overflow: hidden;
-  position: absolute;
-  will-change: transform;
   transition: all 0.3s ease-in-out;
   /* cursor: -webkit-grab;
   cursor: -moz-grab; */
@@ -206,40 +175,35 @@ body {
   -moz-box-shadow: 4px -7px 32px 0px rgba(15, 15, 15, 1);
   box-shadow: 4px -7px 32px 0px rgba(15, 15, 15, 1);
   line-height: 1.5em;
+  position: relative;
 }
-
 .moving.tinder--card {
   transition: none;
   cursor: -webkit-grabbing;
   cursor: -moz-grabbing;
   cursor: grabbing;
 }
-
 .tinder--card img {
   max-width: 100%;
   pointer-events: none;
 }
-
 .tinder--card h3 {
   /* margin-top: 32px; */
   font-size: 32px;
   padding: 0 5px;
   pointer-events: none;
 }
-
 .tinder--card p {
   margin-top: 2px;
   /* font-size: 20px; */
   padding: 0 2px;
   pointer-events: none;
 }
-
 .tinder--buttons {
   flex: 0 0 100px;
   text-align: center;
   padding-top: 10px;
 }
-
 .tinder--buttons button {
   border-radius: 50%;
   line-height: 60px;
@@ -250,31 +214,25 @@ body {
   margin: 10px 10px;
   cursor: pointer;
 }
-
 .tinder--buttons button:focus {
   outline: 0;
 }
-
 .tinder--buttons i {
   font-size: 32px;
   vertical-align: middle;
   cursor: pointer;
 }
-
 .fa-heart {
   color: red;
 }
-
 .fa-remove {
   color: grey;
 }
 .info {
   left: 200px;
+  position: absolute;
+  z-index: 2;
 }
-
-/* .red {
-  background-color: red;
-} */
 i {
   font-size: 3em;
   color: red;
@@ -284,31 +242,15 @@ i {
    font-weight: bold;
    font-size: 2.5em;
 }
+.dog-info {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.61);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 </style>
-
-
-   <!-- <div class="tinder--card">
-      <img src="https://placeimg.com/600/300/people">
-      <h3>Demo card 1</h3>
-      <p>This is a demo for Tinder like swipe cards</p>
-    </div>
-    <div class="tinder--card">
-      <img src="https://placeimg.com/600/300/animals">
-      <h3>Demo card 2</h3>
-      <p>This is a demo for Tinder like swipe cards</p>
-    </div>
-    <div class="tinder--card">
-      <img src="https://placeimg.com/600/300/nature">
-      <h3>Demo card 3</h3>
-      <p>This is a demo for Tinder like swipe cards</p>
-    </div>
-    <div class="tinder--card">
-      <img src="https://placeimg.com/600/300/tech">
-      <h3>Demo card 4</h3>
-      <p>This is a demo for Tinder like swipe cards</p>
-    </div>
-    <div class="tinder--card">
-      <img src="https://placeimg.com/600/300/arch">
-      <h3>Demo card 5</h3>
-      <p>This is a demo for Tinder like swipe cards</p>
-    </div> -->

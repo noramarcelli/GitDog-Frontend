@@ -101,10 +101,13 @@ router-link, #nav, #app {
     width: 150px;
 }
 .profile-pics {
+    display: inline-block;
     width: 180px;
-    height: 180px;
+    height: 180px;  
+    background-size: cover;
+    background-position: center center;
     border-radius: 50%;
     border: 3px solid red;
-    margin: 0px 20px;
+    margin: 5px;
     box-shadow: 0 4px 8px 0 rgba(31, 7, 7, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }

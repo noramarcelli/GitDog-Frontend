@@ -66,5 +66,13 @@ export default {
     }
   },
 
-  getters: {}
+  getters: {
+    currMsgs(state) {
+      return matchId => {
+        let currMatch = state.matches.find(match => matchId === match._id);
+        if (!currMatch) return [];
+        return currMatch.messages;
+      }
+    }
+  }
 };
