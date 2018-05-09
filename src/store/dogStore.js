@@ -49,7 +49,13 @@ export default{
     },
 
     uploadImg(store, {imgUrl}){
-      return DogService.uploadImg( imgUrl).then(dog => {
+      // console.log('userDog', dog);
+      console.log('imgUrl in uploadImage in dogStore', imgUrl);
+      
+      return DogService.uploadImg( imgUrl ).then(res => {
+        console.log('res in uploadImg in dogStore', res);
+        // dog.imgs[idx] = imgUrl;
+          return res;
       });
     },
 
