@@ -7,11 +7,13 @@ export default{
   state: {
     selectedDog: null,
     selectedDogIdx: 0,
-    filterBy: {}
+    filterBy: {},
+    dogs : []
   },
   mutations: {
     setSelectedDog(state, { dogs }) {
       console.log('inside setSelectedDog');
+      console.log({elad:dogs})
       if (dogs === null) {
         state.selectedDogIdx = 0;
       }
