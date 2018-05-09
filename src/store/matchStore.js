@@ -67,9 +67,7 @@ export default {
   },
 
   getters: {
-<<<<<<< HEAD
     
-=======
     currMsgs(state) {
       return matchId => {
         let currMatch = state.matches.find(match => matchId === match._id);
@@ -77,6 +75,5 @@ export default {
         return currMatch.messages;
       }
     }
->>>>>>> 5f7564592f3fc43cdb21ecc86fb47670076c4466
   }
 };
