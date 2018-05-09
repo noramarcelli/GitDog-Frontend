@@ -23,8 +23,9 @@ export default{
       return UserService.login(userCredentials)
       .then(user =>{
         console.log('user in LOGIN', user);
-        
         store.commit({type: 'setUser', user});
+
+        store.dispatch({type: 'getDogMatches', dogId: user.dogId})
       })
     },
     [LOAD_USER_DOG](store, { dogId }) {

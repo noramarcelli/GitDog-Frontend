@@ -14,7 +14,7 @@
   <p>You and Lola have liked each other</p>
   <!-- <p>You and {{ matchedDog.name }} have liked each other</p> -->
 
-  <button @click="$router.push('/msgs/5af2a131fcb76a35603a2c63')" class="button is-danger is-rounded">Send a Massage</button>
+  <button @click="$router.push('/msgs/5af315390f1fa744584e451e')" class="button is-danger is-rounded">Send a Message</button>
   <br>
   <button @click="$router.push('./swipe')" class="button is-danger is-rounded">Keep Playing</button>
 </section>    

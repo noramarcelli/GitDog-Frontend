@@ -1,6 +1,6 @@
 
 <template>
-  <div id="app">
+  <div id="app" :class="[$route.name]">
 
     <div v-if="showNav" id="nav">
       <router-link class="profile" to="/profile" name="profile"><i class="fa fa-user"></i></router-link> |
@@ -21,7 +21,7 @@
       showNav() {
         return this.$route.name !== 'edit';
       }
-    } 
+    }
   }
 </script>
 
@@ -62,5 +62,10 @@
   cursor: pointer;
   padding-top: 5px; 
 }
-
+.home footer {
+  background-image: url("../public/img/bgrd/dog-treats.png");
+  background-size: cover;
+  background-position: center;
+  height: 500px;
+}
 </style>
