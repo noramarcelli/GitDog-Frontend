@@ -37,9 +37,10 @@ function _getDogUrl(dogId) {
 
 function getNextDogs(prevId, userDogId) {
     prevId = prevId || '';
+    var url = `${DOG_URL}/next?prevId=${prevId}&userDogId=${userDogId}`;
     console.log('dogId in service:', prevId)
     return axios
-        .get(`${DOG_URL}/next?prevId=${prevId}&userDogId=${userDogId}`)
+        .get(url)
         .then(res => {
             return res.data[0] ? res.data : getNextDogs('', userDogId)
         });

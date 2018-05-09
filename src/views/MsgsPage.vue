@@ -2,9 +2,9 @@
     <section v-if="loggedInUser" class="edit-page">
         <!-- <p>This is a Temp Edit Page</p> -->
         <!-- <form @submit.prevent="checkLogin"> -->
-        <form>
+        <form @submit.prevent>
             <!-- <input type="search" class="input is-danger is-small is-rounded" ref="txtUserName" placeholder="User name" v-model="user.name" autofocus/> -->
-            <input type="search" class="input is-danger is-small is-rounded" :placeholder="matchesCount" autofocus/>
+            <input type="search" v-model="filterBy.name" @keyup.enter="setFilter" class="input is-danger is-small is-rounded" :placeholder="matchesCount" autofocus/>
             <!-- placeholder="Seach + MATCHES_COUNT" -->
              <br>
         </form>
@@ -35,6 +35,11 @@ export default {
 
     this.$store.dispatch({ type: "getDogMatches", dogId });
   },
+  data() {
+        return {
+           filterBy:{ name: '' }
+        }
+    },
   computed: {
     dog() {
       return this.$store.state.userStore.userDog;
@@ -52,8 +57,14 @@ export default {
     },
 
     matchesCount(){
-        return "Seach " + this.matches.length;
+        return "Search " + this.matches.length;
     }
+  },
+  methods: {
+      setFilter(){
+        //   console.log('inside setFilter');
+         this.$store.dispatch({ type: "setFilter", filterBy: this.filterBy});
+      }
   }
 };
 </script>
