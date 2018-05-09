@@ -16,30 +16,33 @@
 
 
 <script>
-  export default {
-    computed: {
-      showNav() {
-        return this.$route.name !== 'edit';
-      }
-    } 
+export default {
+  computed: {
+    showNav() {
+      return this.$route.name !== "edit";
+    },
+    loggedInUser() {
+      return this.$store.getters.loggedInUserForDisplay;
+    }
   }
+};
 </script>
 
 
 <style lang="scss">
-
 #app {
   height: 100%;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
 }
-.profile, .msgs{
+.profile,
+.msgs {
   // font-family: "BiggerLove";
   color: black;
   font-size: 3em;
@@ -53,14 +56,12 @@
       color: red;
     }
   }
-  
 }
 
 .logo {
   height: 60px;
   width: auto;
   cursor: pointer;
-  padding-top: 5px; 
+  padding-top: 5px;
 }
-
 </style>

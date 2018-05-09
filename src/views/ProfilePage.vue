@@ -8,13 +8,13 @@
   </div>
 
   <div class="control">  
-    <span>
+    <span v-if="loggedInUser">
       <router-link to="/prefs" name="PrefsPage" title="Setting" class="profile-btns"><i class="fa fa-cogs"></i></router-link>  |
       <!-- <br> -->
       <label> Settings</label>
     </span>
-    <span>
-      <router-link to="/edit" name="EditPage" title="Edit" class="profile-btns"><i class="fa fa-pencil"></i></router-link>
+    <span v-if="loggedInUser">
+      <router-link  to="/edit" name="EditPage" title="Edit" class="profile-btns"><i class="fa fa-pencil"></i></router-link>
       <!-- <br> -->
       <label> Edit</label>
     </span>
