@@ -15,14 +15,16 @@
         </section>
     
     <section class="edit-details">
-        <form>
-            <label class="name">Name:</label>
-            <input class="input is-small is-danger" type="text" placeholder="NAME OF THE DOG" v-model="dogToEdit.name"/>
-            <label class="age">Age:</label>
-            <input class="input is-small is-danger" type="text" placeholder="AGE" v-model="dogToEdit.age"/>
-            <label class="breed">Breed:</label>
-            <input class="input is-small is-danger" type="text" placeholder="BREED" v-model="dogToEdit.breed"/>
-        </form>
+        <div class="main-details">
+            <form>
+                <label class="name">Name:</label>
+                <input class="input is-small is-danger" type="text" placeholder="NAME OF THE DOG" v-model="dogToEdit.name"/>
+                <label class="age">Age:</label>
+                <input class="input is-small is-danger" type="text" placeholder="AGE" v-model="dogToEdit.age"/>
+                <label class="breed">Breed:</label>
+                <input class="input is-small is-danger" type="text" placeholder="BREED" v-model="dogToEdit.breed"/>
+            </form>
+        </div>
 
         <form>
             <section class="specs select is-danger is-small"> 
@@ -34,7 +36,7 @@
             </section>
 
             <section class="select is-danger is-small">
-                <label>weight &nbsp;&nbsp;</label>
+                <label>weight: &nbsp;&nbsp;</label>
                 <select v-model="dogToEdit.weight">
                     <option>0-5KG</option>
                     <option>6-15KG</option>
@@ -45,7 +47,7 @@
             </section>
         
             <section class="select is-danger is-small">
-                <label>City/Region &nbsp;&nbsp;</label>
+                <label>City/Region: &nbsp;&nbsp;</label>
                 <select v-model="dogToEdit.city">
                     <option class="optionGroup">HaMerkaz</option>
                     <option class="optionChild">Tel Aviv</option>
@@ -69,14 +71,14 @@
                     <option class="optionChild">Krayot</option>
                 </select>
             </section>
-    </form>
-
-    <span>
-        <form class="desc">
+    </form >
+<br>
+    <div class="desc">
+        <!-- <form class="desc"> -->
             <label class="desc about block">About:</label>
             <textarea class="textarea is-small is-danger" maxlength="40" size="60" type="text" placeholder="DEC DOG" v-model="dogToEdit.description"></textarea>
-        </form>  
-    </span> 
+        <!-- </form>   -->
+    </div> 
     <button type="button" class="button is-small is-danger is-rounded block" @click="saveDog">Save Dog</button>        
 </section>
 
@@ -137,21 +139,22 @@ textarea,
   margin: 10px;
   font-size: 16px;
 }
-form {
+form, span {
     display: flex;
     align-items: center;
+    /* justify-content: space-between; */
 }
 label {
     font-size: 16px;
     font-weight: bold;
     /* display: block; */
 }
-.name,
+/* .name,
 .age,
 .about,
 .breed {
   left: 5px;
-}
+} */
 .done {
   font-size: 50px;
   color: black;
@@ -202,6 +205,22 @@ label {
     grid-column: span 2;
     grid-row: span 2;
 }
+.block {
+    display: block;
+}
+.profile-imgs{
+    width: 80%;
+    margin: 0 auto;
+}
+.desc{
+   text-align: left;
+}
+button {
+   float: right;
+}
 
+.main-details{
+    margin: 0 0 0 30px;
+}
 </style>
 
