@@ -4,7 +4,6 @@
       <div v-if="currDog" class="tinder--card">
         
         <dog-carousel :dog="currDog"></dog-carousel>
-        <!-- <img :src="'./' + currDog.imgs[0]"/> -->
         <span @click="showDetails">
                 <i class="fa" :class="{'fa-info-circle' : !shouldShow, 'fa-arrow-circle-down' : shouldShow }"></i>
         </span>
@@ -42,21 +41,7 @@ export default {
   },
 
   created() {
-    var user = this.loggedInUser;
-
-    if (this.loggedInUser !== null) {
-      var dogId = this.loggedInUser.dogId;
-      console.log('dogId', dogId);
-
-      this.$store.dispatch({ type: LOAD_USER_DOG, dogId }).then(() => {
-        console.log('this.$store.state.userDog', this.$store.state.userDog);
-      });
-      this.$store.dispatch({
-        type: LOAD_NEXT_DOGS,
-        prevId: '',
-        userDogId: dogId
-      });
-    }
+          this.$store.dispatch({type: 'moveCurrentDog'});
   },
 
   computed: {
@@ -64,7 +49,7 @@ export default {
       return this.$store.getters.loggedInUserForDisplay;
     },
     currDog() {
-      return this.$store.state.dogStore.selectedDog;
+      return this.$store.getters.currentDog;
     },
     userDog() {
       return this.$store.state.userStore.userDog;
@@ -72,8 +57,11 @@ export default {
   },
   methods: {
     getNextDogs(dogId, dogUserId) {
-      var userDogId = this.userDog._id;
-      this.$store.dispatch({ type: LOAD_NEXT_DOGS, dogId, userDogId });
+      var userDogId = this.$store.getters.userDogId;
+      // var userDogId = this.userDog._id;
+      // this.$store.dispatch({ type: LOAD_NEXT_DOGS, dogId, userDogId });
+      // disptach moveCurrentDog
+      this.$store.dispatch({type: 'moveCurrentDog'});      
       if (dogUserId) {
         var userId = this.loggedInUser._id;
         console.log('userId inside getNextDogs', userId);

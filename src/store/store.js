@@ -11,15 +11,12 @@ export default new Vuex.Store({
   state: {},
   mutations: {
     SOCKET_CONNECT() {
-      console.log('connected to socket (from mutation)')
     },
     SOCKET_CHENAVIV() {
-      console.log('chen in mutations')
     }
   },
   actions: {
     socket_chenAviv() {
-      console.log('Chen Aviv!!!!')
     }
   },
   modules: {

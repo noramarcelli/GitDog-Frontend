@@ -49,6 +49,12 @@ export default{
       return state.userDog
       ? state.userDog
       : {};
+    },
+
+    userDogId(state){
+      return state.loggedinUser
+              ? state.loggedinUser.dogId
+              : null;
     }
   }
 };
