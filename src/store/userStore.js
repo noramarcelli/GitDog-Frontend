@@ -39,6 +39,16 @@ export default{
         })
         .catch(err => console.log(err));
     },
+    logout(store){
+      return UserService.logout()
+      .then(res => {
+        console.log('inside logout');
+        var user = null;
+        store.commit({ type: 'setUser', user});
+      })
+      .catch(err => console.log(err));
+    
+    }
   },
 
   getters: {
