@@ -62,7 +62,7 @@ export default {
     },
 
     matchesCount(){
-        return "Search " + this.matches.length;
+        return "Search " + this.matches.length + ' Matches';
     }
   },
   methods: {
@@ -95,6 +95,6 @@ label {
 }
 a{
       color: black;
-      font-size: 3em;
+      font-size: 3rem;
 }
 </style>
