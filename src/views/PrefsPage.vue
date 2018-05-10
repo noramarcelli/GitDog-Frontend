@@ -113,7 +113,7 @@ button {
     font-size: 2em;
     margin: 10px;
 }
-.contact-block{
+.contact{
     margin: o auto;
     margin-top: 200px;
 }

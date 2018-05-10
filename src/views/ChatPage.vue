@@ -8,17 +8,17 @@
             <div class="chat">
             <p class="msg-box" :class="{'from-me': msg.from === user._id}"
                 v-for="(msg, idx) in msgs" :key="idx"> {{ msg.txt }}</p>
-    
+            </div>
 
         
-            <form class="chat1 inline" @submit.prevent="sendMsg">
+            <form class="chat-input inline" @submit.prevent="sendMsg">
                 <input v-model="newMessageTxt" class="input is-medium is-danger inline" type="text"/> 
                 <button class="button is-medium is-danger"  title="Smiley">&#9786;</button>
                 <button class="button is-medium is-danger"  title="Gift"><i class="fa fa-gift"></i></button>
                 <button @click.prevent="sendMsg" class="button is-medium is-danger send" title="Send"><i class="fa fa-location-arrow"></i></button>
             </form>
 
-        </div>
+        <!-- </div> -->
         </section>
     </section>
 </template>
@@ -40,6 +40,7 @@ export default {
   },
   created() {
     //   OUR-ROOM IS THE NAME OF THE ROOM FOR THE CHAT WHIT OURSELF
+      this.$store.dispatch({ type: "getDogMatches", dogId: this.user.dogId })
       this.matchId = this.$route.params.matchId;
       this.$socket.emit('chatRequest',{username: 'puki', roomName: this.matchId});
   },
@@ -115,13 +116,20 @@ input {
 .chat-container {
     display: flex;
     justify-content: center;
+    position: absolute;
+    width: 100%;
+    bottom: 80px;
+    height: 72vh;
+
 }
 .chat {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     background: rgba(153, 153, 153, 0.27);
     padding: 5px;
+    padding-bottom: 70px;
+    overflow-y: scroll;
     width: 80%;
     border-radius: 5px;
     box-shadow: 0px 0px 4px 1px #bcbcbc;
@@ -133,6 +141,10 @@ input {
     align-self: flex-end;
     background: lightgray;
 }
-
+.chat-input{
+    position: absolute;
+    width: 80%;
+    bottom: 10px;
+}
 </style>
 
