@@ -18,7 +18,11 @@ export default {
       console.log("state.realTimeMatch", state.realTimeMatch);
     },
     // SOCKET_NEWMSG({matches}, [{msg, matchId}]) {
-    SOCKET_NEWMSG({matches}, {msg, matchId}) {
+    // SOCKET_NEWMSG({matches}, {msg, matchId}) {
+    SOCKET_NEWMSG({matches}, data) {
+      if (Array.isArray(data)) data = data[0];
+      let {msg, matchId} = data;
+
       console.log('inside SOCKET_NEWMSG')
       let match = matches.find(match => match._id === matchId)
       match.messages.push(msg);

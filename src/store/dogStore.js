@@ -51,6 +51,7 @@ export default {
   },
   actions: {
     moveCurrentDog({state, getters, commit}) {
+      console.log('eladleladeladeladelad')
       if(state.dogs.length === 0) {
         return DogService.getNextDogs( undefined, getters.userDogId, state.filterBy)
         .then(dogs => {
@@ -60,7 +61,8 @@ export default {
       if (state.selectedDogIdx === state.dogs.length - 1 ) {
         return DogService.getNextDogs(getters.currentDog._id, getters.userDogId, state.filterBy)
         .then(dogs => {
-          if (dogs.length === 0) store.dispatch({type: 'moveCurrentDog'})
+          if (dogs.length === 0) console.log(dogs)
+          if(dogs === 'no dogs') console.log(dogs)
           else commit({type:'setDogs',dogs})
         });
       } 

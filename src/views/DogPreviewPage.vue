@@ -34,8 +34,6 @@
       <button id="nope" @click="getNextDogs(currDog._id)"><i class="fa fa-remove"></i></button>
       <button id="fav"><i class="fa fa-star"></i></button>
       <button id="love" @click="getNextDogs(currDog._id, currDog.userId)"><i class="fa fa-heart"></i></button>
-
-    
     </div>
   </div>
 
@@ -231,6 +229,7 @@ body {
   /* font-size: 20px; */
   padding: 0 2px;
   pointer-events: none;
+  margin-bottom: 10px;
 }
 .tinder--buttons {
   flex: 0 0 100px;
@@ -239,8 +238,8 @@ body {
 }
 .tinder--buttons button {
   border-radius: 50%;
-  line-height: 60px;
   width: 60px;
+  height: 60px;
   border: 0;
   background: #ffffff;
   display: inline-block;

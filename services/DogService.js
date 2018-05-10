@@ -42,7 +42,8 @@ function getNextDogs(prevId, userDogId) {
     return axios
         .get(url)
         .then(res => {
-            return res.data[0] ? res.data : getNextDogs('', userDogId)
+            if (res.data[0] ) return  res.data 
+            else return 'no dogs'
         });
 }
 
