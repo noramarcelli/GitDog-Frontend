@@ -10,13 +10,13 @@
     <div class="profile-pics" :style="{ backgroundImage: `url(./img/dogs/donna_1.jpeg)`}"></div>
     <div class="profile-pics" :style="{ backgroundImage: `url(./img/dogs/charl_y1.jpeg)`}"></div>
   </div> -->
-  <div class="match-container">
+  <div v-if="matchedDog" class="match-container">
     <div class="profile-pics" :style="{ backgroundImage: `url(${userDog.imgs[0]})`}"></div>
     <div class="profile-pics" :style="{ backgroundImage: `url(${matchedDog.imgs[0]})`}"></div>
   </div>
   
   <!-- <p>You and Lola have liked each other</p> -->
-  <p>You and {{ matchedDog.name }} have liked each other</p>
+  <p v-if="matchedDog">You and {{ matchedDog.name }} have liked each other</p>
 
   <button @click="$router.push('/msgs/5af315390f1fa744584e451e')" class="button is-danger is-rounded">Send a Message</button>
   <br>
