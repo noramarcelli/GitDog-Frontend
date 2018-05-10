@@ -68,17 +68,6 @@ export default {
 
     if (this.loggedInUser !== null) {
       this.$store.dispatch({type: 'moveCurrentDog'});
-      // var dogId = this.loggedInUser.dogId;
-      // console.log("dogId", dogId);
-
-      // this.$store.dispatch({ type: LOAD_USER_DOG, dogId }).then(() => {
-      //   console.log("this.$store.state.userDog", this.$store.state.userDog);
-      // });
-      // this.$store.dispatch({
-      //   type: LOAD_NEXT_DOGS,
-      //   prevId: "",
-      //   userDogId: dogId
-      // });
     }
   },
 
