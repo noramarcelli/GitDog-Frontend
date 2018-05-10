@@ -13,9 +13,14 @@ export default {
     filterBy: {}
   },
   mutations: {
-    SOCKET_MATCHED: (state, match) => {
+    SOCKET_MATCHED(state, match)  {
       state.realTimeMatch = match;
       console.log("state.realTimeMatch", state.realTimeMatch);
+    },
+    SOCKET_NEWMSG({matches}, [{msg, matchId}]) {
+      console.log('inside SOCKET_NEWMSG')
+      let match = matches.find(match => match._id === matchId)
+      match.messages.push(msg);
     },
     setMatchedDog(state, { dog }) {
       state.matchedDog = dog;
@@ -91,6 +96,7 @@ export default {
     currMsgs(state) {
       return matchId => {
         let currMatch = state.matches.find(match => matchId === match._id);
+        console.log({currMatch, matchId})
         if (!currMatch) return [];
         return currMatch.messages;
       };

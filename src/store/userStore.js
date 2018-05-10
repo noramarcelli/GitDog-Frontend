@@ -23,12 +23,13 @@ export default{
       return UserService.login(userCredentials)
       .then(user =>{
         console.log('user in LOGIN', user);
-        
         store.commit({type: 'setUser', user});
+        store.dispatch({type: LOAD_USER_DOG, dogId: user.dogId})
+        store.dispatch({type: 'getDogMatches', dogId: user.dogId})
       })
     },
     [LOAD_USER_DOG](store, { dogId }) {
-      console.log('store action');
+      console.log('store action ilanilanilansdkdskgasfgjk');
       return DogService.getDogById(dogId)
         .then(dog => {
           store.commit({ type: 'setUserDog', dog });
@@ -45,7 +46,7 @@ export default{
       console.log('state.loggedInUser', state.loggedinUser)
       return state.loggedinUser;
     },
-     userDog(state){
+    userDog(state){
       return state.userDog
       ? state.userDog
       : {};

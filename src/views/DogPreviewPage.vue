@@ -3,13 +3,30 @@
     <div class="tinder--cards">
       <div v-if="currDog" class="tinder--card">
         
+      <!-- <v-layout
+            v-touch="{
+              left: () => swipe('left'),
+              right: () => swipe('right')
+            }"
+            column
+            align-center
+            justify-center
+            style="height: 500px"
+            class="grey lighten-2"
+          >
+            <v-subheader>Swipe Direction</v-subheader>
+            {{ swipeDirection }} -->
+        
+
         <dog-carousel :dog="currDog"></dog-carousel>
         <span @click="showDetails">
-                <i class="fa" :class="{'fa-info-circle' : !shouldShow, 'fa-arrow-circle-down' : shouldShow }"></i>
+                <i class="fa card-control" :class="{'fa fa-info' : !shouldShow, 'fa fa-arrow-down' : shouldShow }"></i>
         </span>
         <p class="dog"> {{currDog.name}}, {{currDog.age}} </p>
         
         <dog-details class="dog-info" :dog="currDog" v-if="shouldShow" />
+
+        <!-- </v-layout> -->
       </div>
     </div>
 
@@ -17,31 +34,52 @@
       <button id="nope" @click="getNextDogs(currDog._id)"><i class="fa fa-remove"></i></button>
       <button id="fav"><i class="fa fa-star"></i></button>
       <button id="love" @click="getNextDogs(currDog._id, currDog.userId)"><i class="fa fa-heart"></i></button>
+
+    
     </div>
   </div>
+
+  
 </template>
 
 <script>
-import DogDetails from '../components/DogDetails.vue';
-import DogCarousel from '../components/DogCarousel.vue'
-import {SAVE_LIKE} from '../store/dogStore.js'
-import {LOAD_NEXT_DOGS} from '../store/dogStore.js'
-import {LOAD_USER_DOG} from '../store/userStore.js'
+import DogDetails from "../components/DogDetails.vue";
+import DogCarousel from "../components/DogCarousel.vue";
+import { SAVE_LIKE } from "../store/dogStore.js";
+import { LOAD_NEXT_DOGS } from "../store/dogStore.js";
+import { LOAD_USER_DOG } from "../store/userStore.js";
 
 export default {
-  name: 'dog-preview',
+  name: "dog-preview",
   components: {
     DogDetails,
     DogCarousel
   },
   data() {
     return {
-      shouldShow: false
+      shouldShow: false,
+      swipeDirection: 'None'
     };
+    
   },
 
   created() {
-          this.$store.dispatch({type: 'moveCurrentDog'});
+    var user = this.loggedInUser;
+
+    if (this.loggedInUser !== null) {
+      this.$store.dispatch({type: 'moveCurrentDog'});
+      // var dogId = this.loggedInUser.dogId;
+      // console.log("dogId", dogId);
+
+      // this.$store.dispatch({ type: LOAD_USER_DOG, dogId }).then(() => {
+      //   console.log("this.$store.state.userDog", this.$store.state.userDog);
+      // });
+      // this.$store.dispatch({
+      //   type: LOAD_NEXT_DOGS,
+      //   prevId: "",
+      //   userDogId: dogId
+      // });
+    }
   },
 
   computed: {
@@ -64,25 +102,32 @@ export default {
       this.$store.dispatch({type: 'moveCurrentDog'});      
       if (dogUserId) {
         var userId = this.loggedInUser._id;
-        console.log('userId inside getNextDogs', userId);
-        
-        this.$socket.emit('likedDog', { dogId, dogUserId, userDogId, userId })
+        console.log("userId inside getNextDogs", userId);
+
+        this.$socket.emit("likedDog", { dogId, dogUserId, userDogId, userId });
         // this.$store.dispatch({ type: SAVE_LIKE, dogId, userDogId, userId });
+
+        
       }
     },
     showDetails() {
       this.shouldShow = !this.shouldShow;
-    }
+    },
+    swipe(direction) {
+        console.log('got swipr direction', direction)
+        // this.swipeDirection = direction
+        (direction === "left")? this.getNextDogs(this.currDog._id) : this.getNextDogs(this.currDog._id, this.currDog.userId);
+     }
   },
   sockets: {
     matched() {
-      this.$router.push('/match')
+      this.$router.push("/match");
     }
   },
 
   components: {
-     DogDetails,
-     DogCarousel
+    DogDetails,
+    DogCarousel
   }
 };
 </script>
@@ -190,7 +235,7 @@ body {
 .tinder--buttons {
   flex: 0 0 100px;
   text-align: center;
-  padding-top: 10px;
+  padding-top: 40px;
 }
 .tinder--buttons button {
   border-radius: 50%;
@@ -226,19 +271,37 @@ i {
   color: red;
 }
 .dog {
-   font-family: "CutiePatootie";
-   font-weight: bold;
-   font-size: 2.5em;
+  font-family: "CutiePatootie";
+  font-weight: bold;
+  font-size: 2.5em;
 }
 .dog-info {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.61);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.61);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.card-control {
+  box-sizing: border-box;
+  padding: 2px;
+  margin: 0;
+  color: white;
+  background: red;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.2rem;
+  z-index: 10;
+  position: absolute;
+  bottom: 35px;
+  right: 20px;
 }
 </style>

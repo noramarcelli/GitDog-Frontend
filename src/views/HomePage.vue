@@ -7,7 +7,7 @@
     <img src="../assets/logo.png">
     <HelloWorld msg="Welcome to the temp profile page"/>
   </div> -->
-  <footer></footer>
+  <!-- <footer></footer> -->
   </section>    
 </template>
 
@@ -43,14 +43,14 @@ p {
   font-family: "SweetHipster";
   font-weight: bold;
 }
-.home footer {
+/* .home footer {
   background-image: url("../../public/img/bgrd/dog-treats.png");
   background-repeat: no-repeat;
   height: 320px;
   background-size: 860px;
   width: 860px;
   height: 320px;
-}
+} */
 /* .login, .register {
   color: red;
 } */
