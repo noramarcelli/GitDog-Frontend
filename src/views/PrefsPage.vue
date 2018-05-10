@@ -1,8 +1,8 @@
 <template>
     <section class="prefs-page">
     <a @click="$router.push('/profile')" title="Done"><i class="fa fa-check-circle block done"></i></a>
-    <!-- <p>This is a Temp Settings Page</p> -->
-    <div class="block">
+    <div class="settings">
+        <p>Please select your interests:</p>
         <div class="select is-danger is-small ">
             <label class="block">Show me:</label>
             <select class="block">
@@ -52,11 +52,11 @@
         </div>
     </div>    
 
-        <div class="contact block">
-            <label class="block">Contact Us:</label>
+        <div class="contact">
+            <label >Contact Us:</label>
 
-            <button class="button block is-danger is-small is-rounded">Help &amp; support</button>
-            <button class="button block is-danger is-small is-rounded" @click="$router.push('/logout')">Logout</button>
+            <button class="button is-danger is-small is-rounded">Help &amp; support</button>
+            <button class="button is-danger is-small is-rounded" @click="$router.push('/logout')">Logout</button>
             <!-- <button class="button block is-danger is-small is-rounded" v-if="loggedinUser" @click="logout">{{loggedinUser.name}} Logout</button> -->
         </div>
     </section>
@@ -70,11 +70,15 @@ export default {
 </script>
 
 <style scoped>
-.input, select, .edit-page, textarea, .weight-slider, .specs,  .desc {
+.input, select, .edit-page, textarea, .weight-slider, .specs,  .desc{
     font-family: "CutiePatootie";
     padding: 5px;
     margin: 10px;
     font-size: 16px;
+}
+p {
+    font-size: 3rem;
+    font-family: "CutiePatootie";
 }
 .optionGroup {
     font-weight: bold !important;
@@ -98,6 +102,13 @@ label {
 }
 button {
     width: 150px;
+    font-family: "CutiePatootie";
+    font-size: 2em;
+    margin: 10px;
+}
+.contact-block{
+    margin: o auto;
+    margin-top: 200px;
 }
 </style>
 
