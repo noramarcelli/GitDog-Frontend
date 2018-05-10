@@ -1,27 +1,25 @@
 <template>
     <section class="chat-page">
-    <!-- <a @click="$router.push('/msgs')" title="Done"><i class="fa fa-check-circle"></i></a> -->
-    <a @click="$router.push('/msgs')" title="Done"><i class="fa fa-arrow-alt-circle-left"></i></a>
-    <p>This is a Temp chat Page</p>
+        <!-- <a @click="$router.push('/msgs')" title="Done"><i class="fa fa-check-circle"></i></a> -->
+        <a @click="$router.push('/msgs')" title="Done"><i class="fa fa-arrow-alt-circle-left"></i></a>
+        <!-- <p>This is a Temp chat Page</p> -->
 
-    <section class="chat-container">
-        <div class="chat">
-        <p class="msg-box" :class="{'from-me': msg.from === user._id}"
-            v-for="(msg, idx) in msgs" :key="idx"> {{ msg.txt }}</p>
-   
-
+        <section class="chat-container">
+            <div class="chat">
+            <p class="msg-box" :class="{'from-me': msg.from === user._id}"
+                v-for="(msg, idx) in msgs" :key="idx"> {{ msg.txt }}</p>
     
-        <form class="chat1 inline" @submit.prevent="sendMsg">
-            <input v-model="newMessageTxt" class="input is-medium is-danger inline" type="text"/> 
-            <button class="button is-medium is-danger"  title="Smiley">&#9786;</button>
-            <button class="button is-medium is-danger"  title="Gift"><i class="fa fa-gift"></i></button>
-            <button @click.prevent="sendMsg" class="button is-medium is-danger send" title="Send"><i class="fa fa-location-arrow"></i></button>
-        </form>
 
-    </div>
-     </section>
+        
+            <form class="chat1 inline" @submit.prevent="sendMsg">
+                <input v-model="newMessageTxt" class="input is-medium is-danger inline" type="text"/> 
+                <button class="button is-medium is-danger"  title="Smiley">&#9786;</button>
+                <button class="button is-medium is-danger"  title="Gift"><i class="fa fa-gift"></i></button>
+                <button @click.prevent="sendMsg" class="button is-medium is-danger send" title="Send"><i class="fa fa-location-arrow"></i></button>
+            </form>
 
-
+        </div>
+        </section>
     </section>
 </template>
 

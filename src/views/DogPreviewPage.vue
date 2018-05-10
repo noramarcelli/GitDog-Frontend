@@ -264,7 +264,7 @@ body {
   z-index: 2;
 }
 i {
-  font-size: 3em;
+  font-size: 3rem;
   color: red;
 }
 .dog {
