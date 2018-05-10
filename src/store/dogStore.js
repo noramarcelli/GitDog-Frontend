@@ -51,7 +51,6 @@ export default {
   },
   actions: {
     moveCurrentDog({state, getters, commit}) {
-      console.log('eladleladeladeladelad')
       if(state.dogs.length === 0) {
         return DogService.getNextDogs( undefined, getters.userDogId, state.filterBy)
         .then(dogs => {

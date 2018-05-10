@@ -57,8 +57,8 @@ export default {
           console.log('there is a new member in our chat. username:', memberName)
       },
       newMsg(data) {
-          console.log('in component:')
-          console.log({data})
+        //   console.log('in component:')
+        //   console.log({data})
         //   this.msgs.push({txt});
       }
   },

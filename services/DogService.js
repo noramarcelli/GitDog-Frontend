@@ -38,7 +38,7 @@ function _getDogUrl(dogId) {
 function getNextDogs(prevId, userDogId) {
     prevId = prevId || '';
     var url = `${DOG_URL}/next?prevId=${prevId}&userDogId=${userDogId}`;
-    console.log('dogId in service:', prevId)
+    // console.log('dogId in service:', prevId)
     return axios
         .get(url)
         .then(res => {
@@ -58,7 +58,7 @@ function findLikes(userDogId){
     .get(`${DOG_URL}/like/${userDogId}`)
     .then(res => {
         return res.data;
-        console.log('all dogs who liked mine: ', res.data);
+        // console.log('all dogs who liked mine: ', res.data);
     })
 }
 
@@ -72,13 +72,13 @@ function findLikes(userDogId){
 // }
 
 function uploadImg( imgUrl ){
-    console.log('imgUrl', imgUrl);
+    // console.log('imgUrl', imgUrl);
     
     return axios
     .post(`${DOG_URL}/uploadImg`, {imgUrl})
     .then(res => {
         return res.data;
-        console.log('updated url after img upload: ', res.data);
+        // console.log('updated url after img upload: ', res.data);
     })
 }
 

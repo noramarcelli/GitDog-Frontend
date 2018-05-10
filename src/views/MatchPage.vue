@@ -39,7 +39,7 @@ export default {
     }
   },
   created() {
-    console.log("matchPage created");
+    // console.log("matchPage created");
   }
 };
 </script>

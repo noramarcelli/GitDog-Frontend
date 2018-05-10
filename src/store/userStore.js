@@ -29,7 +29,7 @@ export default{
       })
     },
     [LOAD_USER_DOG](store, { dogId }) {
-      console.log('store action ilanilanilansdkdskgasfgjk');
+      // console.log('store action ilanilanilansdkdskgasfgjk');
       return DogService.getDogById(dogId)
         .then(dog => {
           store.commit({ type: 'setUserDog', dog });
@@ -42,7 +42,7 @@ export default{
     logout(store){
       return UserService.logout()
       .then(res => {
-        console.log('inside logout');
+        // console.log('inside logout');
         var user = null;
         store.commit({ type: 'setUser', user});
       })
@@ -53,7 +53,7 @@ export default{
 
   getters: {
     loggedInUserForDisplay(state) {
-      console.log('state.loggedInUser', state.loggedinUser)
+      // console.log('state.loggedInUser', state.loggedinUser)
       return state.loggedinUser;
     },
     userDog(state){

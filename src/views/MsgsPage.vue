@@ -28,7 +28,7 @@
 export default {
   created() {
     var dogId = this.dog._id;
-    console.log("dogId in msgsPage", dogId);
+    // console.log("dogId in msgsPage", dogId);
 
     this.$store.dispatch({ type: "getDogMatches", dogId });
   },

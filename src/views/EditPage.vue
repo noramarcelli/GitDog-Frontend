@@ -105,9 +105,9 @@ export default {
     saveImg(idx) {
       var imgName = "img" + idx;
       var imgUrl = this.dogToEdit.imgs[idx];
-      console.log('imgUrl in saveImg in EditPage', imgUrl );
+    //   console.log('imgUrl in saveImg in EditPage', imgUrl );
          this.$store.dispatch({ type: "uploadImg", imgUrl}).then((url) => {
-             console.log('image url:', url)
+            //  console.log('image url:', url)
              this.dogToEdit.imgs.splice(idx, 1, url.url);
         });
     },
@@ -119,7 +119,7 @@ export default {
 
     saveDog() {
       let dogToEdit = this.dogToEdit;
-      console.log("dog inside save dog", dogToEdit);
+    //   console.log("dog inside save dog", dogToEdit);
       this.$store.dispatch({ type: "saveDog", dogToEdit }).then(() => {});
     }
   }

@@ -89,7 +89,7 @@ export default {
       this.$store.dispatch({type: 'moveCurrentDog'});      
       if (dogUserId) {
         var userId = this.loggedInUser._id;
-        console.log("userId inside getNextDogs", userId);
+        // console.log("userId inside getNextDogs", userId);
 
         this.$socket.emit("likedDog", { dogId, dogUserId, userDogId, userId });
         // this.$store.dispatch({ type: SAVE_LIKE, dogId, userDogId, userId });
@@ -101,7 +101,7 @@ export default {
       this.shouldShow = !this.shouldShow;
     },
     swipe(direction) {
-        console.log('got swipr direction', direction)
+        // console.log('got swipr direction', direction)
         // this.swipeDirection = direction
         (direction === "left")? this.getNextDogs(this.currDog._id) : this.getNextDogs(this.currDog._id, this.currDog.userId);
      }
