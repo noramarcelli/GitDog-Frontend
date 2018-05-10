@@ -2,17 +2,21 @@
 <section v-if="loggedInUser" class="match-page">
   <h1>It's a match!!!</h1>
 
-  <!--  <div :src="'./' + dog.imgs[0]"></div>
+   <!-- <div :src="'./' + dog.imgs[0]"></div>
   <div :src="'./' + dog.imgs[1]"></div> -->
   <!-- <div v-if="userDog" class="profile-pics" :style="{ backgroundImage: `url(userDog.imgs[0])`}"></div>
   <!<div class="profile-pics" :style="{ backgroundImage: `url(./img/dogs/donna_1.jpeg)`}" ></div> -->
-  <div class="match-container">
+  <!-- <div class="match-container">
     <div class="profile-pics" :style="{ backgroundImage: `url(./img/dogs/donna_1.jpeg)`}"></div>
-    <div class="profile-pics" :style="{ backgroundImage: `url(./img/dogs/charly_1.jpeg)`}"></div>
+    <div class="profile-pics" :style="{ backgroundImage: `url(./img/dogs/charl_y1.jpeg)`}"></div>
+  </div> -->
+  <div class="match-container">
+    <div class="profile-pics" :style="{ backgroundImage: `url(${userDog.imgs[0]})`}"></div>
+    <div class="profile-pics" :style="{ backgroundImage: `url(${matchedDog.imgs[0]})`}"></div>
   </div>
   
-  <p>You and Lola have liked each other</p>
-  <!-- <p>You and {{ matchedDog.name }} have liked each other</p> -->
+  <!-- <p>You and Lola have liked each other</p> -->
+  <p>You and {{ matchedDog.name }} have liked each other</p>
 
   <button @click="$router.push('/msgs/5af315390f1fa744584e451e')" class="button is-danger is-rounded">Send a Message</button>
   <br>

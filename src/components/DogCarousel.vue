@@ -3,7 +3,7 @@
     <div class='carousel-container'>
         <div class='carousel-item is-active'> -->
             <carousel v-if="dog" :perPageCustom="[[480, 1], [768, 1]]" :navigationEnabled="true">
-                <slide class='carousel-item' v-for="(img, idx) in dog.imgs" :key="idx" :style="{ backgroundImage : `url(${dog.imgs[idx]})`}">
+                <slide class='carousel-item img' v-for="(img, idx) in dog.imgs" :key="idx" :style="{ backgroundImage : `url(${dog.imgs[idx]})`}">
                     <span >
                         <!-- <i class="fa fa-caret-left"></i> -->
                         <!-- <img :src="'./' + dog.imgs[idx]"/> -->
