@@ -9,7 +9,7 @@
                     <div v-for="idx in 6" class="dog" :style="{ backgroundImage: (dogToEdit.imgs[idx-1])? `url(${dogToEdit.imgs[idx-1]})` : 'url(./img/bgrd/paw.jpg)' }">
                         <a v-if="dogToEdit.imgs[idx-1]" @click="emptyImg(idx - 1)"><i class="fa fa-minus-circle"></i></a>
                         <a v-else><i @click="saveImg(idx - 1)" class="fa fa-plus-circle"></i></a>
-                        <input v-if="!dogToEdit.imgs[idx - 1]" v-model="dogToEdit.imgs[idx - 1]"/>
+                        <input class="url-input" v-if="!dogToEdit.imgs[idx - 1]" v-model="dogToEdit.imgs[idx - 1]"/>
                     </div>
                 </div>
         </section>
@@ -221,6 +221,10 @@ button {
 
 .main-details{
     margin: 0 0 0 30px;
+}
+
+.url-input{
+   border-style: inset;
 }
 </style>
 
