@@ -98,17 +98,17 @@ export default {
 
     uploadImg(store, { imgUrl }) {
       // console.log('userDog', dog);
-      console.log("imgUrl in uploadImage in dogStore", imgUrl);
+      // console.log("imgUrl in uploadImage in dogStore", imgUrl);
 
       return DogService.uploadImg(imgUrl).then(res => {
-        console.log("res in uploadImg in dogStore", res);
+        // console.log("res in uploadImg in dogStore", res);
         // dog.imgs[idx] = imgUrl;
         return res;
       });
     },
 
     saveDog(store, { dogToEdit }) {
-      console.log("dog inside dogStore", dogToEdit);
+      // console.log("dog inside dogStore", dogToEdit);
 
       return DogService.saveDog(dogToEdit).then(dogToEdit => {
         return dogToEdit;

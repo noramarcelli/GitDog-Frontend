@@ -9,12 +9,15 @@ import VueCarousel from 'vue-carousel';
 import socketio from 'socket.io-client'
 import VueSocketio from 'vue-socket.io';
 import Vuetify from 'vuetify';
+import swal from 'sweetalert';
+import VueSweetAlert from 'vue-sweetalert'
 
 import 'vuetify/dist/vuetify.min.css'
  
 Vue.use(Vuetify)
 
 Vue.use(VueSocketio, '//localhost:3000', store);
+Vue.use(VueSweetAlert);
 
 
 // import swipe from '../css/swipe.css';

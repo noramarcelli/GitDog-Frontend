@@ -9,7 +9,7 @@
                     <div v-for="idx in 6" class="dog" :style="{ backgroundImage: (dogToEdit.imgs[idx-1])? `url(${dogToEdit.imgs[idx-1]})` : 'url(./img/bgrd/paw.jpg)' }">
                         <a v-if="dogToEdit.imgs[idx-1]" @click="emptyImg(idx - 1)"><i class="fa fa-minus-circle"></i></a>
                         <a v-else><i @click="saveImg(idx - 1)" class="fa fa-plus-circle"></i></a>
-                        <input v-if="!dogToEdit.imgs[idx - 1]" v-model="dogToEdit.imgs[idx - 1]"/>
+                        <input class="url-input" v-if="!dogToEdit.imgs[idx - 1]" v-model="dogToEdit.imgs[idx - 1]"/>
                     </div>
                 </div>
         </section>
@@ -35,16 +35,16 @@
                 </select>
             </section>
 
-            <section class="select is-danger is-small">
+             <!-- <section class="select is-danger is-small">
                 <label>weight: &nbsp;&nbsp;</label>
-                <select v-model="dogToEdit.weight">
+                   <select v-model="dogToEdit.weight">
                     <option>0-5KG</option>
                     <option>6-15KG</option>
                     <option>16-30KG</option>
                     <option>31-45KG</option>
                     <option>46KG &amp; up</option>
-                </select>
-            </section>
+                </select> 
+            </section>  -->
         
             <section class="select is-danger is-small">
                 <label>City/Region: &nbsp;&nbsp;</label>
@@ -71,6 +71,11 @@
                     <option class="optionChild">Krayot</option>
                 </select>
             </section>
+
+             <section class="select is-danger is-small">
+                <label>weight: &nbsp;&nbsp;</label>
+               <input class="input is-small is-danger" type="text" placeholder="WEIGHT OF THE DOG" v-model="dogToEdit.weight"/>
+            </section>
     </form >
 <br>
     <div class="desc">
@@ -96,8 +101,8 @@ export default {
     dogToEdit() {
       let dog = this.$store.getters.userDog;
       let dogToEdit = { ...dog, imgs: [...dog.imgs] };
-      delete dogToEdit.pendingLikesIds;
-      delete dogToEdit.matches;
+      //   delete dogToEdit.pendingLikesIds;
+      //   delete dogToEdit.matches;
       return dogToEdit;
     }
   },
@@ -105,22 +110,33 @@ export default {
     saveImg(idx) {
       var imgName = "img" + idx;
       var imgUrl = this.dogToEdit.imgs[idx];
-    //   console.log('imgUrl in saveImg in EditPage', imgUrl );
-         this.$store.dispatch({ type: "uploadImg", imgUrl}).then((url) => {
-            //  console.log('image url:', url)
-             this.dogToEdit.imgs.splice(idx, 1, url.url);
-        });
+      //   console.log('imgUrl in saveImg in EditPage', imgUrl );
+      this.$store.dispatch({ type: "uploadImg", imgUrl }).then(url => {
+        //  console.log('image url:', url)
+        this.dogToEdit.imgs.splice(idx, 1, url.url);
+      });
+
+      swal("Picture uploaded successfully!");
     },
 
-    emptyImg(idx){
-         var imgUrl = "";
-         this.dogToEdit.imgs.splice(idx, 1, "");
+    emptyImg(idx) {
+      var imgUrl = "";
+      this.dogToEdit.imgs.splice(idx, 1, "");
     },
 
     saveDog() {
       let dogToEdit = this.dogToEdit;
-    //   console.log("dog inside save dog", dogToEdit);
+      //   console.log("dog inside save dog", dogToEdit);
       this.$store.dispatch({ type: "saveDog", dogToEdit }).then(() => {});
+
+    //  this.$swal('hello');
+
+      swal({
+        title: "Profile Updated!",
+        text: "All changes have been saved",
+        icon: "success",
+        button: "Ok"
+      });
     }
   }
 };
@@ -139,15 +155,16 @@ textarea,
   margin: 10px;
   font-size: 16px;
 }
-form, span {
-    display: flex;
-    align-items: center;
-    /* justify-content: space-between; */
+form,
+span {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
 }
 label {
-    font-size: 16px;
-    font-weight: bold;
-    /* display: block; */
+  font-size: 16px;
+  font-weight: bold;
+  /* display: block; */
 }
 /* .name,
 .age,
@@ -179,48 +196,52 @@ label {
 }
 
 .dogs-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, calc( (100vw - 70px) / 3));
-    grid-column-gap: 10px;
-    grid-row-gap: 10px;
-    background: #d3d3d3b5;
-    padding: 5px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, calc( (100vw - 70px) / 3));
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  background: #d3d3d3b5;
+  padding: 5px;
 }
 /* USE THIS FOR CIRCLE + BG STYLE LIKE IN .dogs-container */
 .dogs-container .dog {
-    background-size: cover;
-    background-position: center center;
-    position: relative;
+  background-size: cover;
+  background-position: center center;
+  position: relative;
 }
 
 .dog a {
-    color: #ff3860;
-    font-size: 1.5rem;
-    position: absolute;
-    top: 10px;
-    right: 10px;
+  color: #ff3860;
+  font-size: 1.5rem;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 .dogs-container .dog:first-child {
-    grid-column: span 2;
-    grid-row: span 2;
+  grid-column: span 2;
+  grid-row: span 2;
 }
 .block {
-    display: block;
+  display: block;
 }
-.profile-imgs{
-    width: 80%;
-    margin: 0 auto;
+.profile-imgs {
+  width: 80%;
+  margin: 0 auto;
 }
-.desc{
-   text-align: left;
+.desc {
+  text-align: left;
 }
 button {
-   float: right;
+  float: right;
 }
 
-.main-details{
-    margin: 0 0 0 30px;
+.main-details {
+  margin: 0 0 0 30px;
+}
+
+.url-input {
+  border-style: inset;
 }
 </style>
 

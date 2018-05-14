@@ -3,15 +3,14 @@
     <a @click="$router.push('/profile')" title="Done"><i class="fa fa-check-circle block done"></i></a>
     <div class="settings">
         <p>Please select your interests:</p>
-        <div class="select is-danger is-small ">
+        <!-- <div class="select is-danger is-small ">
             <label class="block">Show me:</label>
             <select class="block">
-                <!-- <option disabled>Gender</option> -->
                 <option>Female</option>
                 <option>Male</option>
             </select>
             <br>
-        </div>
+        </div> -->
 
         <div class="select is-danger is-small ">
             <label class="block">weight group&nbsp;&nbsp;</label>
