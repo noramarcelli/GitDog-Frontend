@@ -25,7 +25,9 @@
                  <br/>
                  {{match.messages[match.messages.length - 1].txt}}
                  <br/>
-                  {{getDogById(match.messages[match.messages.length - 1].from)}}
+                 <!-- {{ setFromDog(match.messages[match.messages.length - 1].from)}} -->
+                 <br/>
+                 <!-- {{ getFromDog }} -->
                 </div>
             </span>
         </span>
@@ -64,6 +66,12 @@ export default {
 
     matchesCount(){
         return "Search " + this.matches.length + ' Matches';
+    },
+
+    getFromDog(){
+      console.log('this.$store.getters.getFromDog', this.$store.getters.getFromDog);
+      
+      return this.$store.getters.getFromDog;
     }
   },
   methods: {
@@ -73,11 +81,9 @@ export default {
          this.$store.dispatch({ type: "getDogMatches", dogId: this.dog._id});
       },
 
-      getDogById(userId){
-        // console.log('dogId in MsgsPage', dogId);
-        
-          // this.$store.dispatch({ type: "setFromDog", dogId});
-          //  return this.$store.state.dogStore.fromDog;
+     setFromDog(userId){
+           this.$store.dispatch({ type: "setFromDog", userId});
+          //  return this.$store.getters.fromDog;
       }
   }
 };

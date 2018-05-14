@@ -1,4 +1,5 @@
 import DogService from "../../services/DogService.js";
+import UserService from "../../services/UserService.js";
 
 export const SAVE_LIKE = "saveLike";
 export const LOAD_NEXT_DOGS = "loadNextDogs";
@@ -13,7 +14,10 @@ export default {
     fromDog: null
   },
   getters: {
-    currentDog: ({ dogs, selectedDogIdx }) => dogs[selectedDogIdx]
+    currentDog: ({ dogs, selectedDogIdx }) => dogs[selectedDogIdx],
+    fromDog(state){
+      return state.fromDog 
+    }
   },
   mutations: {
     // incTimes(state){
@@ -42,18 +46,48 @@ export default {
       console.log("state.filterBy", state.filterBy);
     },
 
-    setFromDog(state, { dogId }){
-      console.log('dogId in setFromDog mutation', dogId);
-      
-        return DogService.getDogById(dogId).then(
-        dog => { 
-            state.fromDog = dog;
-            console.log('state.fromDog in store', state.fromDog);
-            
-        }
-      );
-
+    setFromDog(state, { dog }){
+      state.fromDog = dog;
     }
+
+    // setFromDog(state, { dogId }){
+    //   console.log('dogId in setFromDog mutation', dogId);
+      
+    //     return DogService.getDogById(dogId).then(
+    //     dog => { 
+    //         state.fromDog = dog;
+    //         console.log('state.fromDog in store', state.fromDog);
+            
+    //     }
+    //   );
+
+    // }
+
+    // setFromDog(state, { userId }){
+    //   console.log('userId in setFromDog mutation', userId);
+
+      // return UserService.getUserById(userId).then(
+      //   user => {
+      //        console.log('user inside setFromDog', user);
+             
+      //        var dogId = user.dogId;
+      //        return DogService.getDogById(dogId).then(
+      //   dog => { 
+      //       state.fromDog = dog;
+      //       console.log('state.fromDog in store', state.fromDog);
+            
+      //      })
+      //   });
+      
+      //   return DogService.getDogById(dogId).then(
+      //   dog => { 
+      //       state.fromDog = dog;
+      //       console.log('state.fromDog in store', state.fromDog);
+            
+      //   }
+      // );
+
+    // }
 
     // addDog(state, { dog }) {
     //   state.dogs = [dog, ...state.dogs];
@@ -135,8 +169,19 @@ export default {
       store.commit({ type: "setFilterBy", filterBy });
     },
 
-    setFromDog(store, { dogId }){
-      store.commit({ type: "setFromDog", dogId });
+    setFromDog(store, { userId }){
+      return UserService.getUserById(userId).then(
+        user => {
+             console.log('user inside setFromDog', user);
+             
+             var dogId = user.dogId;
+             return DogService.getDogById(dogId).then(
+        dog => { 
+            // state.fromDog = dog;
+            store.commit({ type: "setFromDog", dog });
+           })
+        });
+      // store.commit({ type: "setFromDog", userId });
     }
 
     // uploadImg(store, {imgUrl, imgIdx}){
