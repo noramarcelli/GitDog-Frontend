@@ -35,16 +35,16 @@
                 </select>
             </section>
 
-            <section class="select is-danger is-small">
+             <!-- <section class="select is-danger is-small">
                 <label>weight: &nbsp;&nbsp;</label>
-                <select v-model="dogToEdit.weight">
+                   <select v-model="dogToEdit.weight">
                     <option>0-5KG</option>
                     <option>6-15KG</option>
                     <option>16-30KG</option>
                     <option>31-45KG</option>
                     <option>46KG &amp; up</option>
-                </select>
-            </section>
+                </select> 
+            </section>  -->
         
             <section class="select is-danger is-small">
                 <label>City/Region: &nbsp;&nbsp;</label>
@@ -71,6 +71,11 @@
                     <option class="optionChild">Krayot</option>
                 </select>
             </section>
+
+             <section class="select is-danger is-small">
+                <label>weight: &nbsp;&nbsp;</label>
+               <input class="input is-small is-danger" type="text" placeholder="WEIGHT OF THE DOG" v-model="dogToEdit.weight"/>
+            </section>
     </form >
 <br>
     <div class="desc">
@@ -96,8 +101,8 @@ export default {
     dogToEdit() {
       let dog = this.$store.getters.userDog;
       let dogToEdit = { ...dog, imgs: [...dog.imgs] };
-      delete dogToEdit.pendingLikesIds;
-      delete dogToEdit.matches;
+    //   delete dogToEdit.pendingLikesIds;
+    //   delete dogToEdit.matches;
       return dogToEdit;
     }
   },
