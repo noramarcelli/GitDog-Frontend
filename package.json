@@ -14,6 +14,7 @@
     "register-service-worker": "^1.0.0",
     "socket.io-client": "^2.1.0",
     "sweetalert": "^2.1.0",
+    "v-touch": "^1.5.2",
     "vue": "^2.5.16",
     "vue-awesome": "^3.0.0",
     "vue-carousel": "^0.7.3",
