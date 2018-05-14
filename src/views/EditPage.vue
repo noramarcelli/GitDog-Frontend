@@ -101,8 +101,8 @@ export default {
     dogToEdit() {
       let dog = this.$store.getters.userDog;
       let dogToEdit = { ...dog, imgs: [...dog.imgs] };
-    //   delete dogToEdit.pendingLikesIds;
-    //   delete dogToEdit.matches;
+      //   delete dogToEdit.pendingLikesIds;
+      //   delete dogToEdit.matches;
       return dogToEdit;
     }
   },
@@ -110,22 +110,33 @@ export default {
     saveImg(idx) {
       var imgName = "img" + idx;
       var imgUrl = this.dogToEdit.imgs[idx];
-    //   console.log('imgUrl in saveImg in EditPage', imgUrl );
-         this.$store.dispatch({ type: "uploadImg", imgUrl}).then((url) => {
-            //  console.log('image url:', url)
-             this.dogToEdit.imgs.splice(idx, 1, url.url);
-        });
+      //   console.log('imgUrl in saveImg in EditPage', imgUrl );
+      this.$store.dispatch({ type: "uploadImg", imgUrl }).then(url => {
+        //  console.log('image url:', url)
+        this.dogToEdit.imgs.splice(idx, 1, url.url);
+      });
+
+      swal("Picture uploaded successfully!");
     },
 
-    emptyImg(idx){
-         var imgUrl = "";
-         this.dogToEdit.imgs.splice(idx, 1, "");
+    emptyImg(idx) {
+      var imgUrl = "";
+      this.dogToEdit.imgs.splice(idx, 1, "");
     },
 
     saveDog() {
       let dogToEdit = this.dogToEdit;
-    //   console.log("dog inside save dog", dogToEdit);
+      //   console.log("dog inside save dog", dogToEdit);
       this.$store.dispatch({ type: "saveDog", dogToEdit }).then(() => {});
+
+    //  this.$swal('hello');
+
+      swal({
+        title: "Profile Updated!",
+        text: "All changes have been saved",
+        icon: "success",
+        button: "Ok"
+      });
     }
   }
 };
@@ -144,15 +155,16 @@ textarea,
   margin: 10px;
   font-size: 16px;
 }
-form, span {
-    display: flex;
-    align-items: center;
-    /* justify-content: space-between; */
+form,
+span {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
 }
 label {
-    font-size: 16px;
-    font-weight: bold;
-    /* display: block; */
+  font-size: 16px;
+  font-weight: bold;
+  /* display: block; */
 }
 /* .name,
 .age,
@@ -184,52 +196,52 @@ label {
 }
 
 .dogs-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, calc( (100vw - 70px) / 3));
-    grid-column-gap: 10px;
-    grid-row-gap: 10px;
-    background: #d3d3d3b5;
-    padding: 5px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, calc( (100vw - 70px) / 3));
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  background: #d3d3d3b5;
+  padding: 5px;
 }
 /* USE THIS FOR CIRCLE + BG STYLE LIKE IN .dogs-container */
 .dogs-container .dog {
-    background-size: cover;
-    background-position: center center;
-    position: relative;
+  background-size: cover;
+  background-position: center center;
+  position: relative;
 }
 
 .dog a {
-    color: #ff3860;
-    font-size: 1.5rem;
-    position: absolute;
-    top: 10px;
-    right: 10px;
+  color: #ff3860;
+  font-size: 1.5rem;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 .dogs-container .dog:first-child {
-    grid-column: span 2;
-    grid-row: span 2;
+  grid-column: span 2;
+  grid-row: span 2;
 }
 .block {
-    display: block;
+  display: block;
 }
-.profile-imgs{
-    width: 80%;
-    margin: 0 auto;
+.profile-imgs {
+  width: 80%;
+  margin: 0 auto;
 }
-.desc{
-   text-align: left;
+.desc {
+  text-align: left;
 }
 button {
-   float: right;
+  float: right;
 }
 
-.main-details{
-    margin: 0 0 0 30px;
+.main-details {
+  margin: 0 0 0 30px;
 }
 
-.url-input{
-   border-style: inset;
+.url-input {
+  border-style: inset;
 }
 </style>
 
