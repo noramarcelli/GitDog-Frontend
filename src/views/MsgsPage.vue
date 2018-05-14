@@ -19,6 +19,15 @@
 
         <span class="msgs title">
             <label>Messages:</label>
+             <span v-if="matches" v-for="match in matches" :key="match._id">
+                <div class="message" v-if="match.dog">
+                 {{match.messages[match.messages.length - 1].from}} 
+                 <br/>
+                 {{match.messages[match.messages.length - 1].txt}}
+                 <br/>
+                  {{getDogById(match.messages[match.messages.length - 1].from)}}
+                </div>
+            </span>
         </span>
     </section>
 </template>
@@ -62,6 +71,13 @@ export default {
         //   console.log('inside setFilter');
          this.$store.dispatch({ type: "setFilter", filterBy: {...this.filterBy}});
          this.$store.dispatch({ type: "getDogMatches", dogId: this.dog._id});
+      },
+
+      getDogById(userId){
+        // console.log('dogId in MsgsPage', dogId);
+        
+          // this.$store.dispatch({ type: "setFromDog", dogId});
+          //  return this.$store.state.dogStore.fromDog;
       }
   }
 };
@@ -88,5 +104,9 @@ label {
 a{
       color: black;
       font-size: 3rem;
+}
+
+.message{
+  background-color: blueviolet;
 }
 </style>

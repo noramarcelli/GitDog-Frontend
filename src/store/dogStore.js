@@ -9,15 +9,16 @@ export default {
     selectedDogIdx: 0,
     filterBy: {},
     dogs: [],
-    times: 0
+    // times: 0,
+    fromDog: null
   },
   getters: {
     currentDog: ({ dogs, selectedDogIdx }) => dogs[selectedDogIdx]
   },
   mutations: {
-    incTimes(state){
-      state.times++
-    },
+    // incTimes(state){
+    //   state.times++
+    // },
     setDogs(state, { dogs }) {
       state.selectedDogIdx = 0;
       state.dogs = dogs;
@@ -39,6 +40,19 @@ export default {
       console.log("filterBy inside mutation setFilterBy", filterBy);
       state.filterBy = filterBy;
       console.log("state.filterBy", state.filterBy);
+    },
+
+    setFromDog(state, { dogId }){
+      console.log('dogId in setFromDog mutation', dogId);
+      
+        return DogService.getDogById(dogId).then(
+        dog => { 
+            state.fromDog = dog;
+            console.log('state.fromDog in store', state.fromDog);
+            
+        }
+      );
+
     }
 
     // addDog(state, { dog }) {
@@ -119,6 +133,10 @@ export default {
       console.log("filterBy inside dogStore", filterBy);
       // state.filterBy = filterBy;
       store.commit({ type: "setFilterBy", filterBy });
+    },
+
+    setFromDog(store, { dogId }){
+      store.commit({ type: "setFromDog", dogId });
     }
 
     // uploadImg(store, {imgUrl, imgIdx}){
