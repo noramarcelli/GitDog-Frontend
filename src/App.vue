@@ -45,7 +45,7 @@ export default {
 .msgs {
   // font-family: "BiggerLove";
   color: black;
-  font-size: 3rem;
+  // font-size: 3rem;
   cursor: pointer;
   padding: 20px;
   a {

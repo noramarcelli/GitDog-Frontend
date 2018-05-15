@@ -1,35 +1,34 @@
 <template>
     <section class="msgs-page">
-        <!-- <p>This is a Temp Edit Page</p> -->
-        <!-- <form @submit.prevent="checkLogin"> -->
         <form @submit.prevent>
-            <!-- <input type="search" class="input is-danger is-small is-rounded" ref="txtUserName" placeholder="User name" v-model="user.name" autofocus/> -->
-            <input type="search" v-model="filterBy.name" @keyup.enter="setFilterAndSetMatches" class="input is-danger is-small is-rounded" :placeholder="matchesCount" autofocus/>
-            <!-- placeholder="Seach + MATCHES_COUNT" -->
+            <input type="search" v-model="filterBy.name" @keyup.enter="setFilterAndSetMatches" class="search input is-danger is-small is-rounded" :placeholder="matchesCount" autofocus/>
              <br>
         </form>
 
-        <span class="new-matches">
+        <div class="new-matches">
             <label>New Matches:</label>
-            <span v-if="matches" class="matches-imgs" v-for="match in matches" :key="match._id">
-                <div class="matches-pics profile-pics" v-if="match.dog" :style="{ backgroundImage: `url(${match.dog.imgs[0]})`}"
-                    @click="$router.push('msgs/' + match._id)"></div>
-            </span>
-        </span>
+            <div>
+              <span v-if="matches" class="matches-imgs" v-for="match in matches" :key="match._id">
+                  <div class="matches-pics profile-pics" v-if="match.dog" :style="{ backgroundImage: `url(${match.dog.imgs[0]})`}"
+                      @click="$router.push('msgs/' + match._id)"></div>
+              </span>
+            </div>
+        </div>
 
-        <span class="msgs title">
-            <label>Messages:</label>
+        <div class="msgs title">
+            <label>New Messages:</label>
              <span v-if="matches" v-for="match in matches" :key="match._id">
                 <div class="message" v-if="match.dog">
-                  <img :src="match.dog.imgs[0]"/>
-                  <br/>
-                  {{match.dog.name}} , {{match.dog.age}}
-                 <br/>
-                 {{match.messages[match.messages.length - 1].txt}}
-                 <br/>
+                    <div class="sender-pic" :style="{ backgroundImage: `url(${match.dog.imgs[0]})`}"></div>
+                    
+                    <span class="txts">
+                      <div class="sender">{{match.dog.name}},{{match.dog.age}}</div>
+                      <span v-if="match.messages[match.messages.length - 1]" class="msg-txt">{{match.messages[match.messages.length - 1].txt}}</span>
+                    </span>
                 </div>
             </span>
-        </span>
+        </div>
+
     </section>
 </template>
 
@@ -79,8 +78,10 @@ export default {
 label {
   font-family: CutiePatootie;
   font-weight: bold;
-  font-size: 1em;
+  font-size: 1.5rem;
   color: gray;
+  display: inline-block;
+  text-align: left;
 }
 .matches-pics {
     width: 80px;
@@ -93,12 +94,52 @@ label {
 .edit-page input {
       max-width: 60% !important;
 }
-a{
+a {
       color: black;
       font-size: 3rem;
 }
 
 .message{
-  background-color: blueviolet;
+  background: rgba (153, 153, 153, 0.27);
+  font-family: CutiePatootie;
+  text-align: left;
+  padding: 0 10px;
+  margin: 4px 0;
+  display: flex;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+}
+.txts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 12px;
+  padding: 5px;
+}
+.sender {
+  font-weight: bold;
+  font-size: 18px;
+}
+.sender-pic {
+  height: 40px;
+  width: 40px;
+  background-size: cover;
+  background-position: center center;
+  border-radius: 5px;
+  border: 1px solid red;
+  margin: 5px;
+  box-shadow: 0 4px 8px 0 rgba(31, 7, 7, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.new-matches {
+  display: flex;
+  flex-direction: column;
+}
+form {
+  margin: 0;
+  font-size: 1em !important;
+}
+.search {
+  font-family: CutiePatootie !important;
+  font-size: 14px;
 }
 </style>
