@@ -2,33 +2,32 @@
   <div class="tinder">
     <div class="tinder--cards">
       <div v-if="currDog" class="tinder--card">
+ <v-layout
+    v-touch="{
+        left: () => swipe('left'),
+        right: () => swipe('right')
+      }"
+    column
+    align-center
+    justify-center
+    >
+      <v-subheader></v-subheader>
+      <!-- {{ swipeDirection }} -->
+        <dog-carousel :dog="currDog"></dog-carousel>
+  </v-layout>
         
-      <!-- <v-layout
-            v-touch="{
-              left: () => swipe('left'),
-              right: () => swipe('right')
-            }"
-            column
-            align-center
-            justify-center
-            style="height: 500px"
-            class="grey lighten-2"
-          >
-            <v-subheader>Swipe Direction</v-subheader>
-            {{ swipeDirection }} -->
         
 
-        <dog-carousel :dog="currDog"></dog-carousel>
         <span @click="showDetails">
                 <i class="fa card-control" :class="{'fa fa-info' : !shouldShow, 'fa fa-arrow-down' : shouldShow }"></i>
         </span>
         <p class="dog"> {{currDog.name}}, {{currDog.age}} </p>
         
         <dog-details class="dog-info" :dog="currDog" v-if="shouldShow" />
-
-        <!-- </v-layout> -->
+     
       </div>
     </div>
+
 
     <div class="tinder--buttons">
       <button id="nope" @click="getNextDogs(currDog._id)"><i class="fa fa-remove"></i></button>
@@ -78,7 +77,14 @@ export default {
     },
     userDog() {
       return this.$store.state.userStore.userDog;
-    }
+    },
+    touch() {
+        return {
+          x: this.x,
+          y: this.y,
+          methods: true
+        }
+      }
   },
   methods: {
     getNextDogs(dogId, dogUserId) {
@@ -101,8 +107,8 @@ export default {
       this.shouldShow = !this.shouldShow;
     },
     swipe(direction) {
-        // console.log('got swipr direction', direction)
-        // this.swipeDirection = direction
+        console.log('got swipe direction', direction)
+        this.swipeDirection = direction;
         (direction === "left")? this.getNextDogs(this.currDog._id) : this.getNextDogs(this.currDog._id, this.currDog.userId);
      }
   },
