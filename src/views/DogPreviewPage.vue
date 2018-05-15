@@ -229,7 +229,7 @@ body {
 .tinder--buttons {
   flex: 0 0 100px;
   text-align: center;
-  padding-top: 40px;
+  /* padding-top: 40px; */
 }
 .tinder--buttons button {
   border-radius: 50%;

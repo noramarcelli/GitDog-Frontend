@@ -129,5 +129,9 @@ button {
     margin: o auto;
     margin-top: 200px;
 }
+.contact label {
+    display: flex;
+    justify-content: center;
+}
 </style>
 

@@ -19,14 +19,16 @@
             <form>
                 <label class="name">Name:</label>
                 <input class="input is-small is-danger" type="text" placeholder="NAME OF THE DOG" v-model="dogToEdit.name"/>
-                <label class="age">Age:</label>
-                <input class="input is-small is-danger" type="text" placeholder="AGE" v-model="dogToEdit.age"/>
                 <label class="breed">Breed:</label>
                 <input class="input is-small is-danger" type="text" placeholder="BREED" v-model="dogToEdit.breed"/>
+                <label class="age">Age:</label>
+                <input class="input is-small is-danger" type="text" placeholder="AGE" v-model="dogToEdit.age"/>
+                <label class="weight">weight:</label>
+                <input class="input is-small is-danger" type="text" placeholder="WEIGHT" v-model="dogToEdit.weight"/>
             </form>
         </div>
 
-        <form>
+        <form class="selections">
             <section class="specs select is-danger is-small"> 
                 <label>Gender:</label>
                 <select v-model="dogToEdit.gender">
@@ -45,7 +47,7 @@
                     <option>46KG &amp; up</option>
                 </select> 
             </section>  -->
-        
+
             <section class="select is-danger is-small">
                 <label>City/Region: &nbsp;&nbsp;</label>
                 <select v-model="dogToEdit.city">
@@ -72,12 +74,8 @@
                 </select>
             </section>
 
-             <section class="select is-danger is-small">
-                <label>weight: &nbsp;&nbsp;</label>
-               <input class="input is-small is-danger" type="text" placeholder="WEIGHT OF THE DOG" v-model="dogToEdit.weight"/>
-            </section>
+            
     </form >
-<br>
     <div class="desc">
         <!-- <form class="desc"> -->
             <label class="desc about block">About:</label>
@@ -154,6 +152,7 @@ textarea,
   padding: 5px;
   margin: 10px;
   font-size: 16px;
+  border-radius: 5px;
 }
 form,
 span {
@@ -164,6 +163,8 @@ span {
 label {
   font-size: 16px;
   font-weight: bold;
+  /* margin: 0;
+  padding: 0; */
   /* display: block; */
 }
 /* .name,
@@ -217,6 +218,7 @@ label {
   position: absolute;
   top: 10px;
   right: 10px;
+  border-radius: 5px !important;
 }
 .dogs-container .dog:first-child {
   grid-column: span 2;
@@ -243,5 +245,14 @@ button {
 .url-input {
   border-style: inset;
 }
+textarea {
+  font-size: 16px !important;
+  border-radius: 5px !important;
+}
+.selections {
+  display: flex;
+  justify-content: center;
+}
+
 </style>
 
