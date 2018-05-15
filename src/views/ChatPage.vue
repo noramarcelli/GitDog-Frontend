@@ -80,7 +80,7 @@ export default {
 </script>
 
 <style scoped>
-p{
+p {
     font-size: 20px;
     font-family: "BiggerLove";
 }
