@@ -21,13 +21,12 @@
             <label>Messages:</label>
              <span v-if="matches" v-for="match in matches" :key="match._id">
                 <div class="message" v-if="match.dog">
-                 {{match.messages[match.messages.length - 1].from}} 
+                  <img :src="match.dog.imgs[0]"/>
+                  <br/>
+                  {{match.dog.name}}
                  <br/>
                  {{match.messages[match.messages.length - 1].txt}}
                  <br/>
-                 <!-- {{ setFromDog(match.messages[match.messages.length - 1].from)}} -->
-                 <br/>
-                 <!-- {{ getFromDog }} -->
                 </div>
             </span>
         </span>
@@ -39,8 +38,6 @@
 export default {
   created() {
     var dogId = this.dog._id;
-    // console.log("dogId in msgsPage", dogId);
-
     this.$store.dispatch({ type: "getDogMatches", dogId });
   },
   data() {
@@ -66,12 +63,6 @@ export default {
 
     matchesCount(){
         return "Search " + this.matches.length + ' Matches';
-    },
-
-    getFromDog(){
-      console.log('this.$store.getters.getFromDog', this.$store.getters.getFromDog);
-      
-      return this.$store.getters.getFromDog;
     }
   },
   methods: {
@@ -79,11 +70,6 @@ export default {
         //   console.log('inside setFilter');
          this.$store.dispatch({ type: "setFilter", filterBy: {...this.filterBy}});
          this.$store.dispatch({ type: "getDogMatches", dogId: this.dog._id});
-      },
-
-     setFromDog(userId){
-           this.$store.dispatch({ type: "setFromDog", userId});
-          //  return this.$store.getters.fromDog;
       }
   }
 };

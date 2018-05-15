@@ -1,5 +1,7 @@
 import axios from 'axios';
-const MATCH_URL = 'http://localhost:3000/match';
+const MATCH_URL = (process.env.NODE_ENV === 'development')? '//localhost:3000/match' : '/match';
+
+// const MATCH_URL = 'http://localhost:3000/match';
 
 function getDogMatches(userDogId) {
     return axios

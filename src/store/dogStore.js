@@ -46,49 +46,6 @@ export default {
       console.log("state.filterBy", state.filterBy);
     },
 
-    setFromDog(state, { dog }){
-      state.fromDog = dog;
-    }
-
-    // setFromDog(state, { dogId }){
-    //   console.log('dogId in setFromDog mutation', dogId);
-      
-    //     return DogService.getDogById(dogId).then(
-    //     dog => { 
-    //         state.fromDog = dog;
-    //         console.log('state.fromDog in store', state.fromDog);
-            
-    //     }
-    //   );
-
-    // }
-
-    // setFromDog(state, { userId }){
-    //   console.log('userId in setFromDog mutation', userId);
-
-      // return UserService.getUserById(userId).then(
-      //   user => {
-      //        console.log('user inside setFromDog', user);
-             
-      //        var dogId = user.dogId;
-      //        return DogService.getDogById(dogId).then(
-      //   dog => { 
-      //       state.fromDog = dog;
-      //       console.log('state.fromDog in store', state.fromDog);
-            
-      //      })
-      //   });
-      
-      //   return DogService.getDogById(dogId).then(
-      //   dog => { 
-      //       state.fromDog = dog;
-      //       console.log('state.fromDog in store', state.fromDog);
-            
-      //   }
-      // );
-
-    // }
-
     // addDog(state, { dog }) {
     //   state.dogs = [dog, ...state.dogs];
     // },
@@ -167,21 +124,6 @@ export default {
       console.log("filterBy inside dogStore", filterBy);
       // state.filterBy = filterBy;
       store.commit({ type: "setFilterBy", filterBy });
-    },
-
-    setFromDog(store, { userId }){
-      return UserService.getUserById(userId).then(
-        user => {
-             console.log('user inside setFromDog', user);
-             
-             var dogId = user.dogId;
-             return DogService.getDogById(dogId).then(
-        dog => { 
-            // state.fromDog = dog;
-            store.commit({ type: "setFromDog", dog });
-           })
-        });
-      // store.commit({ type: "setFromDog", userId });
     }
 
     // uploadImg(store, {imgUrl, imgIdx}){
