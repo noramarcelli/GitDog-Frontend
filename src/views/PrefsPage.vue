@@ -82,7 +82,7 @@ export default {
             let cities = [...this.filterBy.cities];
             let weightGroups = [...this.filterBy.weightGroups];
             let filterBy = {cities, weightGroups};
-            commit ({type:'setSettingsFilter', filterBy});
+            this.$store.commit({type:'setSettingsFilter', filterBy});
         }
     },
 }
