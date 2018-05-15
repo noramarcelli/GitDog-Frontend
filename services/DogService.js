@@ -1,5 +1,7 @@
 import axios from 'axios';
-const DOG_URL = 'http://localhost:3000/dog';
+const DOG_URL = (process.env.NODE_ENV === 'development')? '//localhost:3000/dog' : '/dog';
+
+// const DOG_URL = 'http://localhost:3000/dog';
 
 
 function emptyDog() {

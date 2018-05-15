@@ -18,7 +18,7 @@
   <!-- <p>You and Lola have liked each other</p> -->
   <p v-if="matchedDog">You and {{ matchedDog.name }} have liked each other</p>
 
-  <button @click="$router.push('/msgs/5af315390f1fa744584e451e')" class="button is-danger is-rounded">Send a Message</button>
+  <button v-if="currMatch" @click="$router.push(`/msgs/${currMatch._id}`)" class="button is-danger is-rounded">Send a Message</button>
   <br>
   <button @click="$router.push('./swipe')" class="button is-danger is-rounded">Keep Playing</button>
 </section>    
@@ -30,7 +30,9 @@ export default {
     userDog() {
       return this.$store.getters.userDog;
     },
-
+    currMatch() {
+      return this.$store.state.matchStore.realTimeMatch;
+    },
     matchedDog() {
       return this.$store.state.matchStore.matchedDog;
     },

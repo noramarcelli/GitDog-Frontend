@@ -13,10 +13,12 @@ import swal from 'sweetalert';
 import VueSweetAlert from 'vue-sweetalert'
 
 import 'vuetify/dist/vuetify.min.css'
- 
+
+const BASE_URL = (process.env.NODE_ENV === 'development')? '//localhost:3000' : '';
+
 Vue.use(Vuetify)
 
-Vue.use(VueSocketio, '//localhost:3000', store);
+Vue.use(VueSocketio, BASE_URL + '/', store);
 Vue.use(VueSweetAlert);
 
 

@@ -14,7 +14,7 @@
 
         <div class="select is-danger is-small ">
             <label class="block">weight group&nbsp;&nbsp;</label>
-            <select class="block" multiple>
+            <select  v-model="filterBy.weightGroups" @change="setFilter" class="block" multiple>
                 <option>0-5KG</option>
                 <option>6-15KG</option>
                 <option>16-30KG</option>
@@ -25,7 +25,7 @@
 
         <div class="select is-danger is-small ">
             <label class="block">City/Region &nbsp;&nbsp;</label>
-            <select class="block" multiple>
+            <select v-model="filterBy.cities" @change="setFilter" class="block" multiple>
                     <option class="optionGroup">HaMerkaz</option>
                     <option class="optionChild">Tel Aviv</option>
                     <option class="optionChild">Ramat Gan</option>
@@ -64,12 +64,25 @@
 
 <script>
 export default {
+    data(){
+        return {
+           filterBy: {cities: [], weightGroups: []}
+        }
+    },
     methods: {
         logout() {
             console.log('Logging out!');
             this.$store.dispatch('logout').then(()=>{
                 this.$router.push('/')
             })
+        },
+
+        setFilter(ev){
+            //   console.log('changed', ev);
+            let cities = [...this.filterBy.cities];
+            let weightGroups = [...this.filterBy.weightGroups];
+            let filterBy = {cities, weightGroups};
+            commit ({type:'setSettingsFilter', filterBy});
         }
     },
 }

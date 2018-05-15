@@ -19,6 +19,16 @@
 
         <span class="msgs title">
             <label>Messages:</label>
+             <span v-if="matches" v-for="match in matches" :key="match._id">
+                <div class="message" v-if="match.dog">
+                  <img :src="match.dog.imgs[0]"/>
+                  <br/>
+                  {{match.dog.name}} , {{match.dog.age}}
+                 <br/>
+                 {{match.messages[match.messages.length - 1].txt}}
+                 <br/>
+                </div>
+            </span>
         </span>
     </section>
 </template>
@@ -28,8 +38,6 @@
 export default {
   created() {
     var dogId = this.dog._id;
-    // console.log("dogId in msgsPage", dogId);
-
     this.$store.dispatch({ type: "getDogMatches", dogId });
   },
   data() {
@@ -88,5 +96,9 @@ label {
 a{
       color: black;
       font-size: 3rem;
+}
+
+.message{
+  background-color: blueviolet;
 }
 </style>
