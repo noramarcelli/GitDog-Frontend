@@ -17,16 +17,17 @@
 
         <div class="msgs title">
             <label>New Messages:</label>
+            <div class="msg-box">
              <span v-if="matches" v-for="match in matches" :key="match._id">
                 <div class="message" v-if="match.dog">
                     <div class="sender-pic" :style="{ backgroundImage: `url(${match.dog.imgs[0]})`}"></div>
-                    
                     <span class="txts">
                       <div class="sender">{{match.dog.name}},{{match.dog.age}}</div>
                       <span v-if="match.messages[match.messages.length - 1]" class="msg-txt">{{match.messages[match.messages.length - 1].txt}}</span>
                     </span>
                 </div>
             </span>
+                    </div>
         </div>
 
     </section>
@@ -34,16 +35,22 @@
 
 
 <script>
+import { Carousel, Slide } from "vue-carousel";
 export default {
+  components: {
+    Carousel,
+    Slide
+  },
+  // };
   created() {
     var dogId = this.dog._id;
     this.$store.dispatch({ type: "getDogMatches", dogId });
   },
   data() {
-        return {
-           filterBy:{ name: '' }
-        }
-    },
+    return {
+      filterBy: { name: "" }
+    };
+  },
   computed: {
     dog() {
       return this.$store.state.userStore.userDog;
@@ -60,21 +67,27 @@ export default {
       return this.$store.getters.loggedInUserForDisplay;
     },
 
-    matchesCount(){
-        return "Search " + this.matches.length + ' Matches';
+    matchesCount() {
+      return "Search " + this.matches.length + " Matches";
     }
   },
   methods: {
-      setFilterAndSetMatches(){
-        //   console.log('inside setFilter');
-         this.$store.dispatch({ type: "setFilter", filterBy: {...this.filterBy}});
-         this.$store.dispatch({ type: "getDogMatches", dogId: this.dog._id});
-      }
+    setFilterAndSetMatches() {
+      //   console.log('inside setFilter');
+      this.$store.dispatch({
+        type: "setFilter",
+        filterBy: { ...this.filterBy }
+      });
+      this.$store.dispatch({ type: "getDogMatches", dogId: this.dog._id });
+    }
   }
 };
 </script>
 
 <style>
+.msgs-page, form, .msg-box, label {
+  padding: 0 10px;
+}
 label {
   font-family: CutiePatootie;
   font-weight: bold;
@@ -84,22 +97,22 @@ label {
   text-align: left;
 }
 .matches-pics {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    border: 3px solid red;
-    margin: 10px 5px;
-    box-shadow: 0 4px 8px 0 rgba(31, 7, 7, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid red;
+  margin: 10px 5px;
+  box-shadow: 0 4px 8px 0 rgba(31, 7, 7, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .edit-page input {
-      max-width: 60% !important;
+  max-width: 60% !important;
 }
 a {
-      color: black;
-      font-size: 3rem;
+  color: black;
+  font-size: 3rem;
 }
 
-.message{
+.message {
   background: rgba (153, 153, 153, 0.27);
   font-family: CutiePatootie;
   text-align: left;
@@ -141,5 +154,15 @@ form {
 .search {
   font-family: CutiePatootie !important;
   font-size: 14px;
+}
+.msgs-title {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+label {
+  display: flex;
 }
 </style>

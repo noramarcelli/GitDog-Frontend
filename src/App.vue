@@ -47,7 +47,7 @@ export default {
   color: black;
   // font-size: 3rem;
   cursor: pointer;
-  padding: 20px;
+  // padding: 20px;
   a {
     font-weight: bold;
     // color: #2c3e50;
