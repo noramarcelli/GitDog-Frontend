@@ -146,5 +146,10 @@ input {
     width: 80%;
     bottom: 10px;
 }
-</style>
 
+@media (max-width: 550px) {
+ .chat >  p.msg-box:last-child{
+       margin-bottom: 15vw;
+   }
+}
+</style>
