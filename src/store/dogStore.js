@@ -61,42 +61,17 @@ export default {
     // },
   },
   actions: {
-    moveCurrentDog({state, getters, commit}) {
-      if(state.dogs.length === 0) {
-        return DogService.getNextDogs( undefined, getters.userDogId)
-        .then(dogs => {
-          // if(this.state.filterBy && this.state.filterBy.cities && this.state.filterBy.weightGroups){
-
-          // }
-
-          // if (joinedMatch.dog.name.toLowerCase().includes(store.state.filterBy.name.toLowerCase())) {
-          //   filteredMatches.push(joinedMatch);
-          // }
-          commit({type:'setDogs',dogs})
-        });      
-      }
-      if (state.selectedDogIdx === state.dogs.length - 1 ) {
-        return DogService.getNextDogs(getters.currentDog._id, getters.userDogId)
-        .then(dogs => {
-          // if (dogs.length === 0) console.log(dogs)
-          // if(dogs === 'no dogs') console.log(dogs)
-          if(dogs === 'no dogs') {
-            return DogService.getNextDogs( undefined, getters.userDogId)
-            .then(dogs => {
-              commit({type:'setDogs',dogs})
-            });   
-          }
-          else commit({type:'setDogs',dogs})
-        });
-      } 
-      commit('moveCurrentDog')
-      return Promise.resolve()
-    },
-
     // moveCurrentDog({state, getters, commit}) {
     //   if(state.dogs.length === 0) {
     //     return DogService.getNextDogs( undefined, getters.userDogId)
     //     .then(dogs => {
+    //       // if(this.state.filterBy && this.state.filterBy.cities && this.state.filterBy.weightGroups){
+
+    //       // }
+
+    //       // if (joinedMatch.dog.name.toLowerCase().includes(store.state.filterBy.name.toLowerCase())) {
+    //       //   filteredMatches.push(joinedMatch);
+    //       // }
     //       commit({type:'setDogs',dogs})
     //     });      
     //   }
@@ -117,6 +92,31 @@ export default {
     //   commit('moveCurrentDog')
     //   return Promise.resolve()
     // },
+
+    moveCurrentDog({state, getters, commit}) {
+      if(state.dogs.length === 0) {
+        return DogService.getNextDogs( undefined, getters.userDogId)
+        .then(dogs => {
+          commit({type:'setDogs',dogs})
+        });      
+      }
+      if (state.selectedDogIdx === state.dogs.length - 1 ) {
+        return DogService.getNextDogs(getters.currentDog._id, getters.userDogId)
+        .then(dogs => {
+          // if (dogs.length === 0) console.log(dogs)
+          // if(dogs === 'no dogs') console.log(dogs)
+          if(dogs === 'no dogs') {
+            return DogService.getNextDogs( undefined, getters.userDogId)
+            .then(dogs => {
+              commit({type:'setDogs',dogs})
+            });   
+          }
+          else commit({type:'setDogs',dogs})
+        });
+      } 
+      commit('moveCurrentDog')
+      return Promise.resolve()
+    },
 
 
     [LOAD_NEXT_DOGS](store, { dogId, userDogId }) {

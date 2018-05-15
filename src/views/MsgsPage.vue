@@ -18,7 +18,7 @@
         <div class="msgs title">
             <label>New Messages:</label>
              <span v-if="matches" v-for="match in matches" :key="match._id">
-                <div class="message" v-if="match.dog">
+                <div class="message" v-if="match.dog" @click="$router.push('msgs/' + match._id)">
                     <div class="sender-pic" :style="{ backgroundImage: `url(${match.dog.imgs[0]})`}"></div>
                     
                     <span class="txts">
