@@ -42,9 +42,15 @@ export default {
 
     setFilterBy(state, { filterBy }) {
       console.log("filterBy inside mutation setFilterBy", filterBy);
-      state.filterBy = filterBy;
+      state.filterBy.name = filterBy.name;
       console.log("state.filterBy", state.filterBy);
     },
+
+    setSettingsFilter(state, { filterBy }) {
+      state.filterBy.cities = filterBy.cities;
+      state.filterBy.weightGroups = filterBy.weightGroups;
+      console.log(' state.filterBy ',  state.filterBy);
+    }
 
     // addDog(state, { dog }) {
     //   state.dogs = [dog, ...state.dogs];
