@@ -23,7 +23,7 @@
                 <div class="message" v-if="match.dog">
                   <img :src="match.dog.imgs[0]"/>
                   <br/>
-                  {{match.dog.name}}
+                  {{match.dog.name}} , {{match.dog.age}}
                  <br/>
                  {{match.messages[match.messages.length - 1].txt}}
                  <br/>
