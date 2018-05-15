@@ -28,6 +28,7 @@ import 'bulma/css/bulma.css'
 // import FontAwsome from 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css';
 // import FontAwsome from "https://use.fontawesome.com/releases/v5.0.10/css/all.css";
 Vue.use(VueCarousel);
+// Vue.use(VTouch, {name: 'move'});
 Vue.config.productionTip = false
 
 new Vue({
