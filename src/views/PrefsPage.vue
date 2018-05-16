@@ -126,7 +126,7 @@ button {
     margin: 10px;
 }
 .contact{
-    margin: o auto;
+    margin: 0 auto;
     margin-top: 200px;
 }
 .contact label {

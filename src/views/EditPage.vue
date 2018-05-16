@@ -150,7 +150,7 @@ textarea,
 .desc {
   font-family: "CutiePatootie";
   padding: 5px;
-  margin: 10px;
+  margin: 10px 2px;
   font-size: 16px;
   border-radius: 5px;
 }
