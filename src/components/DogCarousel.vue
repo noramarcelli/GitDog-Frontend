@@ -1,5 +1,5 @@
 <template>
-    <carousel v-if="dog" :perPageCustom="[[480, 1], [768, 1], [300, 1]]" :navigationEnabled="true">
+    <carousel v-if="dog" :perPageCustom="[[480, 1], [768, 1], [300, 1], [0, 1]]" :navigationEnabled="true">
         <slide class='carousel-item' v-for="(img, idx) in dog.imgs" :key="idx" :style="{ backgroundImage : `url(${dog.imgs[idx]})`}"></slide>
     </carousel>
 </template>
@@ -46,8 +46,4 @@ carousel, .VueCarousel-pagination {
     background-size: cover;
     background-position: center;  
 }
-
-/* @media (max-width: 440px) {
-
-} */
 </style>

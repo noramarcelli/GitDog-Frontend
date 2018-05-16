@@ -1,5 +1,5 @@
 <template>
-    <section class="msgs-page">
+    <section v-if="dog" class="msgs-page">
         <form @submit.prevent>
             <input type="search" v-model="filterBy.name" @keyup.enter="setFilterAndSetMatches" class="search input is-danger is-small is-rounded" :placeholder="matchesCount" autofocus/>
              <br>
@@ -19,7 +19,7 @@
             <label>New Messages:</label>
             <div class="msg-box">
              <span v-if="matches" v-for="match in matches" :key="match._id">
-                <div class="message" v-if="match.dog">
+                <div class="message" v-if="match.dog" @click="$router.push('msgs/' + match._id)">
                     <div class="sender-pic" :style="{ backgroundImage: `url(${match.dog.imgs[0]})`}"></div>
                     <span class="txts">
                       <div class="sender">{{match.dog.name}},{{match.dog.age}}</div>
@@ -43,8 +43,10 @@ export default {
   },
   // };
   created() {
-    var dogId = this.dog._id;
-    this.$store.dispatch({ type: "getDogMatches", dogId });
+    if (this.dog) {
+      var dogId = this.dog._id;
+      this.$store.dispatch({ type: "getDogMatches", dogId });
+    }
   },
   data() {
     return {
@@ -73,7 +75,10 @@ export default {
   },
   methods: {
     setFilterAndSetMatches() {
+<<<<<<< HEAD
       //   console.log('inside setFilter');
+=======
+>>>>>>> 13f221526e265107c6732f85a14875c77bfb0207
       this.$store.dispatch({
         type: "setFilter",
         filterBy: { ...this.filterBy }

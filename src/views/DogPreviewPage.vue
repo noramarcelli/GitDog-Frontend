@@ -73,6 +73,8 @@ export default {
       return this.$store.getters.loggedInUserForDisplay;
     },
     currDog() {
+      console.log('this.$store.getters.currentDog', this.$store.getters.currentDog);
+      
       return this.$store.getters.currentDog;
     },
     userDog() {
@@ -297,5 +299,11 @@ i {
   position: absolute;
   bottom: 35px;
   right: 20px;
+}
+
+@media (min-width: 300px) {
+   .tinder--card{
+         width: 80vw;
+   }
 }
 </style>
