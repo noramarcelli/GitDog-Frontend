@@ -58,6 +58,7 @@ export default {
 }
 #nav{
   font-size: 3rem;
+  padding-top: 5px; 
 }
 .logo, .msgs, .profile {
   padding: 0 10px !important;

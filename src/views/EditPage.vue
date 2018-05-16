@@ -78,7 +78,7 @@
     <div class="desc">
         <!-- <form class="desc"> -->
             <label class="desc about block">About:</label>
-            <textarea class="textarea is-small is-danger" maxlength="40" size="60" type="text" placeholder="DEC DOG" v-model="dogToEdit.description"></textarea>
+            <textarea class="textarea is-small is-danger" maxlength="200" size="200" type="text" placeholder="DEC DOG" v-model="dogToEdit.description"></textarea>
         <!-- </form>   -->
           <button type="button" class="saveDog button is-small is-danger is-rounded block" @click="saveDog">Save Dog</button>
     </div> 
