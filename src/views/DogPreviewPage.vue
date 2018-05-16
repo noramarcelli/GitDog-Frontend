@@ -1,42 +1,45 @@
 <template>
-  <div class="tinder">
-    <div class="tinder--cards">
-      <div v-if="currDog" class="tinder--card">
- <v-layout
-    v-touch="{
-        left: () => swipe('left'),
-        right: () => swipe('right')
-      }"
-    column
-    align-center
-    justify-center
-    >
-      <v-subheader></v-subheader>
-      <!-- {{ swipeDirection }} -->
-        <dog-carousel :dog="currDog"></dog-carousel>
-  </v-layout>
-        
-        
+  <div ref="tinder" class="tinder">
+    <div ref="tinder--status" class="tinder--status">
+    <i ref="nope" class="fa fa-remove"></i>
+    <i ref="heart" class="fa fa-heart"></i>
+  </div> 
 
+  <div ref="tinderCards" class="tinder--cards">
+    <div ref="tinderCard" v-if="currDog" class="tinder--card">
+
+      <v-layout
+        v-touch="{
+            left: () => swipe('left'),
+            right: () => swipe('right')
+          }"
+        column
+        align-center
+        justify-center
+        >
+        <v-subheader></v-subheader>
+        <!-- {{ swipeDirection }} -->
+        <dog-carousel :dog="currDog"></dog-carousel>
+      </v-layout>
+
+      <section class="details">  
         <span @click="showDetails">
                 <i class="fa card-control" :class="{'fa fa-info' : !shouldShow, 'fa fa-arrow-down' : shouldShow }"></i>
         </span>
         <p class="dog"> {{currDog.name}}, {{currDog.age}} </p>
-        
         <dog-details class="dog-info" :dog="currDog" v-if="shouldShow" />
-     
+      </section>
+
       </div>
     </div>
 
-
-    <div class="tinder--buttons">
+    <div ref="tinderButtons" class="tinder--buttons">
       <button id="nope" @click="getNextDogs(currDog._id)"><i class="fa fa-remove"></i></button>
       <button id="fav"><i class="fa fa-star"></i></button>
       <button id="love" @click="getNextDogs(currDog._id, currDog.userId)"><i class="fa fa-heart"></i></button>
     </div>
-  </div>
-
   
+  </div>
 </template>
 
 <script>
@@ -55,16 +58,15 @@ export default {
   data() {
     return {
       shouldShow: false,
-      swipeDirection: 'None'
+      swipeDirection: "None"
     };
-    
   },
 
   created() {
     var user = this.loggedInUser;
 
     if (this.loggedInUser !== null) {
-      this.$store.dispatch({type: 'moveCurrentDog'});
+      this.$store.dispatch({ type: "moveCurrentDog" });
     }
   },
 
@@ -73,20 +75,23 @@ export default {
       return this.$store.getters.loggedInUserForDisplay;
     },
     currDog() {
-      console.log('this.$store.getters.currentDog', this.$store.getters.currentDog);
-      
+      console.log(
+        "this.$store.getters.currentDog",
+        this.$store.getters.currentDog
+      );
+
       return this.$store.getters.currentDog;
     },
     userDog() {
       return this.$store.state.userStore.userDog;
     },
     touch() {
-        return {
-          x: this.x,
-          y: this.y,
-          methods: true
-        }
-      }
+      return {
+        x: this.x,
+        y: this.y,
+        methods: true
+      };
+    }
   },
   methods: {
     getNextDogs(dogId, dogUserId) {
@@ -94,25 +99,25 @@ export default {
       // var userDogId = this.userDog._id;
       // this.$store.dispatch({ type: LOAD_NEXT_DOGS, dogId, userDogId });
       // disptach moveCurrentDog
-      this.$store.dispatch({type: 'moveCurrentDog'});      
+      this.$store.dispatch({ type: "moveCurrentDog" });
       if (dogUserId) {
         var userId = this.loggedInUser._id;
         // console.log("userId inside getNextDogs", userId);
 
         this.$socket.emit("likedDog", { dogId, dogUserId, userDogId, userId });
         // this.$store.dispatch({ type: SAVE_LIKE, dogId, userDogId, userId });
-
-        
       }
     },
     showDetails() {
       this.shouldShow = !this.shouldShow;
     },
     swipe(direction) {
-        console.log('got swipe direction', direction)
-        this.swipeDirection = direction;
-        (direction === "left")? this.getNextDogs(this.currDog._id) : this.getNextDogs(this.currDog._id, this.currDog.userId);
-     }
+      console.log("got swipe direction", direction);
+      this.swipeDirection = direction;
+      direction === "left"
+        ? this.getNextDogs(this.currDog._id)
+        : this.getNextDogs(this.currDog._id, this.currDog.userId);
+    }
   },
   sockets: {
     matched() {
@@ -132,7 +137,7 @@ export default {
 *:before,
 *:after {
   box-sizing: border-box;
-  padding: 2px;
+  padding: 0px;
   margin: 0;
 }
 body {
@@ -302,8 +307,8 @@ i {
 }
 
 @media (min-width: 300px) {
-   .tinder--card{
-         width: 80vw;
-   }
+  .tinder--card {
+    width: 80vw;
+  }
 }
 </style>
