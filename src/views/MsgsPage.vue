@@ -1,5 +1,5 @@
 <template>
-    <section class="msgs-page">
+    <section v-if="dog" class="msgs-page">
         <form @submit.prevent>
             <input type="search" v-model="filterBy.name" @keyup.enter="setFilterAndSetMatches" class="search input is-danger is-small is-rounded" :placeholder="matchesCount" autofocus/>
              <br>
@@ -36,14 +36,16 @@
 <script>
 export default {
   created() {
-    var dogId = this.dog._id;
-    this.$store.dispatch({ type: "getDogMatches", dogId });
+    if (this.dog) {
+      var dogId = this.dog._id;
+      this.$store.dispatch({ type: "getDogMatches", dogId });
+    }
   },
   data() {
-        return {
-           filterBy:{ name: '' }
-        }
-    },
+    return {
+      filterBy: { name: "" }
+    };
+  },
   computed: {
     dog() {
       return this.$store.state.userStore.userDog;
@@ -60,15 +62,18 @@ export default {
       return this.$store.getters.loggedInUserForDisplay;
     },
 
-    matchesCount(){
-        return "Search " + this.matches.length + ' Matches';
+    matchesCount() {
+      return "Search " + this.matches.length + " Matches";
     }
   },
   methods: {
-      setFilterAndSetMatches(){
-         this.$store.dispatch({ type: "setFilter", filterBy: {...this.filterBy}});
-         this.$store.dispatch({ type: "getDogMatches", dogId: this.dog._id});
-      }
+    setFilterAndSetMatches() {
+      this.$store.dispatch({
+        type: "setFilter",
+        filterBy: { ...this.filterBy }
+      });
+      this.$store.dispatch({ type: "getDogMatches", dogId: this.dog._id });
+    }
   }
 };
 </script>
@@ -83,22 +88,22 @@ label {
   text-align: left;
 }
 .matches-pics {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    border: 3px solid red;
-    margin: 10px 5px;
-    box-shadow: 0 4px 8px 0 rgba(31, 7, 7, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid red;
+  margin: 10px 5px;
+  box-shadow: 0 4px 8px 0 rgba(31, 7, 7, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .edit-page input {
-      max-width: 60% !important;
+  max-width: 60% !important;
 }
 a {
-      color: black;
-      font-size: 3rem;
+  color: black;
+  font-size: 3rem;
 }
 
-.message{
+.message {
   background: rgba (153, 153, 153, 0.27);
   font-family: CutiePatootie;
   text-align: left;
