@@ -35,12 +35,12 @@
 
 
 <script>
-import { Carousel, Slide } from "vue-carousel";
+// import { Carousel, Slide } from "vue-carousel";
 export default {
-  components: {
-    Carousel,
-    Slide
-  },
+  // components: {
+  //   Carousel,
+  //   Slide
+  // },
   // };
   created() {
     if (this.dog) {

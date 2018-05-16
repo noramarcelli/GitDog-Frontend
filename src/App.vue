@@ -72,6 +72,10 @@ export default {
   background-image: url("../public/img/bgrd/dog-treats.png");
   background-size: cover;
   background-position: center;
-  height: 500px;
+  // height: 500px;
+   height: 50vw;
+}
+.edit-page footer {
+   height: 25vw;
 }
 </style>

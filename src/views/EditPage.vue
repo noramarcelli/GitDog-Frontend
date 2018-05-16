@@ -28,7 +28,7 @@
             </form>
         </div>
 
-        <form class="selections">
+        <span class="selections">
             <section class="specs select is-danger is-small"> 
                 <label>Gender:</label>
                 <select v-model="dogToEdit.gender">
@@ -73,19 +73,19 @@
                     <option class="optionChild">Krayot</option>
                 </select>
             </section>
-
-            
-    </form >
+    </span>
+    <!-- <footer>  -->
     <div class="desc">
         <!-- <form class="desc"> -->
             <label class="desc about block">About:</label>
             <textarea class="textarea is-small is-danger" maxlength="40" size="60" type="text" placeholder="DEC DOG" v-model="dogToEdit.description"></textarea>
         <!-- </form>   -->
+          <button type="button" class="saveDog button is-small is-danger is-rounded block" @click="saveDog">Save Dog</button>
     </div> 
-    <button type="button" class="button is-small is-danger is-rounded block" @click="saveDog">Save Dog</button>        
+    <!-- <button type="button" class="saveDog button is-small is-danger is-rounded block" @click="saveDog">Save Dog</button> -->
+    <!-- </footer>         -->
 </section>
-
-    </section>
+</section>
 </template>
 
 
@@ -143,14 +143,12 @@ export default {
 <style scoped>
 .input,
 select,
-.edit-page,
 textarea,
 .weight-slider,
-.specs,
-.desc {
+.specs{
   font-family: "CutiePatootie";
   padding: 5px;
-  margin: 10px;
+  margin: 10px 2px;
   font-size: 16px;
   border-radius: 5px;
 }
@@ -163,6 +161,7 @@ span {
 label {
   font-size: 16px;
   font-weight: bold;
+  margin: 0 !important;
   /* margin: 0;
   padding: 0; */
   /* display: block; */
@@ -233,6 +232,7 @@ label {
 }
 .desc {
   text-align: left;
+  padding: 0 2px;
 }
 button {
   float: right;
@@ -252,7 +252,13 @@ textarea {
 .selections {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
-
+.saveDog {
+  margin: 5px;
+}
+form{
+  margin: 0 !important;
+}
 </style>
 

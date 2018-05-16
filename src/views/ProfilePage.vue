@@ -90,11 +90,11 @@ span {
 
 @media (max-width: 556px) {
  .profile-pics{
-  margin-right: 12%;
+  margin-right: 8%;
  }
 
 .profile-data{
-   margin-right: 12%;
+   margin-right: 8%;
  }
 }
 

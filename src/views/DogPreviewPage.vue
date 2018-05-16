@@ -137,7 +137,11 @@ export default {
 *:before,
 *:after {
   box-sizing: border-box;
+<<<<<<< HEAD
   padding: 0px;
+=======
+  /* padding: 2px; */
+>>>>>>> e3640ff74c6a7fd2704b8e4584b4ab0119c5784e
   margin: 0;
 }
 body {
@@ -306,9 +310,16 @@ i {
   right: 20px;
 }
 
+<<<<<<< HEAD
 @media (min-width: 300px) {
   .tinder--card {
     width: 80vw;
   }
+=======
+.tinder{
+  display: flex;
+  justify-content: space-around;
+>>>>>>> e3640ff74c6a7fd2704b8e4584b4ab0119c5784e
 }
+
 </style>

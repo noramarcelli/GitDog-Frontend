@@ -126,12 +126,17 @@ button {
     margin: 10px;
 }
 .contact{
-    margin: o auto;
+    margin: 0 auto;
     margin-top: 200px;
 }
 .contact label {
     display: flex;
     justify-content: center;
+}
+@media (max-width: 320px){
+    p {
+        font-size: 2rem;
+    }
 }
 </style>
 
