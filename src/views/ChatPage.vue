@@ -14,8 +14,8 @@
             <form class="chat-input inline" @submit.prevent="sendMsg">
                 <input v-model="newMessageTxt" class="input is-medium is-danger inline" type="text"/> 
                 <!-- <div class="buttons"> -->
-                <button class="button is-medium is-danger"  title="Smiley">&#9786;</button>
-                <button class="button is-medium is-danger"  title="Gift"><i class="fa fa-gift"></i></button>
+                <button class="button is-medium is-danger smiley"  title="Smiley">&#9786;</button>
+                <button class="button is-medium is-danger gift"  title="Gift"><i class="fa fa-gift"></i></button>
                 <button @click.prevent="sendMsg" class="button is-medium is-danger send" title="Send"><i class="fa fa-location-arrow"></i></button>
                 <!-- </div> -->
             </form>
@@ -162,9 +162,18 @@ input {
 
   form.chat-input.inline {
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     padding-right: 3vw;
+    width: 72%;
   }
+
+  .smiley{
+    display: none;
+  }
+
+  .gift{
+    display: none;
+  } 
 }
 
 @media (max-width: 712px) {
@@ -187,10 +196,10 @@ input {
 }
 
 @media (min-width: 490px) {
-  form.chat-input.inline {
+  /* form.chat-input.inline {
     padding-right: 3.3%;
     padding-left: 1%;
-  }
+  } */
 }
 </style>
 
