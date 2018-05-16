@@ -4,7 +4,7 @@
       <div v-if="loggedInUser && dog">
         <!-- <img class="profile-pics" :src="'./' + dog.imgs[0]"> -->
         <div class="profile-pics" :style="{ backgroundImage: `url(${dog.imgs[0]})`}"></div>
-        <p> {{dog.name}} , {{dog.age}}</p>
+        <p class="profile-data"> {{dog.name}} , {{dog.age}}</p>
       </div>
   </div>
 
@@ -66,9 +66,38 @@ label {
 }
 span {
   margin:0;
-  padding: o;
+  padding: 0;
   color: gray;
 }
+
+.profile-pics{
+  margin-right: 5%;
+}
+
+.profile-data{
+   margin-right: 5%;
+}
+
+@media (max-width: 932px) {
+ .profile-pics{
+  margin-right: 8%;
+ }
+
+.profile-data{
+   margin-right: 8%;
+ }
+}
+
+@media (max-width: 556px) {
+ .profile-pics{
+  margin-right: 12%;
+ }
+
+.profile-data{
+   margin-right: 12%;
+ }
+}
+
 </style>
 
 
