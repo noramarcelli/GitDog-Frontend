@@ -133,5 +133,10 @@ button {
     display: flex;
     justify-content: center;
 }
+@media (max-width: 320px){
+    p {
+        font-size: 2rem;
+    }
+}
 </style>
 
