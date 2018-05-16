@@ -60,4 +60,10 @@ p {
     font-size: 3em;
   }
 }
+
+@media (max-width: 414px) {
+  p[data-v-9ec71a3c] {
+    font-size: 2.7rem;
+  }
+}
 </style>

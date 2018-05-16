@@ -55,16 +55,15 @@ export default {
   data() {
     return {
       shouldShow: false,
-      swipeDirection: 'None'
+      swipeDirection: "None"
     };
-    
   },
 
   created() {
     var user = this.loggedInUser;
 
     if (this.loggedInUser !== null) {
-      this.$store.dispatch({type: 'moveCurrentDog'});
+      this.$store.dispatch({ type: "moveCurrentDog" });
     }
   },
 
@@ -73,20 +72,23 @@ export default {
       return this.$store.getters.loggedInUserForDisplay;
     },
     currDog() {
-      console.log('this.$store.getters.currentDog', this.$store.getters.currentDog);
-      
+      console.log(
+        "this.$store.getters.currentDog",
+        this.$store.getters.currentDog
+      );
+
       return this.$store.getters.currentDog;
     },
     userDog() {
       return this.$store.state.userStore.userDog;
     },
     touch() {
-        return {
-          x: this.x,
-          y: this.y,
-          methods: true
-        }
-      }
+      return {
+        x: this.x,
+        y: this.y,
+        methods: true
+      };
+    }
   },
   methods: {
     getNextDogs(dogId, dogUserId) {
@@ -94,25 +96,25 @@ export default {
       // var userDogId = this.userDog._id;
       // this.$store.dispatch({ type: LOAD_NEXT_DOGS, dogId, userDogId });
       // disptach moveCurrentDog
-      this.$store.dispatch({type: 'moveCurrentDog'});      
+      this.$store.dispatch({ type: "moveCurrentDog" });
       if (dogUserId) {
         var userId = this.loggedInUser._id;
         // console.log("userId inside getNextDogs", userId);
 
         this.$socket.emit("likedDog", { dogId, dogUserId, userDogId, userId });
         // this.$store.dispatch({ type: SAVE_LIKE, dogId, userDogId, userId });
-
-        
       }
     },
     showDetails() {
       this.shouldShow = !this.shouldShow;
     },
     swipe(direction) {
-        console.log('got swipe direction', direction)
-        this.swipeDirection = direction;
-        (direction === "left")? this.getNextDogs(this.currDog._id) : this.getNextDogs(this.currDog._id, this.currDog.userId);
-     }
+      console.log("got swipe direction", direction);
+      this.swipeDirection = direction;
+      direction === "left"
+        ? this.getNextDogs(this.currDog._id)
+        : this.getNextDogs(this.currDog._id, this.currDog.userId);
+    }
   },
   sockets: {
     matched() {
@@ -132,7 +134,7 @@ export default {
 *:before,
 *:after {
   box-sizing: border-box;
-  padding: 2px;
+  /* padding: 2px; */
   margin: 0;
 }
 body {
@@ -301,9 +303,9 @@ i {
   right: 20px;
 }
 
-@media (min-width: 300px) {
-   .tinder--card{
-         width: 80vw;
-   }
+.tinder{
+  display: flex;
+  justify-content: space-around;
 }
+
 </style>
