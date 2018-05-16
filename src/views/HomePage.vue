@@ -54,4 +54,15 @@ p {
 /* .login, .register {
   color: red;
 } */
+
+footer{
+  height: 50vw;
+}
+
+
+@media (max-width: 650px) {
+  p[data-v-9ec71a3c] {
+    font-size: 3em;
+  }
+}
 </style>
