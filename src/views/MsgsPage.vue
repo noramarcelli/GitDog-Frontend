@@ -75,10 +75,6 @@ export default {
   },
   methods: {
     setFilterAndSetMatches() {
-<<<<<<< HEAD
-      //   console.log('inside setFilter');
-=======
->>>>>>> 13f221526e265107c6732f85a14875c77bfb0207
       this.$store.dispatch({
         type: "setFilter",
         filterBy: { ...this.filterBy }
