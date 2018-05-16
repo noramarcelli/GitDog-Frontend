@@ -9,15 +9,15 @@ export default {
     selectedDog: null,
     selectedDogIdx: 0,
     filterBy: {},
-    dogs: [],
+    dogs: []
     // times: 0,
-    fromDog: null
+    // fromDog: null
   },
   getters: {
     currentDog: ({ dogs, selectedDogIdx }) => dogs[selectedDogIdx],
-    fromDog(state){
-      return state.fromDog 
-    }
+    // fromDog(state){
+    //   return state.fromDog 
+    // }
   },
   mutations: {
     // incTimes(state){
@@ -40,25 +40,11 @@ export default {
       state.selectedDog = dogs[state.selectedDogIdx];
     },
 
-    setFilterBy(state, { filterBy }) {
-      console.log("filterBy inside mutation setFilterBy", filterBy);
-      state.filterBy.name = filterBy.name;
-      console.log("state.filterBy", state.filterBy);
-    },
-
     setSettingsFilter(state, { filterBy }) {
       state.filterBy.cities = filterBy.cities;
       state.filterBy.weightGroups = filterBy.weightGroups;
       console.log(' state.filterBy ',  state.filterBy);
     }
-
-    // addDog(state, { dog }) {
-    //   state.dogs = [dog, ...state.dogs];
-    // },
-    // updateDog(state, { dog }) {
-    //   const dogIdx = state.dogs.findIndex(currDog => currDog.id === dog.id)
-    //   state.dogs.splice(bugIdx, 1, dog)
-    // },
   },
   actions: {
     // moveCurrentDog({state, getters, commit}) {
@@ -152,21 +138,9 @@ export default {
 
     saveDog(store, { dogToEdit }) {
       // console.log("dog inside dogStore", dogToEdit);
-
       return DogService.saveDog(dogToEdit).then(dogToEdit => {
         return dogToEdit;
       });
-    },
-
-    setFilter(store, { filterBy }) {
-      console.log("filterBy inside dogStore", filterBy);
-      // state.filterBy = filterBy;
-      store.commit({ type: "setFilterBy", filterBy });
     }
-
-    // uploadImg(store, {imgUrl, imgIdx}){
-    //   return DogService.uploadImg( imgUrl, imgIdx ).then(dog => {
-    //   });
-    // }
   }
 };

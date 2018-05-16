@@ -66,7 +66,6 @@ export default {
   },
   methods: {
       setFilterAndSetMatches(){
-        //   console.log('inside setFilter');
          this.$store.dispatch({ type: "setFilter", filterBy: {...this.filterBy}});
          this.$store.dispatch({ type: "getDogMatches", dogId: this.dog._id});
       }
