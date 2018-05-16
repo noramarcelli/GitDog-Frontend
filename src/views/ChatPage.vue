@@ -176,8 +176,20 @@ input {
 @media (max-width: 490px) {
 .input.is-medium.is-danger.inline {
     width: 95%;
-    margin-left: 1%;
-    margin-right: 1%;
+  }
+}
+
+@media (min-width: 330px) {
+  form.chat-input.inline {
+    padding-right: 3.4%;
+    padding-left: 3.4%;
+  }
+}
+
+@media (min-width: 490px) {
+  form.chat-input.inline {
+    padding-right: 3.3%;
+    padding-left: 1%;
   }
 }
 </style>
