@@ -96,16 +96,10 @@ export default {
   methods: {
     getNextDogs(dogId, dogUserId) {
       var userDogId = this.$store.getters.userDogId;
-      // var userDogId = this.userDog._id;
-      // this.$store.dispatch({ type: LOAD_NEXT_DOGS, dogId, userDogId });
-      // disptach moveCurrentDog
       this.$store.dispatch({ type: "moveCurrentDog" });
       if (dogUserId) {
         var userId = this.loggedInUser._id;
-        // console.log("userId inside getNextDogs", userId);
-
         this.$socket.emit("likedDog", { dogId, dogUserId, userDogId, userId });
-        // this.$store.dispatch({ type: SAVE_LIKE, dogId, userDogId, userId });
       }
     },
     showDetails() {
