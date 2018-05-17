@@ -161,6 +161,7 @@ span {
 label {
   font-size: 16px;
   font-weight: bold;
+  font-family: "CutiePatootie";
   margin: 0 !important;
   /* margin: 0;
   padding: 0; */
@@ -235,6 +236,8 @@ label {
   padding: 0 2px;
 }
 button {
+  font-family: "CutiePatootie";
+  font-size: 0.8em !important;
   float: right;
 }
 
