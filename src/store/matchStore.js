@@ -1,9 +1,5 @@
-// import UserService from "../../services/UserService.js";
 import DogService from "../../services/DogService.js";
 import MatchService from "../../services/MatchService.js";
-
-// export const LOGIN = 'login'
-// export const LOAD_USER_DOG = 'loadUserDog'
 
 export default {
   state: {
@@ -17,8 +13,6 @@ export default {
       state.realTimeMatch = match;
       console.log("state.realTimeMatch", state.realTimeMatch);
     },
-    // SOCKET_NEWMSG({matches}, [{msg, matchId}]) {
-    // SOCKET_NEWMSG({matches}, {msg, matchId}) {
     SOCKET_NEWMSG({matches}, data) {
       if (Array.isArray(data)) data = data[0];
       let {msg, matchId} = data;
@@ -46,12 +40,10 @@ export default {
         match.firstDogId === ownDogId ? match.secondDogId : match.firstDogId;
       return DogService.getDogById(otherDogId).then(dog => {
         store.commit({ type: "setMatchedDog", dog });
-        // console.log(' dogs',  dogs);
       });
     },
     getDogMatches(store, { dogId }) {
       console.log("userDogId in getDogMatches", dogId);
-      // let matchedDogs = [];
 
       MatchService.getDogMatches(dogId).then(matches => {
         console.log("matches", matches);
@@ -80,7 +72,6 @@ export default {
               if (joinedMatch.dog.name.toLowerCase().includes(store.state.filterBy.name.toLowerCase())) {
                 filteredMatches.push(joinedMatch);
               }
-              // return joinedMatch;
             });
           } else {
             filteredMatches = [...joinedMatches];
